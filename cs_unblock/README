@@ -1,0 +1,10 @@
+Name: cs_unblock
+Author: darkex
+Category: ChanServ
+Last updated: 2010-09-04T13:42:22+01:00
+
+This module will remove offensive modes (modes that prevent users from joining (-ilk)) from channels. This module bypasses MLOCK.
+However, this module isn\'t a substitute to UNBAN, which should be used first before trying to enter the channel.
+Use of this module on UnrealIRCd doesn\'t really have any effect, as [i]/cs invite[/i] will override any modes preventing users from joining. On IRCds where the INVITE command doesn\'t override any other modes except i, this module can be used.
+
+Version 0.1 supports Anope 1.8.4

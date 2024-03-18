@@ -1,0 +1,9 @@
+Name: os_set_sa
+Author: Viper
+Category: OperServ
+Last updated: 2008-01-06T21:48:42+00:00
+
+As of Anope-1.7.20 OS SET is restricted to services roots.
+This module makes OS SET SUPERADMIN available to SA again, as it used to be.
+
+Version 1.1 supports Anope 1.7.21

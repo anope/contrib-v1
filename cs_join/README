@@ -1,0 +1,31 @@
+Name: cs_join
+Author: n00bie
+Category: ChanServ
+Last updated: 2006-09-29T00:34:04+01:00
+
+[b]NO LONGER SUPPORTED! SEE: http://forum.anope.org/index.php?topic=2387.0[/b]
+
+[b]Description:[/b]
+
+This module will make ChanServ JOIN/PART a channel & will automatically set correct modes for itself. This module is designed for ppl who wanted to have @ChanServ sits on their channel along with a BotServ @Bots.
+
+It is recommended not to use this module with cs_fantasy.c or cs_inhabitregistered.c loaded as those modules already does the job ;)
+
+Also, when using this module i\'d like to suggest the SYMBIOSIS mode turned off (if there is a bot assigned on a channel). See /BotServ HELP SET SYMBIOSIS for reasons ^^
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+[b]NOTE:[/b]
+
+Only channel founder & services admin can use this command.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+[b]Providing Commands:[/b]
+
+/msg ChanServ HELP JOIN|PART
+/msg ChanServ JOIN #Channel
+/msg ChanServ PART #Channel
+
+Providing IRCD Handler for: KICK
+If ChanServ gets kicked, it will automatically rejoin the channel.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+
+Version 1.0.3 supports Anope 1.7.18
+Version 2.0.0 supports Anope 1.7.21

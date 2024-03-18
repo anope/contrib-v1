@@ -1,0 +1,12 @@
+Name: ban_ip
+Author: EZEki3l
+Category: IRCd Specific
+Last updated: 2006-12-05T23:16:23+00:00
+
+This module is my first code, it comes from ipadd_module and I thank his author David Chafin for his little module which helps me well
+It's designated for use on UnrealIRCd networks too.
+It allows any Services Admin to use the command !banip X.X.X.X to add a new IP to the ban ip block. 
+Ban ip blocks are more useful than use of /gline /zline or other because if the server restarts the ban will be still active and the intruders are disconnected before joining a channel
+This module have no configurable option.
+
+Version 0.1 supports Anope 1.7.16

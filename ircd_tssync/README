@@ -1,0 +1,14 @@
+Name: ircd_tssync
+Author: Amanda
+Category: IRCd Specific
+Last updated: 2009-03-25T17:57:22+00:00
+
+This module allows you to sync your server clocks. The command is limited to services operators. See /msg operserv help tssync
+
+*** This module only works on UnrealIRCd and ShadowIRCd. ***
+ 
+This is an update to a module done by katsklaw. This version includes help documentation that appears in OperServ help. The name was changed to ircd_tssync.
+
+Please do not contact katsklaw for help with this module. If you can\'t get it to work, please email me instead or post in the modules section on the forums.
+
+Version 1.0 supports Anope 1.8.0

@@ -1,0 +1,34 @@
+Name: os_lastreg
+Author: n00bie
+Category: OperServ
+Last updated: 2007-08-26T19:21:48+01:00
+
+This module will retrieve the last nickname and channel registered. This command if given with a [b]nick[/b] param will display the last registered nickname and the registered time. Likewise if given with the [b]chan[/b] param will display the last registered channel, registered time and the founder of the channel if available.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Providing Command:[/b]
+
+/msg OperServ HELP LASTREG
+/msg OperServ LASTREG nick|chan
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]NOTE:[/b]
+This module is my first module using a seperate database, so don\'t think that this module is intelligent enough to retrieve the last registered nickname/channel at the time of loading this module. It will ONLY retrieve if a new nickname/channel is registered after loading or using this module ;-)
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Module suggested by ice
+This module have 1 configurable option.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Copy/paste below on services.conf
+
+# LastRegLogon [OPTIONAL]
+# Module: os_lastreg
+#
+# Define this if you want Global to display the
+# last registered nickname and channel when
+# a users connect.
+
+LastRegLogon
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Version 1.0.0 supports Anope 1.7.18
+Version 1.0.1 supports Anope 1.7.18
+Version 2.0.0 supports Anope 1.7.21

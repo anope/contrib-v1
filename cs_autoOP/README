@@ -1,0 +1,19 @@
+Name: cs_autoOP
+Author: TheBingsta
+Category: ChanServ
+Last updated: 2010-08-10T16:42:54+01:00
+
+-Unsupported at the moment.
+
+Most of this code is created by n00bie thank you! You have inspircd me to learn c.
+
+
+This module will autoop a user on any channel, like the cs_autovoice.
+All commands are the same like cs_autovoice but developed to op the user instead of voice the user.
+
+Could be usefull for #bots or any user who wants to op all users on a specific channel. 
+
+This module is ***no longer supported***
+BUG: This Module can crash anope.
+
+Version 1.0 supports Anope 1.8.4

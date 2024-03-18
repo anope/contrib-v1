@@ -1,0 +1,8 @@
+Name: os_root
+Author: Adam
+Category: OperServ
+Last updated: 2012-05-15T08:26:20+01:00
+
+Like os_oper or os_admin, but not. Requires being [b]super admin[/b] to use.
+
+Version 1.0 supports Anope 1.8.7

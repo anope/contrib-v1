@@ -1,0 +1,24 @@
+Name: cs_regexdrop
+Author: DrStein
+Category: ChanServ
+Last updated: 2007-08-26T09:04:31+01:00
+
+This module allow Services Admins to massive drop channels matching a given Regular Expression.
+
+Extended (POSIX) regular expressions are supported.
+
+[b]Example:[/b]
+
+(DrStein) LIST *
+-ChanServ(services@anope.org)- List of entries matching *:
+-ChanServ(services@anope.org)-    #test-authorized      Official Channel
+-ChanServ(services@anope.org)-    #test1234             blah
+-ChanServ(services@anope.org)- End of list - 2/2 matches shown.
+[b](DrStein) REGEXDROP test[0-9]+[/b]
+-ChanServ(services@anope.org)- A total of 1 channels have been dropped.
+(DrStein) LIST *
+-ChanServ(services@anope.org)- List of entries matching *:
+-ChanServ(services@anope.org)-    #test-authorized      Official Channel
+-ChanServ(services@anope.org)- End of list - 1/1 matches shown.
+
+Version 1.0.0 supports Anope 1.7.18

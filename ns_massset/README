@@ -1,0 +1,18 @@
+Name: ns_massset
+Author: LEthaLity
+Category: NickServ
+Last updated: 2011-11-26T01:14:35+00:00
+
+This module provides the ability for Services Staff with the nickserv/massset permission to change NickServ settings for ALL registered users.
+   This is something you would probably [b]not[/b] want/need loaded all the time but can be useful to override a setting you've overlooked or wrongly enabled/disabled in nickserv.conf's default options.
+[b]Using this module does have the potential to annoy users who set their own options and were quite happy with them.[/b]
+
+This module provides the following command:
+/msg NickServ MASSSET <option> <param>
+[b]option[/b] can be one of Kill, Secure, AutoOP, Message, ChanStats - [b]param[/b] can be ON or OFF, plus Quick and IMMED for Kill.
+
+[b]To load this module and add the command, add the following to a services config file (eg nickserv.conf):[/b]
+module { name = "ns_massset" }
+command { service = "NickServ"; name = "MASSSET"; command = "nickserv/massset"; permission = "nickserv/massset"; }
+
+Version 0.1 supports Anope 1.9.5

@@ -1,0 +1,46 @@
+# Makefile for language module
+
+include ../../../../Makefile.inc.win32
+
+LANGOBJS = en_us es fr
+LANGSRCS = en_us.l es.l fr.l
+
+#LANGCOMP = ./langcomp
+LANGCOMP = ./langcomp -w
+
+all: $(LANGOBJS)
+
+install: all
+	-@mkdir ..\..\..\..\$(DATDEST)\languages\bs_fantasy_ext
+	-copy en_us ..\..\..\..\$(DATDEST)\languages\bs_fantasy_ext
+	-copy es ..\..\..\..\$(DATDEST)\languages\bs_fantasy_ext
+	-copy fr ..\..\..\..\$(DATDEST)\languages\bs_fantasy_ext
+
+reset:
+	-@erase $(LANGOBJS) index
+
+clean:
+	-@erase $(LANGOBJS) langcomp.exe langtool.exe *.obj index index.h
+
+spotless: clean
+
+en_us: reset tools index index-install
+	langcomp $@.l
+
+es: reset tools index index-install
+	langcomp $@.l
+
+fr: reset tools index index-install
+	langcomp $@.l
+
+tools:
+	-@$(CC) /I"../../../../include" langtool.c  /link $(LIBS)
+	-@$(CC) /I"../../../../include" langcomp.c  /link $(LIBS)
+
+index: langtool.exe
+	langtool index
+	langtool index.h
+
+index-install:
+	copy index.h ..\.
+

@@ -1,0 +1,8 @@
+Name: ns_resetpass
+Author: Adam
+Category: NickServ
+Last updated: 2010-03-10T22:52:03+00:00
+
+This module was originally written by DrStein, but has been updated to work on Anope-1.8.x. For more information on this module read http://modules.anope.org/index.php?page=view&id=80
+
+Version 1.0 supports Anope 1.8.5

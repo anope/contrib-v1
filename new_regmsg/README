@@ -1,0 +1,18 @@
+Name: new_regmsg
+Author: katsklaw
+Category: Other
+Last updated: 2011-05-23T18:05:19+01:00
+
+Module written per request by Simon Hind.
+http://forum.anope.org/index.php?topic=3490.0
+
+This module sends a notice to the channel founder when a new channel is registered. It also sends a notice to new users when their nick is registered.
+
+2 Config Items (put in services.conf):
+CSRegMsg "Your welcome message."
+NSRegMsg "Your welcome message."
+
+Both Config items are optional. Notices are only sent if the config value is present. That means that if you only want to send to new nicks but not new channels, then place only NSRegMsg in your config file.
+
+Version 1.0.0 supports Anope 1.8.0 to 1.8.6
+Version 1.0.1 supports Anope 1.8.0 to 1.8.6

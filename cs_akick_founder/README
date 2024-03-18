@@ -1,0 +1,10 @@
+Name: cs_akick_founder
+Author: n00bie
+Category: ChanServ
+Last updated: 2008-03-26T08:46:35+00:00
+
+Simple module which will NOT allow the channel founder nick to be added on the channel autokick list. Yea, yea, channel founder can delete himself from the akick list, but thats just not nice.. ^^
+------------------------------------------------------------------
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

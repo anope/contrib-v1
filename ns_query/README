@@ -1,0 +1,16 @@
+Name: ns_query
+Author: TheKing
+Category: NickServ
+Last updated: 2009-04-04T20:30:38+01:00
+
+This module allows a SRA (Services Root Administrator) to have NickServ send a user a PRIVMSG (or more commonly known as a PM). I don\'t know what the purpose of this module is, I was just asked to make it by midnight_tiger.
+
+Syntax: /ns query user message
+
+This module has been tested only with 1.8.0 and 1.8.0-rc1. If it works with any other Anope revision, please leave me a comment. 
+
+Any problems, leave me a comment.
+
+This module has no configurable option.
+
+Version 1.0.0 supports Anope 1.8.0

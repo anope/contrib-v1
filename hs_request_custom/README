@@ -1,0 +1,24 @@
+Name: hs_request_custom
+Author: zefie
+Category: HostServ
+Last updated: 2007-12-05T22:42:02+00:00
+
+This is a modified version of the default hs_request.c to add an option to PM an Oper or Channel (preferred).
+
+Example:
+
+ [VHOST] New vHost Request: Username: zefie vHost: test.host
+ [VHOST] To allow this vHost: /msg HostServ ACTIVATE zefie ~ To reject this vHost: /msg HostServ REJECT zefie
+
+ [VHOST] zefie has REJECTED zefie\'s vHost (No Reason Given)
+ [VHOST] zefie has ACTIVATED zefie\'s vHost
+
+It introduces two new config options:
+
+HSSendOperPM # [i]Comment out to disable the feature, but then you may as well just use the original hs_request[/i]
+HSSendOperPMDest \"#Opers\" # [i]Channel (or user) to PM notifications to.[/i]
+
+[b]* WARNING *[/b]
+This is meant to be used INSTEAD of hs_request. I have not tried loading both simultaneously, but I would advise against it. Please unload hs_request before loading hs_request_custom.
+
+Version 1.0 supports Anope 1.7.18

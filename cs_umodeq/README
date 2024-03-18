@@ -1,0 +1,13 @@
+Name: cs_umodeq
+Author: n00bie
+Category: ChanServ
+Last updated: 2007-08-20T08:39:14+01:00
+
+This is a simple module which will add umode +q ( /helpop ?umodes ) to ChanServ.
+
+-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]NOTE:[/b] Module is for UnrealIRCd ONLY.
+This module have no configurable option.
+Module requested by PTone
+
+Version 1.0.0 supports Anope 1.7.21

@@ -1,0 +1,24 @@
+Name: cs_limitsetsuccessor
+Author: oldAuthors
+Category: ChanServ
+Last updated: 2006-12-24T22:06:37+00:00
+
+Limits the use of /msg ChanServ SET #channel SUCCESSOR to one of three user levels:
+
+- Services Roots only
+- Services Admins and above
+- Services Opers and above
+
+The module has one configuration directive which needs to be placed into services.conf before the module is loaded:
+
+# LimitCSSetSuccessor &lt;level&gt; [REQUIRED]
+# Limits the user of /msg ChanServ SET #channel SUCCESSOR
+# to the user level specified below.
+#
+# For services roots only, use "root".
+# For services admins and above, use "admin".
+# For services opers and above, use "oper".
+LimitCSSetSuccessor "root"
+
+Version 1.0.0 supports Anope 1.7.16
+Version 1.0.1 supports Anope 1.7.16

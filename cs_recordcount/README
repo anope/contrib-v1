@@ -1,0 +1,10 @@
+Name: cs_recordcount
+Author: mdx
+Category: ChanServ
+Last updated: 2009-04-22T21:56:47+01:00
+
+Channel records statistics.
+
+It provides a simple users counter and record time.
+
+Version 1.0.1 supports Anope 1.8.0

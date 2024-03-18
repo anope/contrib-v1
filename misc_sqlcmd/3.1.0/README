@@ -1,0 +1,279 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###--------------------------------------  misc_sqlcmd  ----------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+---------------------------------------------------------------------------------------------
+
+Module Name   : misc_sqlcmd
+Author        : Viper <Viper@Anope.org>
+Date          : 09/01/2011 
+Last Update   : 04/04/2011
+Last Edited   : 10/03/2011
+
+Git Repo      : http://vips.hopto.org/gitweb/?p=anope-modules/misc_sqlcmd
+
+This Version  : 3.1.0
+Up-to-Date with Anope 1.8 Revision 3067
+
+---------------------------------------------------------------------------------------------
+
+Requires      : Anope 1.8.5
+Recommended   : Anope 1.8.5 or higher
+Tested        : Anope 1.8.5-git + UnrealIRCd 3.2.8 (Should work on any IRCd)
+                Anope 1.8.5-git + InspIRCd 1.2.7
+
+---------------------------------------------------------------------------------------------
+
+Description:
+-------------
+
+This module allows you to send commands or database manipulation instructions to Anope via a table
+in its MySQL database. This allows for indirect two-way communication and manipulation of Anope 
+whilst it's running and connected to a network.
+
+The module works by polling every X seconds (default 3) the command table for new instructions.
+These instructions are then processed in order they were received, and executed to manipulate
+Anopes internal - in memory - database. Anope will than save this changes to the MySQL database
+during its next scheduled database save, though many changes may become apparent in the MySQL
+database just after they are commited by this module.
+
+This module is based on misc_sqmcmd v.2.0.0 by Heinz.
+While the principle of operation and communication remains the same, much of the code
+for interacting with the Anope core was rewritten and restructures. The syntax of the commands
+received through the MySQL database has also changed significantly so it 's fair to say 
+that this version of the module is not compatible with code writing commands to SQL for v.2.0.0.
+
+This module is meant to give external program an interface to interact with the 1.8 branch.
+I am the first to admin that sending commands through SQL isn't the ideal way, this module
+was the easiest and quickest way to accomplish this with the existing framework and code.
+In ideal circumstances reading would be done through MySQL and write operations communicated
+to anope over XML-RPC.
+The 1.9 branch will feature Live-SQL support. This is not meant to rival that implementation, 
+however since 1.9 is likely still a few years away from being stable, this module could help
+bridge that gap.
+
+---------------------------------------------------------------------------------------------
+
+Installation:
+--------------
+
+cf INSTALL.
+
+
+---------------------------------------------------------------------------------------------
+
+Contact:
+---------
+
+I can be contacted through mail at Viper@Anope.org or through IRC on the 
+Anope support network (irc.anope.org #anope). I prefer people contact me through IRC and please ask
+me before PM'ing me for a simple question, other people in the channel might be able to answer as well.
+I also watch the Anope forums ( http://forum.anope.org ), so if there is any problem and you
+can't reach me on IRC, please try using the forums before mailing me.
+
+If you think you found a bug in this module, either post it on the forums or mail me the details.
+
+---------------------------------------------------------------------------------------------
+
+Copyright:
+------------
+
+This module is released under the GPL 2 license, with the exclusion of the my_match_wild_nocase()
+subroutine in misc.c on which all copyrights belong to Alessandro Felice Cantatore.
+It should also be noted that much of the code in this module is forked from Anope itself.
+
+---------------------------------------------------------------------------------------------
+
+Supported Instructions:
+-------------------------
+
+The following commands are accepted by the module and will be executed when read from
+the MySQL database. (Provided the checksum is correct!)
+
+In following overview, the av[] indications refer to parameters inserted in the 'params' column,
+index 0 refering to the first space seperated item, index 1 to the second etc. All parameters
+are space seperated and only the last parameter may consist of multiple words.
+
+If a command requires a password, the hash is to be inserted into the 'pass' column.
+
+Commands:
+
+ PING - Ping the module.
+
+ NICK_REQ - Request a nickname.
+ *    av[0] - Nickname
+ *    av[1] - E-Mail Address [Optional]
+ *    pass  - Password hash.
+
+ NICK_REG - Register a nickname.
+ *    av[0] - Nickname
+ *    av[1] - E-Mail Address [Optional]
+ *    pass  - Password hash.
+
+ NICK_CONF - Confirm a nickname.
+ *    av[0] - Nickname
+
+ NICK_GROUP - Group a nickname.
+ *    av[0] - Nickname in nickgroup to join.
+ *    av[1] - Nick to group
+
+ NICK_DROP - Drop a nick alias or nick request.
+ *    av[0] - Nickname to drop.
+
+
+ CHAN_REG - Register a channel.
+ *    av[0] - Nickname.
+ *    av[1] - Channel name.
+ *    av[2] - Channel description.
+ *    pass  - Channel password hash.
+
+ CHAN_ADD_SOP - Add a SOP to channel.
+ *    av[0] - Channel name.
+ *    av[1] - User to add.
+ *    av[2] - Nick of the user adding the entry. [Recommended]
+
+ CHAN_ADD_AOP - Add a AOP to channel.
+ *    av[0] - Channel name.
+ *    av[1] - User to add.
+ *    av[2] - Nick of the user adding the entry. [Recommended]
+
+ CHAN_ADD_HOP - Add a HOP to channel.
+ *    av[0] - Channel name.
+ *    av[1] - User to add.
+ *    av[2] - Nick of the user adding the entry. [Recommended]
+
+ CHAN_ADD_VOP - Add a VOP to channel.
+ *    av[0] - Channel name.
+ *    av[1] - User to add.
+ *    av[2] - Nick of the user adding the entry. [Recommended]
+
+ CHAN_ADD_ACC - Add a user to a hannel's access list.
+ *    av[0] - Channel name.
+ *    av[1] - User to add.
+ *    av[2] - Level to add the user with.
+ *    av[3] - Nick of the user adding the entry. [Recommended]
+
+ CHAN_DEL_ACC - Delete a user from a channel's access list. (Also handles XOP.)
+ *    av[0] - Channel name.
+ *    av[1] - User to delete.
+ *    av[2] - Nick of the user deleting the entry. [Recommended]
+
+ CHAN_TOPIC - Change the topic of a channel.
+ *    av[0] - Nick of the user setting the topic. [Optional]
+ *    av[1] - Channel name.
+ *    av[2] - New topic. Leave empty to clear topic.
+
+ CHAN_DROP - Drop a channel.
+ *    av[0] - Nick of the user dropping the channel.
+ *    av[1] - Channel name.
+
+
+ BOT_ASSIGN - Assign a BotServ bot to a channel
+ *    av[0] - Channel name.
+ *    av[1] - Bot to assign.
+ *    av[2] - Nick of the user assigning the bot. [Optional]
+
+ BOT_UNASSIGN - Unassign a BotServ bot from a channel
+ *    av[0] - Channel name.
+ *    av[1] - Nick of the user unassigning the bot. [Optional]
+
+ BOT_SAY - Make botserv say something to a channel
+ *    av[0] - Nick of the user instructing the bot. [Optional]
+ *    av[1] - Channel name.
+ *    av[2] - Message to send.
+
+ BOT_ACT - Make botserv act something in a channel
+ *    av[0] - Nick of the user instructing the bot. [Optional]
+ *    av[1] - Channel name.
+ *    av[2] - Message to send.
+
+
+ MEMO_SEND - Send a memo
+ *    av[0] - Sender Nickname
+ *    av[1] - Receiver name (nick or channel)
+ *    av[2] - Memo Text
+
+ MEMO_DEL - Delete a memo/set of memos
+ *    av[0] - Nickname or Channel.
+ *    av[1] - Memo/list of memos.
+
+ MEMO_CLEAR - Delete all memos
+ *    av[0] - Nickname or Channel.
+
+Please note that while these commands will perform certain data integrity checks on
+the received instructions and return errors if needed, not everything is checked.
+While Heinz's version of this module checked access rights, now only the very basics are checked.
+This means that for example it is the responsibility of the interface or external
+application to verify a user has the right to add a user to a channel's access list.
+
+A list of all the status codes returned by this module can be found in "misc_sqlcmd_errors.h".
+
+---------------------------------------------------------------------------------------------
+
+Working with the checksum:
+----------------------------
+
+The checksum allows the module to verify the integrity of the commands received via MySQL, provided
+the checksum salt is kept secret.
+
+Each message stored in the commands table needs a valid checksum to be processed. If a valid
+checksum is missing an error will be returned and the command will be disregarded.
+
+Once a command and its parameters have been assembled, the checksum is calculated using the 
+following method:
+
+	Take the cmd, params, pass and timestamp field and put these in a ':' separated string.
+	If either params or pass is NULL, they are substituted with an empty string.
+	The secret checksum salt (specified in the services.conf) is then appended to this string,
+	also using a ':' separator. This resulting string should have following format:
+			cmd:params:pass:timestamp:checksum_salt
+
+	The whole string is then MD5 hashed, and stored in the checksum field.
+
+When the module reads the command from the MySQL commands table, it will calculate the
+checksum based upon the salt that is configured in services.conf. To be a valid commands, 
+both checksums must match.
+
+If the "checksum salt" is comprimised, then the user can manually insert his or her own commands
+into the database for anope to execute. The checksum salt is specified in the services.conf file,
+and should be kept in a secure location in your website scripts or client program.
+
+---------------------------------------------------------------------------------------------
+
+Example commands:
+-------------------
+
+To execute a command inside anope, simple insert an instruction into the commands table.
+For example to 'PING' anope:
+	INSERT INTO anope_sqlcmd (cmd, params, pass, tstamp, chksum)
+			VALUES ('PING', NULL, NULL, 1295016551, '228aa18ccbb05f049dca829310282cae');
+
+Alternatively, the SQL file also contains a MySQL function and procedure to more easily facilitate
+the inserting of new commands in the buffer table. This function or SP will generate the cheksum
+itself with given salt. A timestamp is optional.
+	sql_cmd_add(COMMAND, PARAMETERS, PASS, CHECKSUM SALT, UNIX TIMESTAMP)
+For example the above insert can be handled by a function call:
+	select sql_cmd_add('PING', '', '', 'qd9sd1DS23hW$Q)01B@Q', 0);
+The sql_cmd_add() function will return the ID of the command. This can later be used to check
+the status of the operation; whether it was successful or encountered an error.
+
+---------------------------------------------------------------------------------------------
+
+PHP API :
+-----------
+
+A PHP API ic currently being developed to facilitate access to Anopes MySQL database and the
+commands supported by this module. A lot of the sanity checks and access right checks are also
+implemented in PHP to allow users to get instant feedback from the PHP API in almost all cases
+rather than having to wait for the status code returned by the module.
+
+While the API is still under development and no examples yet exist, it should be relatively
+functional with all commands already having been implemented.
+
+You can check out the latest copy in my GIT repository at
+	http://vips.hopto.org/gitweb/?p=anope-php;a=summary
+or contact me on the forums or in IRC if you need help or want to help out.
+
+---------------------------------------------------------------------------------------------

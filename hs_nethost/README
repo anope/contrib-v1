@@ -1,0 +1,17 @@
+Name: hs_nethost
+Author: Viper
+Category: HostServ
+Last updated: 2008-05-12T12:29:24+01:00
+
+This module will automatically set a default vhost upon registration, supporting customization based upon the user\'s nickname.
+Additionally, this module allows you to customize HostServ behaviour when a new nick is grouped to an existing nick group.
+
+Note that this modules [u]requires[/u] the new configuration directive to be copied to the services.conf. Cf. the header of the source file (*nix) or the README.txt (Windows) for more info.
+
+This module is based on a fork of hs_nethost 1.2 by Trystan Scott Lee when that module was no longer supported. Most code however has been rewritten to make use of the events system and allow for better customization of the NetworkHost. 
+Credit also goes to the original author Certus, and Strike, the author of hs_autohost.
+
+Version 2.0 supports Anope 1.7.21
+Version 2.1 supports Anope 1.7.21
+Version 2.2 supports Anope 1.8.0
+Version 2.3 supports Anope 1.8.2

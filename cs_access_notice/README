@@ -1,0 +1,20 @@
+Name: cs_access_notice
+Author: n00bie
+Category: ChanServ
+Last updated: 2008-03-26T08:40:13+00:00
+
+Whenever a user is added to the channel access list or, his access being changed or his access deleted from the channel access list, ChanServ will send them a notice informing about their access status (whether (s)he is added, changed or deleted, by whom, which channel and at what levels). If the user is offline during the events, a memo will be sent to the user informing about the events.
+-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=--=-=-=-=-==-
+This module have 1 configurable option.
+Copy/Paste below on services.conf
+
+# SendMemoEventAccess [OPTIONAL]
+# Module: cs_access_notice
+#
+#	Define this to send memo to an offline user whenever his/her
+#	access gets added, changed or deleted on a channel.
+#
+SendMemoEventAccess
+
+Version 1.0.0 supports Anope 1.7.21
+Version 2.0.0 supports Anope 1.8.0

@@ -1,0 +1,63 @@
+-------------------------------------------------------------------------------------------------
+ Name:			bs_gseen
+ Author:		Jens 'DukePyrolator' Voss
+			<DukePyrolator@anope.org>
+ Date:			05/10/2009
+ Version:		3.0
+-------------------------------------------------------------------------------------------------
+ Supported IRCD:	ALL 
+ Tested with:		InspIRCd 1.2
+ Requires:		Anope 1.9.1 and MySQL
+-------------------------------------------------------------------------------------------------
+
+ This module tracks all joins, parts, quits and nickchanges and store it in a mysql db.
+ It adds a new !seen command to botserv
+
+-------------------------------------------------------------------------------------------------
+
+ Install:
+	- put the files to src/modules/gseen/*
+	- go to your build directory, type "cmake .", then "make" and "make install"
+	- copy the gseen.xml to your services/data/ directory
+	- put following lines in your services.conf
+
+		database
+		{
+			host = "localhost"
+			port = "3306"
+			name = "anope"
+			user = "anope"
+			pass = "anope"
+		}
+
+	- /operserv modload gseen
+	- enjoy :-)
+
+-------------------------------------------------------------------------------------------------
+  internal infos:
+
+
+  fields:     nick    - nickname (char)
+              type    - int
+              host    - ident@host
+              vhost   - ident@host (vhost)
+              chan    - #chan
+              msg     - quit/part/kick message
+              last    - timestamp of last seen ( time() )
+              spent   - timestamp ( time() - last ) - not used at the moment
+              newnick - nickname (char)
+
+
+  type:       0 - undefined - should never be 0       ERROR  
+              1 - connect to network (new user)       GS_NEW 
+              2 - nickchange to newnick               GS_NICKCHANGE_TO 
+              3 - nickchange from oldnick             GS_NICKCHANGE_FROM
+              4 - join chan                           GS_JOIN 
+              5 - part chan                           GS_PART 
+              6 - quit network                        GS_QUIT 
+              7 - kicked from chan                    GS_KICK 
+
+      example for type 2 and 3: 
+              DukePyrolator changes nick to DukeP|away
+               - oldnick "DukePyrolator" gets type 2 and in field newnick is "DukeP|away" written 
+               - newnick "DukeP|away" gets type 3 and in field newnick is "DukePyrolator" written 

@@ -1,0 +1,30 @@
+Name: os_statsonid
+Author: LEthaLity
+Category: OperServ
+Last updated: 2009-08-25T04:59:41+01:00
+
+This module displays some stats to users when they become a Services Operator on /ns identify, ported from Certus' ns_identify_stats on 1.8.
+
+[u]Output to a Services Oper on identifying:[/u]
+
+-OperServ- ******** Services Stats Report ********
+-OperServ- Uptime: 13 hours, 24 minutes
+-OperServ- Current users: 9 (1 ops)
+-OperServ- Maximum users: 9 (Feb 22 16:52:04 2014 GMT (13 hours, 24 minutes ago))
+-OperServ- Registered nicknames: 1
+-OperServ- Registered channels: 1
+-OperServ- Current akills: 1
+-OperServ- Current snlines: 0
+-OperServ- Current sqlines: 0
+-OperServ- ************* Report End *************
+
+This module has no config options aside from loading it:
+eg. module { name = "os_statsonid" }
+
+[b]Make sure you check the releases for the right version for what you're running, eg. 1.8/1.9/2.0)[/b]
+
+Version 1.0.0 supports Anope 1.9.0
+Version 1.1 supports Anope 1.9.1
+Version 1.2 supports Anope 1.8.2
+Version 1.2~1 supports Anope 1.9.1
+Version 1.2.1 supports Anope 1.8.4 to 1.8.5

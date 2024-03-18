@@ -1,0 +1,20 @@
+Name: cs_setmodeunreg
+Author: katsklaw
+Category: ChanServ
+Last updated: 2011-05-24T00:12:02+01:00
+
+Based on [url="http://modules.anope.org/index.php?page=view&id=220"]cs_secretunreg[/url], This module allows you to define the modes to be (un)set as a config value.
+
+2 Config items (put in services.conf):
+CSModesUnreg "mode"
+CSModesReg "mode"
+
+Example:
+CSModesUnreg "+nts"
+CSModesReg "-s"
+
+This will set +nts on unregistered/suspended channels and set -s upon channel registration.
+
+Note: This module does not parse the mode string to insure valid modes are being set. As an administrator, that's something you should know anyway. As such this module should work with all supported IRCds.
+
+Version 1.0.0 supports Anope 1.8.0 to 1.8.6

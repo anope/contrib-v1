@@ -1,0 +1,29 @@
+Name: logchan
+Author: Liber
+Category: Other
+Last updated: 2009-02-08T23:29:17+00:00
+
+8/11/2011: I know a lot of people use this module, so I decided to update it. Being almost two years later, there's a huge difference (I just log a bunch more) and an additional header file. Comments welcome, as always.
+
+Original: An extension to core Anope logging for the services channel. This module currently logs:
+General
+- Joins
+- Parts 
+- Kicks
+- Topic Changes
+- Restart/Shutdown (Of Anope)
+- Usage of /away (to log when a user goes away and returns)
+- DefCon level changes
+BotServ
+- Usage of /bs add and /bs del
+- Usage of /bs assign and /bs unassign
+Modes
+- Logging of user modes
+
+---
+For help on this module, you can find me on IRC. 
+
+
+Version 1.0 supports Anope 1.8.0
+Version 1.1 supports Anope 1.8.0 to 1.8.6
+Version 1.2 supports Anope 1.8.0 to 1.8.7

@@ -1,0 +1,10 @@
+Name: ns_ghost_id
+Author: Viper
+Category: NickServ
+Last updated: 2008-05-25T12:53:29+01:00
+
+This module adds extra functionality to the NickServ GHOST command so that if someone executes a ghost with password and is not already identified for a nick, NickServ will automatically recognize him as owner of the ghosted nickname after changing nick.
+
+Note that this will only work on networks with NSNickTracking enabled in the services.conf!
+
+Version 1.0 supports Anope 1.7.21

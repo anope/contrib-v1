@@ -1,0 +1,14 @@
+Name: ns_locknickreg
+Author: lnx85
+Category: NickServ
+Last updated: 2008-07-14T18:23:56+01:00
+
+Module blocks registration of nicks matching a config list. Useful to block registration of certain nicks, for example applet guest nicks like [i]Anon|XXXX[/i] or [i]Java|XXXX[/i].
+
+It can also be used to protect nicks starting with admins nick (i.e. [i]lnx85*[/i] prevents registration of all nicks similar, such as [i]lnx85`afk[/i], [i]lnx85`out[/i] and much more...)
+
+For more information contact me in #developers on SimosNap IRC Network
+
+
+
+Version 0.1 supports Anope 1.7.21

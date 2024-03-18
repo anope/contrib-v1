@@ -1,0 +1,16 @@
+Name: ns_quote
+Author: Anikwa
+Category: NickServ
+Last updated: 2013-03-14T20:08:51+00:00
+
+This module sends a quote to a user who identifies.
+
+Can be configured to allow the [i]/ns cookie[/i] command (See ns_quote.c)
+
+This is an edit of an older module: ns_fortunecookie.
+
+The cookies.conf file needs quotes added. I only supplied two for testing purposes.
+
+Tested on Anope 1.8.7
+
+Version 1.0 supports Anope 1.8.5 to 1.8.7

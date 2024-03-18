@@ -1,0 +1,45 @@
+Name: cs_autolimit
+Author: cyberwarrior
+Category: ChanServ
+Last updated: 2008-02-13T17:05:28+00:00
+
+What does it do:                                                                   
+  basicly it increases the channel limit every X seconds by Y (lookie help for set)
+  kinda usefull for flood protection and whatever u want it for                    
+
+Tested on:                                                                        
+  -anope 1.6.2 with an heavily modified ultimate ircd version                       
+  -in use on abjects since feb 3rd 2008                                           
+
+Should work on:
+  -all anope releases from 1.6.0 i guess
+
+TODO:                                                                            
+  -no clue                                                                        
+
+Changelog:                                                                         
+  v1.1.4                                                                          
+    -increased limits                                                              
+    -added AUTOLIMIT HELP (blame drak)                                             
+  v1.1.3                                                                           
+    -fixed a bug in the dlink engine (bla)                                         
+  v1.1.2                                                                           
+    -fixed a bug in the dlink engine                                               
+  v1.1.1                                                                           
+    -fixed a bug in the dlink engine                                               
+    -added some limits                                                             
+  v1.1.0                                                                           
+    -db support added                                                              
+    -list added                                                                    
+  v1.0.2                                                                           
+    -not using SJOIN msg anymore                                                  
+  v1.0.1                                                                           
+    -show, set and del added                                                       
+    -help added                                                                    
+  v1.0.0                                                                           
+    -basic engine done                                                            
+
+
+Feel free to post comments and ideas and bugreports and whatever
+
+Version 1.1.4 supports Anope 1.7.21

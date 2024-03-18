@@ -1,0 +1,25 @@
+Name: bs_secure_assign
+Author: LEthaLity
+Category: BotServ
+Last updated: 2009-08-26T17:35:55+01:00
+
+This module adds a password for /BS ASSIGN and UNASSIGN. Module was a request by kc. Most is based on katsclaw\' bs_assign_pass.
+
+Allows ServicesAdmin to assign and unassign using a password set in services.conf
+Usage: /bs assign #Channel MyBot myassignpass
+
+To install:
+Make/compile as normal
+/os modload bs_secure_assign
+Add the following Services Directives: 
+BSSecurePass \"myassignpass\"
+#BSSecurePassRoot
+/os reload
+
+This module is for Anope-1.8 and should work down to 1.7.19(ish).
+
+Tested on Anope-1.8.2 - Inspircd12
+
+Version 1.0.0 supports Anope 1.8.2
+Version 1.0.1 supports Anope 1.8.2
+Version 1.0.3 supports Anope 1.8.2

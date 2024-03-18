@@ -1,0 +1,16 @@
+Name: ns_sagroup
+Author: Viper
+Category: NickServ
+Last updated: 2008-02-07T21:59:47+00:00
+
+This module adds the SAGROUP command to NickServ allowing Services Administrators and Services Root Administrators to remotely group nicknames.
+
+This module is particulary useful in combination with ns_group_operonly and can also be used to grant users more nicks then NSMaxAliases.
+
+
+SAGROUP will never work on registered users that have Services Root!
+
+Note that this command overrides several restrictions enforced by the regular GROUP command, including NSNoGroupChange and NSMaxAliases.
+!!! USE WITH CAUTION !!!
+
+Version 1.0 supports Anope 1.7.21

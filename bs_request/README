@@ -1,0 +1,25 @@
+Name: bs_request
+Author: justasic
+Category: BotServ
+Last updated: 2012-02-05T07:31:47+00:00
+
+This module allows for non-opers to request for services bot similar to hs_request and sends memo's to all services operators (configurable) for approval or rejection.
+
+You can find unreleased beta versions in my module directory under my [url="http://git.stacksmash.net/Justasic/tree/Modules/Anope"] Git repository [/url] if I have not updated them here.
+
+This command adds the following Nodes to Anope 1.9:
+ /msg BotServ Request  - botserv/request
+ /msg BotServ Activate - botserv/activate
+ /msg BotServ Reject   - botserv/reject
+ /msg BotServ Waiting  - botserv/waiting
+
+and the following Configuration variables:
+[url="http://pastie.org/3319957"] http://pastie.org/3319957 [/url]
+
+If you have any issues/crashes you can comment below with a PASTEBIN LINK of the crash report or PM me in Anope IRC (I am Justasic on IRC) and I will do my best to help.
+
+Version 1.0.0 supports Anope 1.9.6
+Version 1.0.1 supports Anope 1.9.7 to 1.9.7
+Version 1.0.1~1 supports Anope 1.9.7 to 1.9.7
+Version 1.0.3 supports Anope 1.9.8
+Version 1.0.4 supports Anope 1.9.8 to 1.9.8

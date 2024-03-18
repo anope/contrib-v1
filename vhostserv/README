@@ -1,0 +1,33 @@
+Name: vhostserv
+Author: Adam
+Category: Other
+Last updated: 2009-07-11T04:23:42+01:00
+
+This module makes an additional BotServ bot that can be used by users to set their own vHost. This module was based off of n00bie\'s ircd_vhostserv module for Anope 1.7/1.8.
+
+There are no required configuration directives, but you can supply the following:
+
+vhostserv
+{
+    nick = \"vHostServ\"
+    ident = \"vHostServ\"
+    host = \"host.name\"
+    realname = \"vHostServ\"
+    # List of restricted hosts, wildcards accepted. Seperate the hosts by spaces
+    restrictedhosts = \"*admin* *root* *mod*\"
+    # Time to ban a user once they get a vhost, if this is left out they will not be kicked or banned at all
+    bantime = \"5m\"
+    # The reason used to kick users, if you put %d it gets replaced with the seconds they are banned
+    kickreason = \"Banned for %d seconds\"
+}
+
+Once this is loaded, Services operators can simply assign vHostServ to any channels they want the commands to work in. The two public commands users can use are !vhost and !groupvhost. Services operators can use /msg vHostServ help for more information and for managing restricted vhosts.
+
+Version 1.5 supports Anope 1.9.5
+Version 1.2 supports Anope 1.9.0
+Version 1.3 supports Anope 1.9.1
+Version 1.5~1 supports Anope 1.9.2
+Version 1.5~2 supports Anope 1.9.4
+Version 1.5~3 supports Anope 1.9.3
+Version 1.5~4 supports Anope 1.9.6
+Version 1.5~5 supports Anope 1.9.7

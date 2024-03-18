@@ -1,0 +1,20 @@
+Name: m_chanserv
+Author: Adam
+Category: ChanServ
+Last updated: 2010-07-04T08:27:49+01:00
+
+This module adds ChanServ as a bot in /bs botlist, so it allows people to use /bs assign #channel ChanServ. Additionally, this module allows users to use any ChanServ command by using fantasy in the channel, eg:
+
+<@Adam> !access list
+-ChanServ- #services access list is empty.
+<@Adam> ChanServ: access list
+-ChanServ- #services access list is empty
+
+This module still works with BotServ disabled, and is automatically assigned to existing and new channels.
+
+[b]NOTE: This module will conflict with other fantasy modules (bs_fantasy, bs_fantasy_kick, bs_fantasy_ext, etc...). If bs_fantasy adds the !op command, and this module adds the !op command, doing !op will result in two +o\'s set on you. I recommend using this module without any other fantasy modules loaded.
+
+This module should be in ModuleDelayedAutoLoad.[/b]
+
+Version 1.1 supports Anope 1.8.5
+Version 1.0 supports Anope 1.8.4

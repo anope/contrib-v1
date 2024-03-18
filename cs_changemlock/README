@@ -1,0 +1,22 @@
+Name: cs_changemlock
+Author: oldAuthors
+Category: ChanServ
+Last updated: 2006-09-24T22:23:07+01:00
+
+[u][b]Description[/b][/u]
+
+Change the default channel mode lock upon registration.
+
+[u][b]Requirements[/b][/u]
+
+None
+
+[u][b]Configuration[/b][/u]
+
+Before compiling this module, please open the file and edit the line marked:
+[code]
+char *changemlock = "-ilk";
+[/code]
+if you want to change the mode lock to something else. This is the only configuration item in the file.
+
+Version 1.0.1 supports Anope 1.7.14

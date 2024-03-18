@@ -1,0 +1,18 @@
+Name: global_randquotes
+Author: n00bie
+Category: Other
+Last updated: 2007-08-27T12:39:26+01:00
+
+Display a random quotes when users connect. The quotes will be displayed by [b]Global[/b] using notices. Random quotes are read from the file [b]quotes.db[/b]. New quotes can be added or remove on-the-fly from the quotes database file.
+~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~
+Tested: 1.7.18, 1.7.19
+
+[b]Usage:[/b]
+Put the file \'quotes.db\' inside services folder (nix) or inside the \'data\' folder(windows). I\'ve included 325 lines of quotes inside the database, feel free to add more or remove them ^^
+
+[b]Note:[/b]
+Every IRCd(?) have a message limit per line, so remember to keep your quotes line by line and try to keep them per the limit. For more info please consult your IRCd documentation.
+~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

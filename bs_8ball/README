@@ -1,0 +1,10 @@
+Name: bs_8ball
+Author: Amanda
+Category: BotServ
+Last updated: 2009-02-24T21:21:49+00:00
+
+This module adds a fantasy 8ball command. Type !8ball [question here] and your Botserv bot will respond with 8ball answers.
+
+There are no config directives for this module. You only need to load it.
+
+Version 1.0 supports Anope 1.8.0

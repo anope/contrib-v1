@@ -1,0 +1,19 @@
+Name: ircd_community_info
+Author: katsklaw
+Category: Other
+Last updated: 2007-06-30T15:28:33+01:00
+
+This module adds COMMUNITY commands to NickServ and ChanServ info displays. It allows net admins to specify if a nick or channel is affiliated with any group/community/commitee on or off the network.
+
+
+The info is viewable by anyone but can only be added by IRCops.
+
+Example:
+ -ChanServ- Information for channel #kats:
+ -ChanServ- Founder: kats
+ -ChanServ- Description: MEOW!
+ -ChanServ- Registered: Jun 29 20:45:55 2007 EDT
+ -ChanServ- Last used: Jun 29 21:04:11 2007 EDT
+ -ChanServ- [b]Community: Kittens Community[/b]
+
+Version 1.0.2 supports Anope 1.8.3

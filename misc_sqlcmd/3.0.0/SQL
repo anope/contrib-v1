@@ -1,0 +1,31 @@
+-- Generate the command buffer table
+DROP TABLE IF EXISTS anope_sqlcmd;
+CREATE TABLE anope_sqlcmd (
+	id int(10) NOT NULL auto_increment,
+	cmd varchar(30) NOT NULL,
+	params varchar(255) NULL,
+	tstamp int(20) NOT NULL,
+	chksum varchar(32) NOT NULL,
+	status int(11) NOT NULL default '0',
+	PRIMARY KEY (id),
+	INDEX status (status, tstamp)
+) AUTO_INCREMENT = 1;
+
+
+-- MySQL function to facilitate adding new commands
+-- to the command buffer.
+DELIMITER //
+DROP FUNCTION IF EXISTS sql_cmd_add; //
+CREATE FUNCTION sql_cmd_add (cmd VARCHAR(30), params VARCHAR(255), salt VARCHAR(50), tstamp INT(20))
+	RETURNS INT(11)
+BEGIN
+	DECLARE chksum VARCHAR(32);
+
+	IF params IS NULL THEN SET params = ''; END IF;
+	IF tstamp IS NULL || tstamp = 0 THEN SET tstamp = UNIX_TIMESTAMP(); END IF;
+	SET chksum = MD5(CONCAT(cmd,':',params,':',tstamp,':',salt));
+
+	INSERT INTO anope_sqlcmd (cmd, params, tstamp, chksum) VALUES (cmd, params, tstamp, chksum);
+	return LAST_INSERT_ID();
+END //
+DELIMITER ;

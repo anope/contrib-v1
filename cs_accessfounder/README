@@ -1,0 +1,17 @@
+Name: cs_accessfounder
+Author: DukePyrolator
+Category: ChanServ
+Last updated: 2006-10-06T07:33:33+01:00
+
+With this module its possible to have more than one founder in a channel. 
+Simply add an user with access lvl 9999 to the channel access list.
+On next join/identify he will get mode +q and nearly all founder rights in chanserv.
+
+Version 5.0:Tested with anope 1.9.1 and InspIRCd 1.2
+Version 4.1:Tested with anope 1.8.2 and UnrealIRCd.
+
+
+does NOT compile on windows!
+
+Version 3.3 supports Anope 1.7.14
+Version 4.1 supports Anope 1.8.2

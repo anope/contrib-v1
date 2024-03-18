@@ -1,0 +1,13 @@
+Name: ns_greetoper
+Author: n00bie
+Category: NickServ
+Last updated: 2006-10-19T17:14:38+01:00
+
+[b]Description:[/b]
+
+Services Opers/Admins/Roots nickserv greet message will be displayed on a channel upon joining a channel. The greet message will be displayed only on channel(s) which they don't have access (in order to prevent double greeting from BotServ).
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have no configurable option.
+Bugs? Suggestion/comments ... feel free ^^
+
+Version 1.0.0 supports Anope 1.7.21

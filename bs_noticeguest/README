@@ -1,0 +1,27 @@
+Name: bs_noticeguest
+Author: n00bie
+Category: BotServ
+Last updated: 2006-09-26T15:53:10+01:00
+
+This module have been requested by Blake81 on [url=http://forum.anope.org/viewthread.php?tid=204#pid1072]Anope\'s forum[/url].
+
+Yeah i know its an old thread but i wanted to give it a try anyway and here we go ^^
+===============================================================
+[b]Description:[/b]
+
+If a Guest user matching the [b]NSGuestNickPrefix[/b] from services.conf joined a channel, BotServ bot will give a /NOTICE to the Guest user using a pre-defined messages which is settable on services.conf (BSGuestNotice)
+===============================================================
+[b]Usage / Configuration:[/b]
+
+This module have 1 configurable option.
+Put this lines on your services.conf:
+
+# BSGuestNotice [OPTIONAL]
+# Module: bs_guestnotice
+#
+# When defined, BotServ Bot will notice a Guest nick/user
+# joining the channel with the messages below.
+
+BSGuestNotice \"Guest nick are not welcomed on this channel. Please change your nick to a suitable nick.\"
+
+Version 1.0 supports Anope 1.7.21

@@ -1,0 +1,16 @@
+Name: bs_restrict_kb
+Author: n00bie
+Category: BotServ
+Last updated: 2007-02-20T08:19:23+00:00
+
+Tested	: Anope-1.7.17, 1.7.18
+-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module is requested by thermometer.
+-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Description:[/b]
+
+This module will restrict the use of BotServ fantasy commands !kick, !k, !kickban !kb against identified/opered Services Operator and above.
+-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

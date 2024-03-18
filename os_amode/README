@@ -1,0 +1,10 @@
+Name: os_amode
+Author: katsklaw
+Category: OperServ
+Last updated: 2008-09-21T01:11:52+01:00
+
+Allows Services Admins to set modes on all channels.
+
+Syntax: /os AMODE [modes]
+
+Version 1.0.0 supports Anope 1.8.3

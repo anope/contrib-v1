@@ -1,0 +1,16 @@
+Name: cs_nicklist
+Author: Tzann
+Category: ChanServ
+Last updated: 2009-04-08T16:02:01+01:00
+
+This is my fist module (so it contains some parts of [i]mikea\'s[/i] [b]bs_quotes[/b]-module) and it\'s mission couldn\'t be easier:
+[b]put the userlists of all channels into a database.[/b]
+
+And that is exactly what it does. To use you have to put the following entries into your services.conf (they should be self-explaining):
+-NickMysqlHost
+-NickMysqlUser
+-NickMysqlPass
+-NickMysqlName
+-NickMysqlPort
+
+Version 1.3 supports Anope 1.8.0

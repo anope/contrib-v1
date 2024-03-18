@@ -1,0 +1,12 @@
+Name: cs_saregister
+Author: Viper
+Category: ChanServ
+Last updated: 2009-11-20T13:36:47+00:00
+
+This module will allow Services Admins to register channels for another user. 
+Note that when using SAREGISTER much less restrictions will be enforced upon the registration of a channel: the number of channels already registered under the target users\' account will not be restricted, user does not have to be online/on thet channel, etc...
+
+This module is particularly useful in combination with cs_register_operonly.
+
+Version 1.1 supports Anope 1.8.5
+Version 1.2 supports Anope 1.8.5

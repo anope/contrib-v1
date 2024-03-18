@@ -1,0 +1,13 @@
+Name: ns_limitregonconnect
+Author: djGrrr
+Category: NickServ
+Last updated: 2006-10-05T06:34:33+01:00
+
+This module protects the NickServ REGISTER and GROUP commands from being used right away when a user connects, this can be very helpful to deal with botnets that connect and register/group a bunch of nicknames.
+
+View module header for changelog.
+
+Version 1.00 supports Anope 1.7.14
+Version 1.01 supports Anope 1.7.14
+Version 1.02 supports Anope 1.7.14
+Version 1.03 supports Anope 1.7.23

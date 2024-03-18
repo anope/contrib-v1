@@ -1,0 +1,13 @@
+Name: ircd_chanurl
+Author: katsklaw
+Category: Other
+Last updated: 2008-06-14T17:21:43+01:00
+
+This module sends numeric 328, RPL_CHANNEL_URL, to users upon joining any registered channel that has a URL set.
+
+There are no configuration options.
+
+This module should work on all ircds that support numeric 328 or any ircd that blindly forwards unknown numerics such as UnrealIRCd.
+
+Version 1.0.2 supports Anope 1.8.3
+Version 1.0.3 supports Anope 1.8.5

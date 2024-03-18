@@ -1,0 +1,10 @@
+Name: ns_uuid
+Author: phil
+Category: NickServ
+Last updated: 2010-05-27T10:30:07+01:00
+
+Module to address the issue with NickServ that it doesn\'t have unique IDs assigned to each nickname group and that every detail of a core can change. If this module is of any use at all to you, it will assign each nickname group a UUID which won\'t change unless the group is dropped and recreated. A hacked up version of my 1.8 to XML database convertor is in the \'geekshed\' branch of http://code.google.com/p/anope-db-convert-xml/ which will create a full XML file including the UUID of your services database. This can be used in external (e.g. web) applications to link services accounts to other services without the possibility of change.
+
+\"/ns uuid [nickname]\" command is provided for information purposes.
+
+Version 1.0 supports Anope 1.8.4

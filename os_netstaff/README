@@ -1,0 +1,53 @@
+Name: os_netstaff
+Author: n00bie
+Category: OperServ
+Last updated: 2007-10-25T10:00:06+01:00
+
+Add or delete network staff for the given nick. The network staff will be given special privileges without the usual IRCop privileges upon identifying to services. The NETSTAFF command without giving any params will display the normal Network Staff nicks. The CLEAR command will remove all network staffs from the database.
+
+The ADD/DEL & CLEAR commands can be used only by Services Admins and above whereas Services Operators can only view the Network Staff lists.
+
+[b]Note[/b]: SWHOIS currently works on UnrealIRCd only(?) and CHGHOST command used on this module are only supported by Unreal, Inspircd, Ultimate, Rageircd and Solidircd atm :s
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[b]Providing commands:[/b]
+
+/msg OperServ HELP NETSTAFF
+/msg OperServ NETSTAFF [ADD|DEL|CLEAR] [nick]
+/msg OperServ NETSTAFF
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+This module have 4 configurable option.
+Copy/paste below on services.conf
+
+# NetStaffHost [REQUIRED]
+# Module: os_netstaff
+#
+# Define the staff virtual host which will be set upon
+# identifying to services. This is not a permanent vhost.
+#
+NetStaffHost \"Staff.LocalHost-IRC.Network\"
+
+# NetStaffDBName [OPTIONAL]
+#
+# Use the given filename as database to store the Staff db\'s.
+# If not given, the default \"os_netstaff.db\" will be used.
+#
+NetStaffDBName \"os_netstaff.db\" 
+
+# NetStaffModes [OPTIONAL]
+#
+# Define what user modes the staff user will get
+# upon identifying to services. Comment this if
+# you do not want to give them user modes.
+#
+NetStaffModes \"+gswhGW\"
+					
+# NetStaffSnomask [OPTIONAL]
+#
+# Define here what SNOMASK the staff will get
+# upon identifying to services. If your\'e not
+# using UnrealIRCd, comment this.
+#
+NetStaffSnomask \"+ks\"
+
+Version 1.0.0 supports Anope 1.7.18
+Version 1.0.1 supports Anope 1.7.21

@@ -1,0 +1,15 @@
+Name: ssl
+Author: Adam
+Category: Other
+Last updated: 2010-10-25T23:14:23+01:00
+
+Allows Anope to connect to its uplink using SSL.
+
+To install, extract the file to get the ssl folder, and place it in src/modules. When you run make you should be prompted by openssl to generate a SSL certificate. This module requires that the openssl development libraries are installed on your system, and it will not work on Windows.
+
+This module [b]must[/b] be loaded immediately on startup, in the ModuleAutoload section of the configuration.
+
+Warning: This module has been known to eat 100% CPU sometimes, the reason is unknown. Consider it unstable.
+Report any bugs to adam@anope.org
+
+Version 1.0 supports Anope 1.8.0 to 1.8.5

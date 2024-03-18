@@ -1,0 +1,12 @@
+Name: bs_autoassign
+Author: Viper
+Category: BotServ
+Last updated: 2007-08-22T23:20:02+01:00
+
+This module allows Botserv clients to be automatically assigned to newly registered channels. The bot to be auto-assigned can be configured in the services configuration file. If no nick is given, or no bot with that nick exists, no bot will be assigned.
+
+This module is a completely redesigned and rewritten version of the bs_autoassign module by SGR. This version has been designed specifically for the 1.7 branch and will NOT work with the 1.6 branch  and even older 1.7 releases.
+ 
+
+Version 2.0 supports Anope 1.7.21
+Version 2.1 supports Anope 1.8.0

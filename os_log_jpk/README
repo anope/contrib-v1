@@ -1,0 +1,8 @@
+Name: os_log_jpk
+Author: GhosT
+Category: OperServ
+Last updated: 2006-09-25T14:36:09+01:00
+
+Log join, part, kick, topic change in a specified channel.
+
+Version 1.0.0 supports Anope 1.7.14

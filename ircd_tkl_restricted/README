@@ -1,0 +1,10 @@
+Name: ircd_tkl_restricted
+Author: Viper
+Category: IRCd Specific
+Last updated: 2008-01-16T20:58:54+00:00
+
+This module will cause - when activated - services to unset global TKL\'s set by any server other then services. Thus the only way to ban someone globally would be through services.
+
+Module requested by \"zero\".
+
+Version 1.0 supports Anope 1.7.21

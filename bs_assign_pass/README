@@ -1,0 +1,16 @@
+Name: bs_assign_pass
+Author: katsklaw
+Category: BotServ
+Last updated: 2008-10-04T17:17:46+01:00
+
+Allows Admins to password protect /bs ASSIGN
+
+in services.conf:
+
+[b]BSAssignPass \"ubersecretpass\"[/b]
+
+Optionally you can also require roots to use a password as well
+
+[b]BSAssignPassRoot[/b]
+
+Version 1.0.1 supports Anope 1.8.3

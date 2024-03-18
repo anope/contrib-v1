@@ -1,0 +1,24 @@
+Name: ns_masset
+Author: n00bie
+Category: NickServ
+Last updated: 2006-10-19T17:08:26+01:00
+
+[b]Name:[/b] NickServ Mass Set
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Description:[/b]
+
+This module provides mass commands for various NickServ settings like KILL, KILL QUICK, SECURE and AUTOOP. Using this module or commands [b]ALL REGISTERED NICK's[/b] on the network will be affected, so use the provided commands wisely and respect your network users settings ;b
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Providing commands:[/b]
+
+/msg NickServ MASSET KILL {ON | OFF}
+/msg NickServ MASSET KILLQUICK {ON | OFF}
+/msg NickServ MASSET SECURE {ON | OFF}
+/msg NickServ MASSET AUTOOP {ON | OFF}
+/msg NickServ HELP MASSET 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have no configurable option.
+
+Bugs? Suggestions/Comments ... feel free ^^
+
+Version 1.0.0 supports Anope 1.7.21

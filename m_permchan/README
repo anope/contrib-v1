@@ -1,0 +1,13 @@
+Name: m_permchan
+Author: Adam
+Category: BotServ
+Last updated: 2009-12-31T11:04:13+00:00
+
+This module keeps services bots in the channels they are assigned to if the channel empties of users. This module is unlike other modules that keep pseudo-clients in channels, as it will not desync your services (or shouldn\'t, if it does please report it).
+
+For bug reports email Adam (at) anope.org
+
+Version 1.0 supports Anope 1.8.2
+Version 1.1 supports Anope 1.8.2
+Version 1.2 supports Anope 1.8.3
+Version 1.3 supports Anope 1.8.5

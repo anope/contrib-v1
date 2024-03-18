@@ -1,0 +1,11 @@
+Name: ircd_globopsonreg
+Author: Taros
+Category: Other
+Last updated: 2009-05-24T21:14:03+01:00
+
+[b]Module Version: 1.1[/b]
+[b]Developed For: Anope 1.9.0[/b]
+
+This module will send a GLOBOPS upon channel or nickname registration. It will (obviously) not work unless your IRCd supports using globops. It will also fail to work on any anope version except for 1.9.0. This is a 1.9 port of Viper\'s ircd_wallonreg, with a single bugfix. 
+
+Version 1.1 supports Anope 1.9.0

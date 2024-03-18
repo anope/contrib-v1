@@ -1,0 +1,10 @@
+Name: os_chgswhois
+Author: Jobe1986
+Category: OperServ
+Last updated: 2008-07-04T14:27:20+01:00
+
+Allows Services Admins to change a users SWHOIS.
+
+Usage: /msg OperServ CHGSWHOIS nick swhois
+
+Version 0.2 supports Anope 1.7.21

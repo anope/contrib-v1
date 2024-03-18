@@ -1,0 +1,10 @@
+Name: cs_why
+Author: Viper
+Category: ChanServ
+Last updated: 2011-11-27T21:02:36+00:00
+
+This module will give information on the kind of access a user has in a channel.
+
+This module is an updated version of cs_why 1.0.3 by DrStein.
+
+Version 1.2 supports Anope 1.8.6 to 1.8.7

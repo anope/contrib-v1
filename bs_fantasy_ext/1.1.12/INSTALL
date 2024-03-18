@@ -1,0 +1,81 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###-------------------------------------- bs_fantasy_ext ---------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+####
+# Module Name: bs_fantasy_ext
+# Author: Viper <Viper@Absurd-IRC.net>
+# Last Edited: 04/04/2007
+###
+
+---------------------------------------------------------------------------------------------
+
+Linux Installation Instructions :
+-----------------------------------
+
+	- wget the latest version of bs_fantasy_ext (link on Anope forums) 
+	     to the anope-1.7.x/src/modules directory
+	- extract it with 'tar -zxvf bs_fantasy_ext-1.x.y.tar.gz'
+	- If required, change compile time settings in config.h
+	- cd to main anope source directory
+	- run 'make modules'
+	- run 'make install'
+	- copy/paste configuration directives below to services.conf (at the bottom
+	     there s a section for modules' configuration directives)
+	- possibly add the module to the ModuleDelayedAutoload directive
+	- load module with /os modload bs_fantasy_ext
+
+
+---------------------------------------------------------------------------------------------
+
+Configuration directives that should be copy-pasted to services.conf
+---------------------------------------------------------------------
+
+# ListExempNick [OPTIONAL]
+# Module: bs_fantasy_ext
+#
+# Nicks that will never appear in the network staff listing (!staff, !ircops and !admins).
+# For example bots like statserv should be put here.
+# Wildcards are permitted.
+# You can specify more than one nick or wildcard string by separating each one by a space.
+#ListExempNick ""
+
+# OverrideCoreCmds [OPTIONAL]
+# Module: bs_fantasy_ext
+#
+# Override the fantasy commands implemented by the Anope Core to add extra functionalities
+# like multiuser commands support (up to 6 users/line). If this is set, you can unload bs_fantasy.
+# This will also override the !kb implemented by the core so you can also unload bs_fantasy_kickban.
+# To enable this comment this line out. The 1 does not influence the setting ( so changing it to 0 won't work),
+# it s there to make sure the directive is parsed.
+#OverrideCoreCmds 1 
+
+# EnOperCmds <option> [OPTIONAL] [DISCOURAGED]
+# Module: bs_fantasy_ext
+#
+# This will enable IRC operator fantasy commands in all channels with botserv fantasy
+# commands enabled. IRCops will not need the the fantasy access level to that channel,
+# but if OSOpersOnly is set they will need to be opered to be able to use it.
+# Note that if access to this command is granted to all Services Opers (3), access
+# may still be denied later on depending on the command issued.
+# Using this is discouraged because of the high risk of power abuse by opers.
+# By default this is disabled.
+# Possible Option Values:
+# 0 - Disabled
+# 1 - Enabled for Services Root Administrators
+# 2 - Enabled for Services Admins (and above)
+# 3 - Enabled for Services Opers (and above)
+#EnOperCmds 0 
+
+# SAdminOverride [OPTIONAL] [DISCOURAGED]
+# Module: bs_fantasy_ext
+#
+# This will allow Services Root Administrator and Services Admins to use the fantasy
+# commands to override channel settings and modes the same way they can use regular
+# ChanServ commands.
+# Using this is discouraged because of the high risk of power abuse by opers.
+# To enable this comment this line out. The 1 does not influence the setting ( so changing it to 0 won't work),
+# it s there to make sure the directive is parsed.
+#SAdminOverride 1 

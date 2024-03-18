@@ -1,0 +1,18 @@
+Name: bs_fantasy_redirect
+Author: VisioN
+Category: BotServ
+Last updated: 2012-01-15T14:24:09+00:00
+
+This module creates the !redirect command.
+The command syntax is  [b]!redirect user #channel reason[/b]
+This command makes the user part the current channel and join the channel you specify with the "#channel" argument. Then a notice is shown to that user with the reason you specified. If you do not specify a reason, a default reason will be shown to the user. (Alternative command syntax: [b]!redirect user #channel[/b] )
+
+I initially created this module so Viper disposes of the greeks on our network's english help channel so they become somebody else's problem , but you can use it however you like ;-)
+
+This module is based on Viper's bs_fantasy_fpart (he always makes my life easier!)
+
+Comments, ideas, bugs should be reported to vision@myirc.net
+
+Version 1.0 supports Anope 1.8.7 to 1.8.7
+Version 1.1 supports Anope 1.8.0 to 1.8.7
+Version 1.2 supports Anope 1.8.0 to 1.8.7

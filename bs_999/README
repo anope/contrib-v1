@@ -1,0 +1,16 @@
+Name: bs_999
+Author: Jackster35
+Category: BotServ
+Last updated: 2010-10-30T22:17:08+01:00
+
+Hi, some of the IRC networks out there today are runned by British users. I've noticed there is only a 911 call on here but the uk don't use that. I figured, why would British users wanna use !911? I know, it's stupid but some people really do moan over these simple things. I made a module that uses 999 instead of 911 and will alert the network operators a bit better. Instead of noticing the operator channel, it calls the word "oper" about 5 times and tells the opers the channel and nick needing help. 
+Example:
+[22:10] <OperServ> oper oper oper oper oper
+[22:10] <OperServ> ATTENTION! Help is needed in #Technoid! User: Jackster35
+
+It's very simple and all credit goes to andrewgeek for the original code.
+
+Please use 0.6 if you don't like the "oper oper oper oper" bit.
+
+Version 0.5 supports Anope 1.8.5 to 1.8.5
+Version 0.6 supports Anope 1.8.5 to 1.8.6

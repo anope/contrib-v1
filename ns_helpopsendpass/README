@@ -1,0 +1,12 @@
+Name: ns_helpopsendpass
+Author: Edavis
+Category: NickServ
+Last updated: 2008-07-31T03:17:45+01:00
+
+Allows users with umode +h (gained from receiving aop status in the specified HelpChannel) to send passwords. Used for Unreal3.2 only.
+
+Version 1.0.0 supports Anope 1.7.21
+Version 1.0.0~1 supports Anope 1.7.21
+Version 2.0.0 supports Anope 1.7.18
+Version 2.0.0~2 supports Anope 1.7.21
+Version 2.1.0 supports Anope 1.7.21

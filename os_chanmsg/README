@@ -1,0 +1,10 @@
+Name: os_chanmsg
+Author: Tom65789
+Category: OperServ
+Last updated: 2006-09-27T19:24:29+01:00
+
+This module makes ChanServ sends a notice to EVERY channel on the network with a msg.
+
+Usage: /msg OperServ CHANMSG [MESSAGE]
+
+Version 0.3 supports Anope 1.7.14

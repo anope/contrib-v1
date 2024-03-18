@@ -1,0 +1,10 @@
+Name: cs_default_levels
+Author: Adam
+Category: ChanServ
+Last updated: 2009-03-07T01:17:13+00:00
+
+This module allows you to change the default channel levels of newly registered channels to user defined values in the configuration.
+
+Version 1.0 supports Anope 1.8.0
+Version 1.0~1 supports Anope 1.8.0
+Version 1.0~2 supports Anope 1.8.3

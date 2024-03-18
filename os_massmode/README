@@ -1,0 +1,16 @@
+Name: os_massmode
+Author: TheKing
+Category: OperServ
+Last updated: 2009-04-01T16:23:43+01:00
+
+This module allows a services administrator to set a mode on all registered channels. 
+
+This has been tested with 1.8.0 and 1.8.0-rc1, if it works on other revisions, please leave me a comment and I will update the supported versions.
+
+Any problems with this module, leave me a comment.
+
+This module has no configurable option.
+
+Version 1.0.0 supports Anope 1.8.0
+Version 1.0.1 supports Anope 1.8.0
+Version 1.0.2 supports Anope 1.8.0

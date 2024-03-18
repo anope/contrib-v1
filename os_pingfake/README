@@ -1,0 +1,8 @@
+Name: os_pingfake
+Author: Freelancer
+Category: OperServ
+Last updated: 2009-09-11T02:21:18+01:00
+
+This module allows Services Root administrators to make a user appear they have pinged to all non-opers.
+
+Version 1.0 supports Anope 1.8.2

@@ -1,0 +1,9 @@
+Name: ircd_wallonreg
+Author: Viper
+Category: Other
+Last updated: 2006-10-01T12:47:02+01:00
+
+This module will alert ircops when someone registers a nickname or channel.
+
+Version 2.0 supports Anope 1.7.14
+Version 2.1 supports Anope 1.7.21

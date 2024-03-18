@@ -1,0 +1,9 @@
+Name: hs_helpop
+Author: Edavis
+Category: HostServ
+Last updated: 2008-06-30T18:26:55+01:00
+
+Allows users with umode +h to set/del vHosts. (Used for Unreal3.2 only!)
+
+Version 1.0.0 supports Anope 1.7.21
+Version 1.0.0~1 supports Anope 1.7.21

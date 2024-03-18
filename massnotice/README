@@ -1,0 +1,30 @@
+Name: massnotice
+Author: n00bie
+Category: Other
+Last updated: 2006-11-29T17:14:24+00:00
+
+[b]Description:[/b]
+
+This module will make services clients (ChanServ, NickServ, BotServ, HostServ, MemoServ, HelpServ, OperServ) sends a mass notice to all users on the network.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Providing Commands:[/b]
+
+/msg ChanServ MNOTICE [message]
+/msg NickServ MNOTICE [message]
+/msg BotServ  MNOTICE [message]
+/msg HostServ MNOTICE [message]
+/msg MemoServ MNOTICE [message]
+/msg HelpServ MNOTICE [message]
+/msg OperServ MNOTICE [message]
+
+and
+
+/msg ChanServ HELP MNOTICE 
+etc..
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]NOTE:[/b] Commands is limited to Services Admins & above.
+
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.18
+Version 2.0.0 supports Anope 1.7.21

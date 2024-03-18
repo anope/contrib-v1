@@ -1,0 +1,115 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###-------------------------------------- bs_fantasy_ext ---------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+####
+# Module Name   : bs_fantasy_ext
+# Author        : Viper <Viper@Anope.org>
+# Last Edited   : 24/12/2011
+###
+
+---------------------------------------------------------------------------------------------
+
+Current Version : 1.4.0
+
+---------------------------------------------------------------------------------------------
+
+A : Addition
+R : Removal
+C : Change
+U : Update
+F : Fix
+
+---------------------------------------------------------------------------------------------
+
+Changelog:
+------------
+
+1.4.0   F  Fixed tban expiry times always been generated in english.
+        F  Fixed possible crash when loading missing lang file.
+        F  Fixed a crashbug in !help when another supported fantasy module is loaded & detected.
+
+1.3.3   U  Updated module support to detect cs_why and ignore "!help why".
+        F  Fixed !help headers and footers being send for cmds handled by other modules.
+        F  Fixed some code cppcheck was complaining about.
+        F  Fixed possible buffer overflow in the !op/!deop/.. implementation.
+        F  Fixed !sync not removing voices.
+        F  Fixed some issues in makefiles with building & cleaning for both *nix and windows.
+
+1.3.2   F  Fixed !set signkick not accepting the LEVEL option.
+        F  Fixed !rappend segfaulting when no topic is set.
+
+1.3.1   A  Added overriding implementation for the cores !kick.
+        A  Added !rappend to replace the last topic append.
+        A  (Re-)Added partial Spanish & French language files.
+        C  Include commands from other bs_f_ modules of mine in !cmdlist.
+        C  Make !op/!deop/... accept masks a parameter. (Eg: You can now "!voice *@*.net *@*.us")
+        C  Added extban support for Insp1.2/2.0 to !unban.
+        U  Updated language files.
+        U  Updated code checking for other loaded modules. (Drops load order requirement.)
+        F  Fixed opers incorrectly getting a notice about not matching against real host/ip.
+        F  Skip !help queries for fantasy commands handled by other loaded bs_f_* modules.
+        F  Make the BotServ bot reply to !staff/!ircops/!admins instead of OperServ.
+
+1.3.0   A  Added proper InspIRCd 1.2 support.
+        A  Added AUTO_UNLOAD pre-compile configuration option.
+        A  Added logging for stateful commands as implemented in core.
+        R  Removed CPU_USAGE_REDUCTION pre-compile directive.
+        R  Removed almost all unbanning based on IP.
+        C  !levels list is now accessible to anyone with the level ACC-CHANGE.
+        C  Allow clearing of access lists while in XOP mode.
+        C  Make ban, tban, !tkban, !mute check against IPs when triggered by an oper.
+        F  Fixed possible crash on loading corrupted lang file.
+        F  Fixed bug in !staff causing clients on ulined servers to show up.
+        F  Cleaned up a lot of the channel access reordering code to match the cores implementation.
+        F  Ported fix from core: potential crashbug after switching to XOP on IRCds that do not support halfop.
+        F  Deleting from the channel access/xOP list now always logs a message about the deleted items.
+        F  Fixed the "!access/xop del" reply "no such entry" to show whatever was passed instead of always -1.
+        F  Fixed typo in "!help set". (Reported by Savetheinternet.)
+        F  Fixed !tban reporting success even when ban isn't enforced.
+        F  Fixed a potential crashbug in "!clear ops/hops/voices".
+        F  Fixed a number of TS6 issues, mainly related to nicks instead of IDs being given to anope_cmd_mode().
+        F  Fixed potential crashbugs in !ban, !kb and !(un)mute.
+        F  Fixed a memory leak in "!unban <partial mask>".
+        F  Fixed valid settings for "!bkick" sometimes not being accepted.
+        F  Made !akill use a stored value to curent time to prevent changing time messing up logs/globops.
+        F  Make !unban match against vident@vhost instead of ident@vhost.
+        F  Fixed a bug that could cause some access entries to not convert to XOP correctly.
+        F  !set mlock no longer requires a parameter; leaving out the parameter renders the mlock to +r as it should be.
+        F  Fixed crashbug in !xop del.
+        F  Fixed !access clear to work while in XOP mode.
+
+1.2.0   A  Introduced new language system to replace the cores lang system for modules.
+        A  Added configuration directive which when set ignores users with +B. (Unreal & PTlink)
+        C  Clients on ulined servers no longer show up in !staff. This eliminates the need
+               to add an exemption for every network service.
+        C  Clients with usermode +B (bots) no longer show up in !staff. (Unreal & PTlink)
+        C  Using !unban on yourself is no longer hindered by EnUnbanIP protections.
+        U  Synchronized module code with Anope 1.8.0.
+        U  Updated flags.
+        U  Updated list of unsupported modules.
+        U  Updated !shun syntax to match that of os_shun.
+        U  Reworked syntax layout in language files.
+        U  Updated INSTALL instructions.
+        U  Updated windows makefiles. As of now windows support should be back.
+        F  Fixed crashbug in !set nobot.
+        F  Fixed several issues found in the core.
+        F  Fixed markup codes no longer being loaded properly.
+        F  Now unloads languages upon unload and reloads when the config is reloaded.
+        F  Fixed wrong syntax messages being send for some !bkick commands.
+        F  Fixed crashbug in !unban command when banlist is empty.
+        F  Fixed possible though rare exploit in !unban allowing attackers to guess a users' 
+               real IP if the host did not resolve and no vhost is set.
+               Thanks to Namegduf for reporting and providing template patch.
+        F  Fixed !unban not protecting masks.
+        F  Fixed invalid language string call in !admins. (Reported by Joey.)
+        F  Fixed several typos in english language file.
+        F  !down now removes modes users shouldn't have.
+        F  Botserv bot now replies to !sync instead of ChanServ.
+        F  Failing to load the langfiles is no longer fatal to anope.
+        F  Fixed crashbug in !shun.   (Reported by midnight_tiger.)
+
+
+---! For changes in the 1.0 and 1.1 branch, cf CHANGELOG.OLD !---

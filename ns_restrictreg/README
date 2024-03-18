@@ -1,0 +1,30 @@
+Name: ns_restrictreg
+Author: oldAuthors
+Category: NickServ
+Last updated: 2006-09-24T22:15:12+01:00
+
+[u][b]Description[/b][/u]
+
+Module checks for valid nickname/password in a MySQL database. If the requested nickname/password isn't found in the database, registration will not be permitted.
+
+Supports plain-text passwords or MD5-hashed passwords in the database. Can be used with any table layout.
+
+Possible use is to restrict IRC registration to those users who have registered on a website or forum.
+
+[u][b]Requirements[/b][/u]
+
+* Anope compiled with MySQL Enabled
+* MySQL 3.2.3 or later
+
+[u][b]Configuration[/b][/u]
+
+[u]For version 2.0.0 and above:[/u]
+
+Module configuration is now achieved via serivces.conf. There are 13 configuration options which must be placed in the services.conf file for this module to operate. Details of these, along with the valid options are available in the top of the distributed source file.
+
+[u]For version 1.2.1 and below:[/u]
+
+To allow the module to work correctly, you will need to edit the file before compiling it. There are several configuration lines at the top of the file which specify the MySQL database to use for validation.
+
+Version 1.2.1 supports Anope 1.7.14
+Version 2.0.0 supports Anope 1.7.14

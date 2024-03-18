@@ -1,0 +1,12 @@
+Name: hs_request_ext
+Author: Viper
+Category: HostServ
+Last updated: 2009-11-20T13:10:24+00:00
+
+This module is a modified version of the hs_request that is shipped with Anope. It provides some extra usefull features such as reporting requests to a channel (other then logchan) and the ability to request a vhost through fantasy commands (unlike ircd_vhostserv which sets them instead of requesting them).
+
+I originally never meant to release this publically, but a few people have asked for functionality like this online, so i ll just publish it .
+
+!!! This module REPLACES hs_request so should not be loaded alongside it !!!
+
+Version 3.3 supports Anope 1.8.0

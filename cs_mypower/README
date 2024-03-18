@@ -1,0 +1,17 @@
+Name: cs_mypower
+Author: n00bie
+Category: ChanServ
+Last updated: 2007-09-06T19:40:32+01:00
+
+This module allow you to see what commands you can or cannot perform on a channel.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Providing Command:
+
+/msg ChanServ HELP MYPOWER
+/msg ChanServ MYPOWER #[u]channel[/u]
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.18
+Version 1.0.1 supports Anope 1.7.21

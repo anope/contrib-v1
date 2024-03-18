@@ -1,0 +1,24 @@
+Name: ns_regcode
+Author: n00bie
+Category: NickServ
+Last updated: 2007-08-16T14:04:28+01:00
+
+This module splits the nick registration process into 2 steps. The first after giving the registration command will give out a passcode. The passcode must be supplied using the PROCEED or CONFIRM command in order to complete the registration.
+====================================================================
+Example:
+-NickServ- To complete your registration you need to enter a passcode.
+-NickServ- Type: [b]/msg NickServ PROCEED [u]passcode[/u][/b]
+-NickServ- Your passcode is: JrYH8rCpz
+====================================================================
+[b]NOTE:[/b] Do NOT use this module if you have [b]NSEmailReg[/b] enabled on your network. It is designed for network who don\'t used or have UseMail facilities.
+
+[b]Providing command:[/b]
+/msg NickServ PROCEED passcode
+/msg NickServ CONFIRM passcode
+
+====================================================================
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.18
+Version 2.0.0 supports Anope 1.7.21
+Version 2.0.0~1 supports Anope 1.8.5

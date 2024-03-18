@@ -1,0 +1,35 @@
+Name: vhost
+Author: mokkori
+Category: HostServ
+Last updated: 2008-08-12T00:20:03+01:00
+
+vhost - a hs_request replacement for Anope
+
+vhost builds on and extends the original feature set provided by hs_request, provides a rich set of more powerful and more directly accessible ways to display and manage virtual hostnames to [u]administrators[/u] and in effect completely replaces the original module.
+
+Besides inheriting all original commands and features from hs_request, vhost offers many additional features:
+
+    * Management and Announcement Bot \'vhost\', keeps everyone updated on open requests and allows access to activation/rejection-related commands, type !vhost in channel for a list of available options. If enabled pre-compile, users can be matched using wildcards and regex strings. (default: enabled)
+    * Enhanced Request Verifier, making sure only valid requests are accepted and relayed for approval. Validity-checks include checks against an on-the-fly modifiable list of regex strings. Default strings disallowing any valid .tlds (as of feb10) and valid IPs or IP look-alikes are provided.
+    Often encountered situations such as a user
+
+        * repeating his request to \'speed up\' the verification process
+        * wanting to change host capitalisation
+        * using vhost requests instead of /hs GROUP to synch the vhost for grouped nicks
+        * abusing vhost requests for ban-evading
+        * ...
+
+    are dealt with automatically and transparently. Although not all events are broadcasted openly, everything happening will be logged and displayed in a channel specified in Anopes\' LogChannel (by default, \'#services\') if enabled.
+Besides opers, who are exempted from all checks, special exemption can also be granted on a per-user basis. This exemption propagates to all grouped nicknames. The level of exemption can\'t currently be specified, it\'s either all or nothing.
+    * Shortcuts, why type more if you can type less?
+    * Mass Activation/Rejection Capability
+    * Automatic Host Setting on Activation
+
+vhost is currently provided with four languages: English, German, Hungarian and Spanish.
+
+vhost currently works with:
+
+    * Hopefully every daemon supported by Anope. However it has only been tested on UnrealIRCd 3.2.6 and later
+    * Anope-1.7.21 and upwards, tested until Anope-1.8
+
+Version 1.1 supports Anope 1.8.0 to 1.8.4

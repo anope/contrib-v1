@@ -1,0 +1,13 @@
+Name: ns_cancel
+Author: CuleX
+Category: NickServ
+Last updated: 2011-10-09T08:28:26+01:00
+
+Allows cancelling of a pending nick using /ns cancel, in case a user typoed their e-mail address or something along those lines.
+
+Run as SA, takes a nick to be cancelled. Run as normal user, it will be assumed that the current nick is supposed to be cancelled and the requested nick's password is required.
+
+Configuration directives: None
+
+Version 1.0 supports Anope 1.8.6
+Version 1.1 supports Anope 1.8.6

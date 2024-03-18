@@ -1,0 +1,23 @@
+Name: unreal_access_levels
+Author: katsklaw
+Category: IRCd Specific
+Last updated: 2008-09-14T21:02:09+01:00
+
+[b][color=\"red\"]UNREAL3.2 ONLY!!! NOT EVEN UNREAL3.1!!!![/color][/b]
+
+Unreal32 version of os_access_levels that allows you to specify even unreal\'s oper levels such as helpop, server admin or netadmin without adding users to services.
+
+         * Lets do levels:
+         * 1 = helpop
+         * 2 = ircop
+         * 3 = svsadmin
+         * 4 = servadmin
+         * 5 = netadmin
+         * 6 = SO
+         * 7 = SA
+         * 8 = SRA
+         * 9 = disabled
+
+[b][color=\"red\"]UNREAL3.2 ONLY!!! NOT EVEN UNREAL3.1!!!![/color][/b]
+
+Version 1.0.0 supports Anope 1.7.21 to 1.8.5

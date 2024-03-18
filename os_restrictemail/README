@@ -1,0 +1,10 @@
+Name: os_restrictemail
+Author: Adam
+Category: OperServ
+Last updated: 2012-06-25T09:33:18+01:00
+
+Adds the command RESTRICTEMAIL to OperServ which prevents users from using specific email addresses.
+
+Contains one configuration option, RestrictEmailAction. Set to 0 (default) to only warn users, and 1 to AKILL new users who try to register with an email on this list.
+
+Version 1.0 supports Anope 1.8.7

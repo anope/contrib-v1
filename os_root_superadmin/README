@@ -1,0 +1,10 @@
+Name: os_root_superadmin
+Author: n00bie
+Category: OperServ
+Last updated: 2007-04-17T23:26:40+01:00
+
+[b]Description:[/b] This module will automatically set [b]SuperAdmin ON[/b] upon identifying to NickServ. This module will work even if SuperAdmin is Disabled on the services.conf
+---------------------------------------------------------------------
+[b]NOTE:[/b] This module will work ONLY on /Opered Services Root Administrator.
+
+Version 1.0.0 supports Anope 1.7.21

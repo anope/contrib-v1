@@ -1,0 +1,14 @@
+Name: cs_autoowner
+Author: djGrrr
+Category: ChanServ
+Last updated: 2006-10-04T21:11:01+01:00
+
+This module allows channel founders to give users the channel owner mode (+q in Unreal) on ircd's that support it. This is a rewrite of the cs_accessfounder module.
+
+View module header for changelog.
+
+Version 1.0 supports Anope 1.7.14
+Version 1.01 supports Anope 1.7.14
+Version 1.02 supports Anope 1.7.14
+Version 1.03 supports Anope 1.7.16
+Version 1.04 supports Anope 1.7.23

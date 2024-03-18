@@ -1,0 +1,23 @@
+Name: ns_gnick
+Author: CuleX
+Category: NickServ
+Last updated: 2011-11-06T06:24:01+00:00
+
+ns_gnick: Get the display nick of any given nick.
+Parts copied from os_access_levels by Adam.
+
+Usage: /msg NickServ GNICK Homura
+Returns: -NickServ- GNICK Homura CuleX
+
+Configuration directives:
+NSGNickAccess x # Determines access to gnick, where x is one of
+0 = no checks (everyone)
+1 = IRCop only
+2 = Services Operator only
+3 = Services Administrators only
+4 = Services Roots only
+
+Invalid values or not setting the directive at all defaults to 0 (Seeing how users can get the display nick from adding access on channel anyway), but it might make sense to change access on networks with ChanServ restricted to opers only.
+
+Version 1.1 supports Anope 1.8.6
+Version 1.2 supports Anope 1.8.6

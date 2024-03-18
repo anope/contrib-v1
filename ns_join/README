@@ -1,0 +1,28 @@
+Name: ns_join
+Author: CanadianJeff
+Category: NickServ
+Last updated: 2009-07-12T07:51:16+01:00
+
+Description:
+
+This module will make NickServ JOIN/PART a channel & will automatically set correct modes for itself. This module is designed for ppl who wanted to have @NickServ sit on their channel.
+
+It is recommended not to use this module with cs_fantasy.c or cs_inhabitregistered.c loaded as those modules already does the job ;)
+
+Also, when using this module i\'d like to suggest the SYMBIOSIS mode turned off (if there is a bot assigned on a channel). See /BotServ HELP SET SYMBIOSIS for reasons ^^
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+NOTE:
+
+Only channel founder & services admin can use this command.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+Providing Commands:
+
+/msg NickServ HELP JOIN|PART
+/msg NickServ JOIN #Channel
+/msg NickServ PART #Channel
+
+Providing IRCD Handler for: KICK
+If NickServ gets kicked, it will automatically rejoin the channel.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+
+Version 2.0.0 supports Anope 1.8.2

@@ -1,0 +1,945 @@
+
+/* RequiredLibraries: GeoIP */
+
+/* os_locate.c - Adds operserv geo ip lookup functions
+ *
+ * (C) 2003-2009 Andre (Phantomal) Lanvermann
+ * Contact me at <phantomal@solidirc.com>
+ *
+ * This Module has been created with much help from
+ * DukePyrolator. Thanks again :-)
+ *
+ * Send bug reports to the Module Coder instead of the anope
+ * authors, because this is a third party module and not supported
+ * by the anope dev team.
+ *
+ *
+ *  3rd Party License Information:
+ * ================================
+ * This Module includes GeoLite data created by MaxMind, available from
+ * http://maxmind.com/. For further Details have a look into their License:
+ * http://geolite.maxmind.com/download/geoip/database/LICENSE.txt
+ *
+ *
+ *  Prerequisite:
+ * ===============
+ *  - You need libgeoip and the corresponding source packet to be installed to
+ *    compile this Module.
+ *  - You need the GeoLiteCity Database.
+ *    (Download: http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz)
+ * 
+ *
+ *  Installation:
+ * ===============
+ *  1. Copy this file to your "src/modules" dir.
+ *  2. cd into your "build" dir.
+ *  3. "cmake ."
+ *  4. "make"
+ *  5. "make install"
+ *  6. Edit your services.conf file to autoload the module on services start.
+ *
+ *
+ *  Configuration:
+ * ================
+ * This Module only having some configuration options. The first one defines
+ * where your GeoLiteCity.dat file is loacated.
+ *
+ * The second configuration option enables or disables oper notification via globops
+ * on command usage.
+ *
+ * The third one enables or disables a welcome Message for new connecting users
+ * which showes them where they are.
+ *
+ *
+ *  Known Issues:
+ * ===============
+ *  None ;-)
+ *  If you find one, please mail me.
+ *
+ *
+ *  Changes:
+ * ==========
+ * 0.5.0 - Added "GEOKILL" Feature. You can now kill people which are connected from a
+ *	   specified country, region or city. (Needs Privilege: operserv/geoban)
+ *
+ *         Added "GEOGLOBAL" Feature. You can now send globals based on the geographic
+ *         location of the user. (Needs Privilege: operserv/geoglobal)
+ *
+ * 0.4.2 - (Internal Release)
+ *	   Timing Issue solved (sort of)
+ *         Services performance enhanced at cost that Lookups not happening on connect.
+ *	   In normal operation, users whill be located within between one and 3 seconds.
+ *         At Services start, and Netjoins of splitted servers, and connectflood, the lookupspeed
+ *	   depends on the settings you make at the Location Worker Section in the moduleconfig.
+ *
+ * 0.4.1 - öäü Issue solved (Thanks to DukePyrolator for the Tip.)
+ *      
+ *       - Alternative Memory Caching Method for slightly more performance.
+ *
+ *
+ * 0.4.0 - Services could crash when "myGeoIPCityPath" had a wrong value. Resolved.
+ *
+ *       - Added "GEOFIND" feature. You can now search for People which are connected
+ *         from a specific country, region or city.
+ *
+ *       - Renamed the LOCATE Command to GEOLOCATE to be more consistent in commandnames
+ *         and their purpose.
+ *
+ *       - Changed the required services permission from operserv/locate to operserv/geolocate
+ *         to reflect the purpose of the module.
+ *
+ *       - Added a welcome Message (Sent by the GlobalNoticer) which shows users from where they
+ *         are connecting.
+ *
+ * 0.3.5 - Initial Release
+ */
+
+#include "module.h"
+#include <GeoIP.h>
+#include <GeoIPCity.h>
+#include <string.h>
+#define AUTHOR "Andre (Phantomal) Lanvermann"
+#define VERSION "0.5.0"
+
+/****************************************************************************/
+/*                         MODULE CONFIGURATION                             */
+/****************************************************************************/
+
+// YOU MUST ENTER THE CORRECT PATH HERE!!!
+#define myGeoIPCityPath "/home/phantomal/irc/geolitecity/GeoLiteCity.dat"
+
+// If you do not want GlobOps been sent on lookup, use false instead of true
+#define useGlobOps true
+
+// Show users their location on connect
+#define showLocationOnConnect true
+
+
+// Location Worker
+// The following values represent how the geo location of the users is beeing
+// arranged, to ensure services performance.
+
+// Number of Seconds between two location batches.
+#define workerInterval 1
+
+// Number of users which located at once.
+#define workerBatchsize 2
+
+// Number of seconds after which the Interval is beeing reset to one.
+#define workerResetTime 3
+
+
+/****************************************************************************/
+/* DO NOT CHANGE ANYTHING BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING */
+/****************************************************************************/
+
+
+int workerCount;
+int workerTimeAdd;
+bool ResetTimerRunning;
+
+
+class CommandOSLocate : public Command
+{
+ private:
+	GeoIP * gi;  
+
+ public:
+	// 1. param: The name of the new comand 
+	// 2. param: The minimum number of parameters the parser will require to execute this command
+	// 3. param: The maximum number of parameters the parser will create, after max_params, all will be combined into the last argument.
+	// 4. param: The required permission to access this command (you can invent new permissions if you wish)
+	CommandOSLocate() : Command("geolocate", 2, 2, "operserv/geolocate")
+	{
+		// Load Geo IP Datenbank - used for Host and IP lookup
+		gi = GeoIP_open(myGeoIPCityPath, GEOIP_MMAP_CACHE);
+		GeoIP_set_charset(gi,1);
+	}
+
+
+	~CommandOSLocate()
+	{
+		if(gi)
+			GeoIP_delete(gi);
+	}
+
+
+	CommandReturn Execute(User *u, std::vector<ci::string> &params)
+	{
+
+		ci::string cmd = params[0];
+
+		if (params[0] == "NICK")
+		{			
+			alog("os_locate: %s requested geographic location for nick %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s requested geographic location for nick %s",u->nick,params[1].c_str());
+
+			User *target = finduser(params[1].c_str());
+			if (!target) 
+			{ 
+				u->SendMessage(s_OperServ, "User %s not found",params[1].c_str()); 
+				return MOD_CONT; 
+			}
+
+
+			const char* region;
+			const char* countryname;
+			const char* city;
+
+			target->GetExt("geo_countryname", countryname);
+			target->GetExt("geo_region", region);
+			target->GetExt("geo_city", city);
+
+			u->SendMessage(s_OperServ, "User %s is connecting from: %s,%s,%s",target->nick, city, region, countryname);
+					
+		}
+		else if (params[0] == "HOST")
+		{
+			alog("os_locate: %s requested geographic location for host %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps)			
+				ircdproto->SendGlobops(s_OperServ, "%s requested geographic location for host %s",u->nick,params[1].c_str());
+
+			GeoIPRecord *geo = GeoIP_record_by_name(gi, params[1].c_str());
+			if (geo)
+			{
+				const char* region = GeoIP_region_name_by_code(geo->country_code, geo->region);
+				
+				u->SendMessage(s_OperServ, "Host %s is located at: %s%s%s%s%s",params[1].c_str(),
+										geo->city ? geo->city : "", geo->city ? ", " : "",
+										region ? region : "", region ? ", " : "",
+										geo->country_name ? geo->country_name : "");
+
+				GeoIPRecord_delete(geo); /* free allocated memory */
+					
+			}
+			else
+			{
+				u->SendMessage(s_OperServ, "Unable to retrieve Geo Location Data for Host %s",params[1].c_str());
+			}
+
+		}
+		else if (params[0] == "IP")
+		{
+
+			alog("os_locate: %s requested geographic location for ip %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps)			
+				ircdproto->SendGlobops(s_OperServ, "%s requested geographic location for ip %s",u->nick,params[1].c_str());
+
+
+			GeoIPRecord *geo = GeoIP_record_by_addr(gi, params[1].c_str());
+			if (geo)
+			{
+				const char* region = GeoIP_region_name_by_code(geo->country_code, geo->region);
+				
+				u->SendMessage(s_OperServ, "IP Address %s is located at: %s%s%s%s%s",params[1].c_str(),
+										geo->city ? geo->city : "", geo->city ? ", " : "",
+										region ? region : "", region ? ", " : "",
+										geo->country_name ? geo->country_name : "");
+
+				GeoIPRecord_delete(geo); /* free allocated memory */
+					
+			}
+			else
+			{
+				u->SendMessage(s_OperServ, "Unable to retrieve Geo Location Data for IP Address %s",params[1].c_str());
+			}
+		}
+		
+		return MOD_CONT;
+	}
+
+	bool OnHelp(User *u, const ci::string &subcommand)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOLOCATE NICK mask");
+		u->SendMessage(s_OperServ, "GEOLOCATE HOST mask");
+		u->SendMessage(s_OperServ, "GEOLOCATE IP mask");
+		u->SendMessage(s_OperServ, " ");
+		u->SendMessage(s_OperServ, "Allows Services Administrators to lookup the geographic");
+		u->SendMessage(s_OperServ, "location of an user, a hostname or an ip address.");
+		return true;
+	}
+
+	void OnSyntaxError(User *u)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOLOCATE {NICK | HOST | IP} mask");
+		u->SendMessage(s_OperServ, "/msg OperServ HELP GEOLOCATE for more information.");
+	}
+};
+
+
+
+class CommandOSGeofind : public Command
+{
+
+ public:
+	// 1. param: The name of the new comand 
+	// 2. param: The minimum number of parameters the parser will require to execute this command
+	// 3. param: The maximum number of parameters the parser will create, after max_params, all will be combined into the last argument.
+	// 4. param: The required permission to access this command (you can invent new permissions if you wish)
+	CommandOSGeofind() : Command("geofind", 2, 2, "operserv/geolocate")
+	{
+		
+	}
+
+
+	~CommandOSGeofind()
+	{
+		
+	}
+
+
+	CommandReturn Execute(User *u, std::vector<ci::string> &params)
+	{
+		
+		ci::string cmd = params[0];
+
+	
+		if (params[0] == "COUNTRY")
+		{			
+			alog("os_locate: %s is searching for users from country %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is searching for users from %s",u->nick,params[1].c_str());
+
+
+			u->SendMessage(s_OperServ, "Users connected from %s",params[1].c_str()); 
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* countryname;
+				const char* countrycode;
+
+				target->GetExt("geo_countryname", countryname);
+				target->GetExt("geo_countrycode", countrycode);
+
+
+				if (!stricmp(params[1].c_str(), countryname))
+				{
+					u->SendMessage(s_OperServ, "%s",target->nick); 
+				}
+				else if (!stricmp(params[1].c_str(), countrycode))
+				{
+					u->SendMessage(s_OperServ, "%s",target->nick); 
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "End of GeoFind List."); 
+
+		}
+		else if (params[0] == "REGION")
+		{
+			alog("os_locate: %s is searching for users from region %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is searching for users from %s",u->nick,params[1].c_str());
+
+
+			u->SendMessage(s_OperServ, "Users connected from %s",params[1].c_str()); 
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* region;
+
+				target->GetExt("geo_region", region);
+
+				if (!stricmp(params[1].c_str(), region))
+				{
+					u->SendMessage(s_OperServ, "%s",target->nick); 
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "End of GeoFind List."); 
+		}
+		else if (params[0] == "CITY")
+		{
+			alog("os_locate: %s is searching for users from city %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is searching for users from %s",u->nick,params[1].c_str());
+
+
+			u->SendMessage(s_OperServ, "Users connected from %s",params[1].c_str()); 
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* city;
+
+				target->GetExt("geo_city", city);
+
+				if (!stricmp(params[1].c_str(), city))
+				{
+					u->SendMessage(s_OperServ, "%s",target->nick); 
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "End of GeoFind List."); 
+		}
+		
+		return MOD_CONT;
+	}
+
+	bool OnHelp(User *u, const ci::string &subcommand)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOFIND COUNTRY mask");
+		u->SendMessage(s_OperServ, "GEOFIND REGION mask");
+		u->SendMessage(s_OperServ, "GEOFIND CITY mask");
+		u->SendMessage(s_OperServ, " ");
+		u->SendMessage(s_OperServ, "Allows Services Administrators to search for users which");
+		u->SendMessage(s_OperServ, "are connecting from a specified location.");
+		u->SendMessage(s_OperServ, " ");
+		u->SendMessage(s_OperServ, "GEOFIND COUNTRY mask");
+		u->SendMessage(s_OperServ, "You can use the full country name (i.e.: Germany) or the");
+		u->SendMessage(s_OperServ, "short country code (i.e. DE) as mask.");
+		return true;
+	}
+
+	void OnSyntaxError(User *u)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOFIND {COUNTRY | REGION | CITY} mask");
+		u->SendMessage(s_OperServ, "/msg OperServ HELP GEOFIND for more information.");
+	}
+};
+
+
+
+class CommandOSGeokill : public Command
+{
+
+ public:
+	CommandOSGeokill() : Command("geokill", 3, 3, "operserv/geoban")
+	{
+		
+	}
+
+
+	~CommandOSGeokill()
+	{
+		
+	}
+
+
+	CommandReturn Execute(User *u, std::vector<ci::string> &params)
+	{
+		
+		ci::string cmd = params[0];
+
+	
+		if (params[0] == "COUNTRY")
+		{			
+			alog("os_locate: %s is killing users from country %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is killing users from %s",u->nick,params[1].c_str());
+
+
+			u->SendMessage(s_OperServ, "Killing users connected from %s",params[1].c_str()); 
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* countryname;
+				const char* countrycode;
+
+				target->GetExt("geo_countryname", countryname);
+				target->GetExt("geo_countrycode", countrycode);
+
+
+				if (!stricmp(params[1].c_str(), countryname))
+				{
+					kill_user(s_OperServ, target->nick, params[2].c_str());					
+				}
+				else if (!stricmp(params[1].c_str(), countrycode))
+				{
+					kill_user(s_OperServ, target->nick, params[2].c_str());
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "Killed users connected from %s",params[1].c_str()); 
+
+		}
+		else if (params[0] == "REGION")
+		{
+			alog("os_locate: %s is killing for users from region %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is killing for users from %s",u->nick,params[1].c_str());
+
+
+			u->SendMessage(s_OperServ, "Killing users connected from %s",params[1].c_str()); 
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* region;
+
+				target->GetExt("geo_region", region);
+
+				if (!stricmp(params[1].c_str(), region))
+				{
+					kill_user(s_OperServ, target->nick, params[2].c_str());					
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "Killed users connected from %s",params[1].c_str()); 
+		}
+		else if (params[0] == "CITY")
+		{
+			alog("os_locate: %s is killing for users from city %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is killing for users from %s",u->nick,params[1].c_str());
+
+
+			u->SendMessage(s_OperServ, "Killing users connected from %s",params[1].c_str()); 
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* city;
+
+				target->GetExt("geo_city", city);
+
+				if (!stricmp(params[1].c_str(), city))
+				{
+					kill_user(s_OperServ, target->nick, params[2].c_str());	
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "Killed users connected from %s",params[1].c_str()); 
+		}
+		
+		return MOD_CONT;
+	}
+
+	bool OnHelp(User *u, const ci::string &subcommand)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOKILL COUNTRY mask reason");
+		u->SendMessage(s_OperServ, "GEOKILL REGION mask reason");
+		u->SendMessage(s_OperServ, "GEOKILL CITY mask reason");
+		u->SendMessage(s_OperServ, " ");
+		u->SendMessage(s_OperServ, "Allows Services Administrators to kill all users which");
+		u->SendMessage(s_OperServ, "are connecting from a specified location.");
+		u->SendMessage(s_OperServ, " ");
+		u->SendMessage(s_OperServ, "GEOKILL COUNTRY mask reason");
+		u->SendMessage(s_OperServ, "You can use the full country name (i.e.: Germany) or the");
+		u->SendMessage(s_OperServ, "short country code (i.e. DE) as mask.");
+		return true;
+	}
+
+	void OnSyntaxError(User *u)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOKILL {COUNTRY | REGION | CITY} mask reason");
+		u->SendMessage(s_OperServ, "/msg OperServ HELP GEOKILL for more information.");
+	}
+};
+
+
+
+
+class CommandOSGeoglobal : public Command
+{
+
+ public:
+	CommandOSGeoglobal() : Command("geoglobal", 3, 3, "operserv/geoglobal")
+	{
+		
+	}
+
+
+	~CommandOSGeoglobal()
+	{
+		
+	}
+
+
+	CommandReturn Execute(User *u, std::vector<ci::string> &params)
+	{
+		
+		ci::string cmd = params[0];
+
+	
+		if (params[0] == "COUNTRY")
+		{			
+			alog("os_locate: %s is sending a global to users from country %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is sending a global to users from %s",u->nick,params[1].c_str());
+
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* countryname;
+				const char* countrycode;
+
+				target->GetExt("geo_countryname", countryname);
+				target->GetExt("geo_countrycode", countrycode);
+
+
+				if (!stricmp(params[1].c_str(), countryname))
+				{
+					target->SendMessage(s_GlobalNoticer, params[2].c_str()); 
+				}
+				else if (!stricmp(params[1].c_str(), countrycode))
+				{
+					target->SendMessage(s_GlobalNoticer, params[2].c_str()); 
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "Message sent to users from %s",params[1].c_str()); 
+
+		}
+		else if (params[0] == "REGION")
+		{
+			alog("os_locate: %s is sending a global to users from region %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is sending a global to users from %s",u->nick,params[1].c_str());
+
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* region;
+
+				target->GetExt("geo_region", region);
+
+				if (!stricmp(params[1].c_str(), region))
+				{
+					target->SendMessage(s_GlobalNoticer, params[2].c_str()); 
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "Message sent to users from %s",params[1].c_str()); 
+		}
+		else if (params[0] == "CITY")
+		{
+			alog("os_locate: %s is sending a global to users from city %s",u->nick,params[1].c_str());			
+
+			if (useGlobOps == true)			
+				ircdproto->SendGlobops(s_OperServ, "%s is sending a global to users from %s",u->nick,params[1].c_str());
+
+			User *target = firstuser();
+			
+			while (target)
+			{
+			
+				const char* city;
+
+				target->GetExt("geo_city", city);
+
+				if (!stricmp(params[1].c_str(), city))
+				{
+					target->SendMessage(s_GlobalNoticer, params[2].c_str()); 
+				}
+					
+				target = nextuser();
+			}
+
+			u->SendMessage(s_OperServ, "Message sent to users from %s",params[1].c_str()); 
+		}
+		
+		return MOD_CONT;
+	}
+
+	bool OnHelp(User *u, const ci::string &subcommand)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOGLOBAL COUNTRY mask message");
+		u->SendMessage(s_OperServ, "GEOGLOBAL REGION mask message");
+		u->SendMessage(s_OperServ, "GEOGLOBAL CITY mask message");
+		u->SendMessage(s_OperServ, " ");
+		u->SendMessage(s_OperServ, "Allows Services Administrators to send a global to");
+		u->SendMessage(s_OperServ, "all users which are connecting from a specified location.");
+		u->SendMessage(s_OperServ, " ");
+		u->SendMessage(s_OperServ, "GEOGLOBAL COUNTRY mask message");
+		u->SendMessage(s_OperServ, "You can use the full country name (i.e.: Germany) or the");
+		u->SendMessage(s_OperServ, "short country code (i.e. DE) as mask.");
+		return true;
+	}
+
+	void OnSyntaxError(User *u)
+	{
+		u->SendMessage(s_OperServ, "Syntax: GEOGLOBAL {COUNTRY | REGION | CITY} mask reason");
+		u->SendMessage(s_OperServ, "/msg OperServ HELP GEOGLOBAL for more information.");
+	}
+};
+
+
+
+
+
+
+
+class ResetWorkerTimer : public Timer
+{
+	public:
+		ResetWorkerTimer (time_t seconds) : Timer(seconds) { }
+
+		void Tick(time_t ctime)
+		{
+			workerTimeAdd = 1;
+			ResetTimerRunning = false;
+		}
+};
+
+class LocationWorker : public Timer
+{
+	private:
+		std::string nickname;
+		GeoIP * geoipdb;
+
+	public:
+		LocationWorker (time_t seconds, const std::string &nick, GeoIP * gi) : Timer(seconds), nickname(nick), geoipdb(gi) { }
+
+		void Tick(time_t ctime)
+		{
+			User *u;
+
+			u = finduser(nickname.c_str());
+
+			if (!u)
+			{
+				alog("os_locate: Debug: User %s has quit before we could geolocate him.", nickname.c_str());
+			}
+			else
+			{
+
+				if (!geoipdb) 
+				{ 
+					alog("os_locate: Error: Unable to open GeoLiteCity.dat.");
+	
+					if (useGlobOps == true)			
+						ircdproto->SendGlobops(s_OperServ, "Error: Unable to open GeoLiteCity.dat.");
+				}
+				else
+				{
+					// Remove the "Waiting for Lookup" Records.
+					const char *temp;
+
+					if (u->GetExt("geo_countryname", temp))
+					{
+						delete [] temp;
+						u->Shrink("geo_countryname");
+					}
+
+
+					if (u->GetExt("geo_countrycode", temp))
+					{
+						delete [] temp;
+						u->Shrink("geo_countrycode");
+					}
+
+					if (u->GetExt("geo_region", temp))
+					{
+						delete [] temp;
+						u->Shrink("geo_region");
+					}
+
+					if (u->GetExt("geo_city", temp))
+					{
+						delete [] temp;
+						u->Shrink("geo_city");
+					}
+
+
+					GeoIPRecord *geo = GeoIP_record_by_name(geoipdb, u->host);
+	
+					if (geo)
+					{
+
+						const char* region = GeoIP_region_name_by_code(geo->country_code, geo->region);
+						const char* countryname = geo->country_name;
+						const char* countrycode = geo->country_code;
+						const char* city = geo->city;
+						char *value = new char[8];
+						strcpy(value, "unknown");
+
+						if (countryname == NULL) {
+							u->Extend("geo_countryname", sstrdup(value));
+						}
+						else
+						{
+							u->Extend("geo_countryname", sstrdup(countryname));
+						}
+
+						if (countrycode == NULL) {
+							u->Extend("geo_countrycode", sstrdup(value));
+						}
+						else
+						{
+							u->Extend("geo_countrycode", sstrdup(countrycode));
+						}
+
+						if (region == NULL) {
+							u->Extend("geo_region", sstrdup(value));
+						}
+						else
+						{
+							u->Extend("geo_region", sstrdup(region));
+						}
+
+						if (city == NULL) {
+							u->Extend("geo_city", sstrdup(value));
+						}
+						else
+						{
+							u->Extend("geo_city", sstrdup(city));
+						}
+
+
+						// Message user his location if enabled
+	
+						if (showLocationOnConnect == true)
+							u->SendMessage(s_GlobalNoticer, "You are connecting from: %s%s%s%s%s", geo->city ? geo->city : "",
+												geo->city ? ", " : "",
+												region ? region : "", region ? ", " : "",
+												geo->country_name ? geo->country_name : "");
+
+						free(value);
+						GeoIPRecord_delete(geo); /* free allocated memory */
+		
+					}
+					else
+					{
+						char *value = new char[8];
+						strcpy(value, "unknown");
+
+						u->Extend("geo_countryname", sstrdup(value));
+						u->Extend("geo_countrycode", sstrdup(value));
+						u->Extend("geo_region", sstrdup(value));
+						u->Extend("geo_city", sstrdup(value));
+
+						free(value);
+					}
+				}
+			}
+
+			
+		}
+};
+
+
+
+class OSLocate : public Module
+{
+  private:
+	GeoIP * gi;
+   //     int workerCount;
+   // 	  int workerTimeAdd;
+
+  public:
+
+	OSLocate(const std::string &modname, const std::string &creator) : Module(modname, creator)
+	{
+		this->SetAuthor(AUTHOR); 
+		this->SetVersion(VERSION);
+		this->SetType(THIRD);
+		this->AddCommand(OPERSERV, new CommandOSLocate());
+		this->AddCommand(OPERSERV, new CommandOSGeofind());
+		this->AddCommand(OPERSERV, new CommandOSGeoglobal());
+		this->AddCommand(OPERSERV, new CommandOSGeokill());
+		ModuleManager::Attach(I_OnUserConnect, this);
+
+		// Load Geo IP Datenbank
+		gi = GeoIP_open(myGeoIPCityPath, GEOIP_MMAP_CACHE);
+		
+		// Switch encoding to UTF-8
+		GeoIP_set_charset(gi,1);
+
+		workerCount = 1;
+		workerTimeAdd = 1;
+		ResetTimerRunning = false;
+	}
+	
+	~OSLocate()
+	{
+		if(gi)
+			GeoIP_delete(gi);
+
+	}
+
+	void OperServHelp(User *u)
+	{
+		u->SendMessage(s_OperServ, "    GEOLOCATE   Locates a user, host or ip based on the Geo IP Database");
+		u->SendMessage(s_OperServ, "    GEOFIND     Shows all users which are connected from the specified");
+		u->SendMessage(s_OperServ, "                Country, Region or City.");
+		u->SendMessage(s_OperServ, "    GEOGLOBAL   Sends a global to all users which are connected from the");
+		u->SendMessage(s_OperServ, "                specified Country, Region or City.");
+		u->SendMessage(s_OperServ, "    GEOKILL     Kills all users which are connected from the specified");
+		u->SendMessage(s_OperServ, "                Country, Region or City.");
+
+	}
+
+	void OnUserConnect(User *u)  // called when a new user connects to the network
+	{
+
+		if (ResetTimerRunning == false) {
+			AddCallBack(new ResetWorkerTimer(workerResetTime));
+			ResetTimerRunning = true;
+		}
+
+		if (workerCount <= workerBatchsize) {
+			AddCallBack(new LocationWorker(workerTimeAdd, u->nick,gi));
+			workerCount++;
+		}
+		else
+		{
+			workerTimeAdd = workerTimeAdd + workerInterval;
+			AddCallBack(new LocationWorker(workerTimeAdd, u->nick,gi));
+			workerCount = 1;
+		}
+
+		char *value = new char[19];
+		strcpy(value, "Waiting for Lookup");
+
+		u->Extend("geo_countryname", sstrdup(value));
+		u->Extend("geo_countrycode", sstrdup(value));
+		u->Extend("geo_region", sstrdup(value));
+		u->Extend("geo_city", sstrdup(value));
+
+		free(value);
+	}
+
+};
+
+MODULE_INIT(OSLocate)
+

@@ -1,0 +1,10 @@
+Name: os_defconrootsonly
+Author: undergod
+Category: OperServ
+Last updated: 2007-09-15T15:26:23+01:00
+
+This module will restrict the OperServ DEFCON command to Services Roots.
+
+Tested on: SolidIRCd 3.4.x (This module should have no incompatibilities running on other IRCd\'s).
+
+Version 1.0.1 supports Anope 1.7.18

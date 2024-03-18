@@ -1,0 +1,28 @@
+Name: ns_setnoop
+Author: n00bie
+Category: NickServ
+Last updated: 2007-09-12T06:50:55+01:00
+
+Stops users from adding you to channel access lists. When this is ON, ChanServ will not allow your nick to be added to the channel access lists in any channels. Whoever tries to add you will get a notice from ChanServ back saying that you have NOOP set ON. The STATUS param will return your current NOOP status.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Providing Command:[/b]
+
+/msg NickServ HELP SET NOOP
+/msg NickServ SET NOOP {ON | OFF | STATUS}
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have 1 configurable option.
+
+Copy/paste below on services.conf
+
+# NSNoopDBName [OPTIONAL]
+# Module: ns_setnoop
+#
+# Use the given filename as database to store the NOOP.
+# If not given, the default \"ns_noop.db\" will be used.
+#
+NSNoopDBName \"ns_noop.db\"
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Version 1.0.0 supports Anope 1.7.21

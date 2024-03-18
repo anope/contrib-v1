@@ -1,0 +1,18 @@
+Name: bs_fantasy_dt
+Author: Viper
+Category: BotServ
+Last updated: 2011-01-14T22:21:32+00:00
+
+This module makes it possible to use a botserv bot as an eggbot, infobot or zbot like client by allowing it to respond to programmable triggers which can be dynamically controlled.
+
+The modules supports both channel level triggers, controlled by channel staff, and network wide triggers controlled by network staff.
+
+Additionally, this module allows for the use of arguments within the replies and enables conditions to be specified, both on sections within a reply and on entire replies.
+An example for this would be replying differently to "?paste" and "?paste <paste_id>".
+
+A more detailed description of the featureset can be found in the modules' headers and the help system ('!help dt' and 'help gdt').
+
+For support and feedback, see this modules forum thread [url="http://forum.anope.org/index.php?topic=2960.0"]here[/url].
+
+Version 0.6 supports Anope 1.8.5
+Version 1.0 supports Anope 1.8.7

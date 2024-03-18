@@ -1,0 +1,8 @@
+Name: bs_fantasy_fjoin
+Author: bubblez6000
+Category: BotServ
+Last updated: 2008-05-02T02:36:57+01:00
+
+Adds !fjoin to BotServ, however you need to be in a registered channel, and the user can not be currently banned (Should be out with the next release) And channel must not be +ikl in modes as well as +AO if the user is not an oper.
+
+Version 1.0.0 supports Anope 1.7.21

@@ -1,0 +1,19 @@
+Name: HelpBot
+Author: ghost
+Category: Other
+Last updated: 2010-04-03T01:14:10+01:00
+
+[b]Tested[/b]: Inspircd 1.20 and Anope 1.8.3 (other IRCD may works, let me know if it does not support it)
+
+[b]Credit:[/b]
+- the author and code diceserv_1.8.c
+- The people of Anope and module site
+- You for reading or using it ;)
+
+[b]Brief Description:[/b] This module will load a new pseudo-client bot HelpBot. It has some available commands
+
+- [u]join/part[/u]: for requesting HelpBot to join/part channel. Limited access to channel founder and SA
+- [u]bjoin/bpart[/u]: for requesting other available service bot to join/part channel. Limited access to channel founder and SA
+- [u]bajoin/bapart[/u]: for requesting all service bot to join/part the channel. Limited access to SA
+
+Version 1.0 supports Anope 1.8.3

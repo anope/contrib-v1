@@ -1,0 +1,17 @@
+Name: ns_joinhelpchan
+Author: n00bie
+Category: NickServ
+Last updated: 2006-09-27T10:01:30+01:00
+
+[b]Description:[/b]
+
+When a user having [b]HalfOP[/b] access and above on the Network Help channel identify his nick to services, this module will forcefully join the user to the network Help Channel (which is defined on services.conf). If the user have no access on the Help Channel nothing is done.
+================================================================
+[b]NOTE:[/b]
+
+In order for this module to work [b]HelpChannel[/b] must be enabled or defined in services.conf
+================================================================
+Misc: Operator(s) on our Network Help channel sometimes forget to join our network help and support channel (#Help), so this module comes in handy for forcing the Help operator(s) to join the support channel.
+
+Version 1.0.0 supports Anope 1.7.16
+Version 1.0.1 supports Anope 1.7.21

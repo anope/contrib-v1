@@ -1,0 +1,91 @@
+Building "ns_sso" Anope Module on Windows
+
+From version 0.3, "ns_sso" can be built on Windows. Whether it works reliably
+is another question. Initial tests seem to indicate so.
+
+Warning: I don't run Anope on Windows and frankly don't see why anyone would
+(apart from test environments). While I code in Visual Studio, I really only
+test and build my code on Linux (VMware is nice ;).
+
+Basically, you're on your own if this crashes or doesn't work on Windows.
+
+Before You Start
+----------------
+
+If you haven't yet, get Anope to compile itself. If that doesn't work, nothing
+else will either.
+
+Get PostgreSQL Sources
+----------------------
+
+This involves downloading the source code tree and then messing with it so some
+header files are in different locations. Then you'll need to download the
+binaries in a ZIP archive to get a copy of libpq.lib to link against.
+
+Note: You MUST use the paths stated below, because they are hardcoded into the
+"Makefile.win32" file.
+
+1. Download the PostgreSQL sources from http://www.postgresql.org/ftp/source/
+2. Extract them to "C:\postgresql\"
+3. Copy all files in "src\interfaces\libpq" to "src\include"
+
+Check you did it right: "C:\postgresql\src\include\libpq-fe.h" should now exist.
+
+4. Making sure the version matches, download the PostgreSQL binaries from
+   http://www.enterprisedb.com/products/pgbindownload.do
+5. Extract them to "C:\postgrebin\"
+
+Check you did it right: "C:\postgrebin\pgsql\lib\libpq.lib" should now exist.
+
+Build the Module
+----------------
+
+1. In a Visual Studio x86 Command Prompt, change to the module's directory
+2. Type "nmake -f makefile.win32" and cross your fingers...
+3. If it worked, copy "ns_sso.dll" to your modules folder. I've found that
+   using "nmake -f makefile.win32 install" is unreliable and will just create
+   a file called "modules" in the root of your source tree.
+   
+Cleaning Up
+-----------
+
+If everything works, go ahead and remove "C:\postgrebin\" and "C:\postgresql\".
+
+Troubleshooting
+---------------
+
+Q: I get this error:
+    C:\anope-1.8.2\data\modules\runtime\ns_sso.dll.a05788 is either not designed
+    to run on Windows or it contains an error. Try installing the program again
+    using the original installation media or contact your system administrator
+    or the software vendor for support. 
+
+A: You got a corrupted DLL file. Try building it again.
+
+Q: I get this error:
+    The program can't start because LIBPQ.dll is missing from your computer. Try
+    reinstalling the program to fix this problem. 
+
+A: "libpq.dll" (and probably all of its dependencies) is not in your path. You
+can either adjust your PATH environment variable, or if you like polluting your
+system in return for a quick fix, dump all the required DLL files into the
+folder "anope.exe" resides in. The DLLs are in "C:\postgrebin\pgsql\bin\"
+
+Here's a list of DLLs you need to copy (they're all required by LibPQ):
+
+,-
+| libpq.dll
+| comerr32.dll
+| gssapi32.dll
+| iconv.dll
+| k5sprt32.dll
+| krb5_32.dll
+| libeay32.dll
+| libiconv-2.dll
+| libintl-8.dll
+| libxml2.dll
+| libxslt.dll
+| msvcr71.dll
+| ssleay32.dll
+| zlib1.dll
+`-

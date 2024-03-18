@@ -1,0 +1,8 @@
+Name: os_modesync
+Author: Freelancer
+Category: OperServ
+Last updated: 2009-09-15T00:15:53+01:00
+
+Syncs all channels modes with their appropriate mlock modes.
+
+Version 1.0 supports Anope 1.8.0

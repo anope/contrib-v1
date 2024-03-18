@@ -1,0 +1,9 @@
+Name: ns_saupdate
+Author: darkex
+Category: NickServ
+Last updated: 2010-08-21T07:04:16+01:00
+
+This module will update someone else\'s status, just like if you were to issue /ns update, but for someone else.
+The use of this module is limited to Services Admins.
+
+Version 0.1 supports Anope 1.8.4

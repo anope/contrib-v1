@@ -1,0 +1,29 @@
+Name: cs_autovoice
+Author: n00bie
+Category: ChanServ
+Last updated: 2008-03-26T08:43:09+00:00
+
+Enable/disable automatic voicing of users on a channel.
+
+[b]Providing Commands:[/b]
+
+/msg ChanServ HELP AUTOVOICE
+/msg ChanServ AUTOVOICE #channel {REG|ALL|STATUS|OFF}
+
+REG     - Will autovoice all registered users.
+ALL     - Will autovoice all users.
+STATUS	- Display autovoice status for the given channel.
+OFF     - Disable autovoicing.
+-----------------------------------------------------------------
+This module have 1 [b]optional[/b] configuration.
+Copy/paste below on services.conf
+
+# CSAvoiceDBName  [OPTIONAL]
+# Module: cs_autovoice
+#	Use the given filename as database to store the avoice data.
+#	If not given, the default \"autovoice.db\" will be used.
+#
+CSAVoiceDBName \"cs_autovoice.db\"
+
+Version 1.0.0 supports Anope 1.7.21
+Version 2.0.0 supports Anope 1.8.0

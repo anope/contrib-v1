@@ -1,0 +1,9 @@
+Name: bs_quotes
+Author: crazycat
+Category: BotServ
+Last updated: 2011-11-28T12:22:42+00:00
+
+Adds a quote system to botserv bots via the fantasy command !quote 
+
+Version 1.2.0 supports Anope 1.8.4 to 1.8.6
+Version 1.2.1 supports Anope 1.8.6

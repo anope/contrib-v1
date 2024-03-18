@@ -1,0 +1,13 @@
+Name: os_client
+Author: mastergamer
+Category: OperServ
+Last updated: 2007-08-07T20:35:32+01:00
+
+This module adds commands to OperServ to allow services operators to add/delete/join/part psuedoclients. There is an option to protect services like ChanServ and NickServ, as well as BotServ bots from this module, in case they are accidentaly \"deleted\" (svskilled).
+
+Clients created by this module WILL NOT be deleted when it is unloaded, so be sure to delete them (unless you want them hanging around) before you unload.
+
+Version 1.0.0 supports Anope 1.7.18
+Version 1.0.1 supports Anope 1.7.18
+Version 1.1 supports Anope 1.7.18
+Version 1.1.1 supports Anope 1.7.18

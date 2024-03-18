@@ -1,0 +1,20 @@
+Name: os_superadmin_pass
+Author: GeniusDex
+Category: OperServ
+Last updated: 2006-12-09T14:03:16+00:00
+
+This module adds an extra layer of security for OperServ's SET SuperAdmin command. When this module is loaded, you can add a configuration directive (SuperAdminPass) to services.conf to force Services Administrators to use the set password when enabling SuperAdmin. You can also force the password for Services Roots as well, by adding the SuperAdminPassRoot configuration directive to services.conf .
+
+Do not forget to add the configuration directives to your services.conf if you want this module to do something. You can specify the password using SuperAdminPass:
+
+SuperAdminPass "MyPassword"
+
+If you want to require a password for services roots as well, you can specify the following configuration option without arguments:
+
+SuperAdminPassRoot
+
+
+[i]Based on the original module by SGR.[/i]
+
+Version 2.0.1 supports Anope 1.7.16
+Version 2.0.2 supports Anope 1.7.18

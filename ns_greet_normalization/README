@@ -1,0 +1,8 @@
+Name: ns_greet_normalization
+Author: GeniusDex
+Category: NickServ
+Last updated: 2006-12-09T13:51:07+00:00
+
+This module strips all color, bold, underline, or other control codes from the greet message when people set one using NickServ SET GREET. This guarantees an easy, clean network when it comes to greets. Any already set greets will not be converted, and will need to be re-set to be normalized.
+
+Version 1.0.2 supports Anope 1.7.18

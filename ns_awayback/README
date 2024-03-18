@@ -1,0 +1,15 @@
+Name: ns_awayback
+Author: Ankit
+Category: NickServ
+Last updated: 2008-07-10T21:31:18+01:00
+
+This module lets you change channel modes for a user in specific channels. For example, /msg NickServ AWAY would set +v-o (or +v-h) for the user in all of his/her channels that have ChanServ AWAYBACK option as ON, similarly /msg NickServ BACK sets back +o-v (or +h-v). It can also set and unset +a and +q if SETAQ is defined in the source (on by default).
+
+Provides commands:
+ChanServ AWAYBACK #channel [on/off]
+NickServ AWAY [#channel1,#channel2...]
+NickServ BACK [#channel1,#channel2...]
+NickServ FAWAY nick [#channel1,#channel2...]
+NickServ FBACK nick [#channel1,#channel2...]
+
+Version 1.1.1 supports Anope 1.7.21

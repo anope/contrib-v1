@@ -1,0 +1,24 @@
+Name: cs_helpop
+Author: Twitch
+Category: ChanServ
+Last updated: 2008-08-22T04:11:13+01:00
+
+This module allows you to extend the Anope feature, which gives Operators in the network help channel umode +h, further by allowing the network admin to specify what access you would like Helpop to be assigned to... 
+
+Also like to note that this module was coded for a network, who removed any of my credit from it, and denies the fact i played a part in its creation...as well, shrugged off people when they asked for a copy of it. 
+
+So with that, this is a revised copy of the original module, that had its many downfalls.
+
+
+Okay on the module note, there are 2 configurable options and they MUST match a channel access level as defined per anope, however they do not need to be levels representative of channel modes such as +aoqvh :). Also this module only supports networks with helpop mode +h such as Unreal.
+
+
+Ie: 
+#define HLP_ACCESS   CA_KICK
+#define HLP_ACCESSME CA_KICKME
+Or
+#define HLP_ACCESS CA_VOICE
+#define HLP_ACCESSME CA_VOICEME
+
+
+Version 0.2.0 supports Anope 1.7.21

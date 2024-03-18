@@ -1,0 +1,13 @@
+Name: m_connect_flood
+Author: Viper
+Category: Other
+Last updated: 2006-10-01T13:05:18+01:00
+
+This module watches any new client connections. If the connect
+amount reaches the maximum value in  the given time, it will
+activate the trigger and services will go into defcon mode.
+
+Version 3.0 supports Anope 1.7.18
+Version 3.3 supports Anope 1.8.0
+Version 3.4 supports Anope 1.8.7
+Version 3.5 supports Anope 1.8.7

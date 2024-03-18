@@ -1,0 +1,11 @@
+Name: ns_saset_sa
+Author: Viper
+Category: NickServ
+Last updated: 2008-04-20T13:50:33+01:00
+
+As of Anope-1.7.20 NS SASET is (partially) available to services opers. 
+This module makes NS SASET restricted to SA again, as it used to be.
+
+Requested by \"MM\".
+
+Version 1.0 supports Anope 1.7.21

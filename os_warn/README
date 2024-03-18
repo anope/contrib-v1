@@ -1,0 +1,13 @@
+Name: os_warn
+Author: DM
+Category: OperServ
+Last updated: 2009-02-21T22:39:08+00:00
+
+This module adds a simple command: /msg OperServ WARN 
+
+What this will do is send a brief message to the specified nick letting them know that the network has received a complaint about them. It also states that if they continue this behavior, they will be removed. This module may be useful for medium/large size networks that don\'t have time to PM or join a channel to tell a user to stop acting like an idiot. ;)
+
+**BUG**
+It is confirmed that this module does crash when you do not provide a nick in the command. I made some minor changes before releasing the module and forgot to retest /os warn with no parameters. This bug will be fixed and I will release it as 1.1. Thank you to tux for reporting this very obvious bug that somehow I missed.
+
+Version 1.0 supports Anope 1.9.0

@@ -1,0 +1,9 @@
+Name: bs_seen
+Author: GeniusDex
+Category: BotServ
+Last updated: 2006-10-01T14:10:28+01:00
+
+This module enhances the behaviour of BotServ's !seen command by searching in the database of all registered users, instead of just the important users on the channel. This command can now be used by anyone on the channel, and can be used to look up any registered nick.
+
+Version 0.7.0 supports Anope 1.7.17
+Version 0.7.1 supports Anope 1.7.18

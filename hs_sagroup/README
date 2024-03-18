@@ -1,0 +1,8 @@
+Name: hs_sagroup
+Author: phil
+Category: HostServ
+Last updated: 2010-08-01T13:13:33+01:00
+
+Allow svsadmins to group the vhost of a user.
+
+Version 1.0 supports Anope 1.8.4

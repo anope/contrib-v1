@@ -1,0 +1,11 @@
+Name: cs_unban
+Author: n00bie
+Category: ChanServ
+Last updated: 2007-07-04T08:57:35+01:00
+
+[b]Description:[/b] This module change the way of ChanServ UNBAN command. When giving the /ChanServ UNBAN command, instead of services.localhost.net sets mode: -b *!*@host, ChanServ or BotServ bot (if assigned) will do the unban or be displayed on the channel.
+=====================================================================
+Module suggested by [dx]
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

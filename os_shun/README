@@ -1,0 +1,14 @@
+Name: os_shun
+Author: Viper
+Category: OperServ
+Last updated: 2007-09-16T17:46:21+01:00
+
+This module adds the operserv SHUN and TSHUN commands that use the IRCd\'s shun and tempshun abilities. Both are accessible to services operators and above.
+When used in combination with bs_fantasy_ext (v. 1.1.13 or higher) the !shun and !tshun commands will also be available.
+
+This module only supports UnrealIRCd.
+
+Version 1.0 supports Anope 1.7.21
+Version 1.1 supports Anope 1.8.0
+Version 1.2 supports Anope 1.8.0
+Version 1.3 supports Anope 1.8.0

@@ -1,0 +1,17 @@
+Name: chanrecount
+Author: Viper
+Category: Other
+Last updated: 2011-08-19T22:58:59+01:00
+
+This module is designed to address a desync issue in Anope 1.8 databases.
+
+Due to bugs in the database merge tool and some anope versions it is possible that the counter tracking the number of channels a user has registered under his account is no longer correct.
+This module will reset the counter and update it based on the current chanserv data.
+
+Use: When users encounter the following error
+     -ChanServ- Sorry, you have already exceeded your limit of 40 channels.
+without any obvious reason, load this module to reset the counters of all users and update them based on the current chanserv data.
+
+Note: This module must be loaded manually or through ModuleDelayedAutoload; NOT in ModuleAutoload or one of the CoreModules directives!!!
+
+Version 1.0 supports Anope 1.8.6

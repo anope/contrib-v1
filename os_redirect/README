@@ -1,0 +1,29 @@
+Name: os_redirect
+Author: VisioN
+Category: OperServ
+Last updated: 2012-01-22T14:49:16+00:00
+
+This module creates the /os redirect command.
+The command syntax is  [b]/os redirect user #from_channel #to_channel[/b]
+This command makes the user part the [b]#from_channel[/b] and join the [b]#to_channel[/b].
+____________________________________________________________________
+[b]Paste the following code to services.conf[/b]
+____________________________________________________________________
+[i]
+#RedirectAccess [OPTIONAL]
+#Module: os_redirect
+#
+#Choose who will be able to use /os redirect command
+# 0 - anyone with access to operserv can use it.
+# 1 - services operators can use it.
+# 2 - services administrators can use it.
+#
+#RedirectAccess 1
+[/i]
+
+ 
+
+This module was made so my bs_fantasy_redirect module would have an operserv command too.
+
+Version 1.1 supports Anope 1.8.0 to 1.8.7
+Version 1.0 supports Anope 1.8.7

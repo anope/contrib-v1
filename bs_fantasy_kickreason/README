@@ -1,0 +1,36 @@
+Name: bs_fantasy_kickreason
+Author: vision
+Category: BotServ
+Last updated: 2011-09-23T00:35:06+01:00
+
+[b]Description:[/b]
+This module allows BotServ to kick users from a channel with a         predefined reason, making kicking faster for the channel operators ,  and ensuring some kind of consistency as all the channel operators can kick with the same reasons.
+
+[b]Syntax:[/b]
+ !kickr [NICK] [KICKER]   or
+ !kr [NICK] [KICKER]
+[i](for example:   !kickr VisioN badlang  or 
+                    !kr VisioN badlang  )[/i]
+
+[b]Kickers List:[/b]
+[list]
+[*]badlang           Kicks for bad language (insults etc)
+[*]caps              Kicks for capital character usage
+[*]flood             Kicks for flooding
+[*]bold              Kicks for bold character usage
+[*]advertise         Kicks for SPAM/advertising
+[*]repeat            Kicks for repetition
+[*]idle              Kicks for idling (useful for helpchans)
+[*]badnick           Kicks for bad nickname
+[/list]
+[b]Installation:[/b]
+This module has configurable options. To configure it read the first lines of bs_fantasy_kickreason.c as it has detailed information about how to do so. That said, it works even if you don't alter the configurable settings , but I suggest that you do.
+
+[i]NOTE: This is my first attempt to make a module so the code
+might not be as good as you'd expect. I really want to say a BIG BIG thanks to Viper from the Anope Team who guided me through the whole process of creating the module.[/i]
+
+**  NOTICE ** This module is still in a [b]beta testing stage[/b]. It *should* work fine, but don't whinge if it crashes! A new release will be made when it's stable
+
+
+
+Version 1.0 supports Anope 1.8.0 to 1.8.6

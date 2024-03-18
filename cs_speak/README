@@ -1,0 +1,13 @@
+Name: cs_speak
+Author: Swampy
+Category: ChanServ
+Last updated: 2011-01-03T02:24:53+00:00
+
+Allows users to talk via ChanServ but they must have access rights on CA_SAY in order to use the function (so you can set SAY rights to any level you wish.
+
+Provides commands:
+/ChanServ Speak [#Channel] [Text Here]
+
+Also writes to log to say whos used the command, what they said via ChanServ and what channel it was said on. (ideal for anyone who abuses it)
+
+Version 1.0 supports Anope 1.8.5 to 1.8.6

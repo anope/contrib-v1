@@ -1,0 +1,15 @@
+Name: os_mamode
+Author: LEthaLity
+Category: OperServ
+Last updated: 2009-08-10T18:36:58+01:00
+
+This module allows a ServiceAdmin to set a channel mode on ALL channels. The module is based on os_amode (Katsklaw) and os_massmode (Sorcerer) for anope-1.8. It was originally a port for the Anope Development series.
+
+There are configuration directives to add for it to work correctly, in v1.3. Read the release notes.
+
+Once loaded ServiceAdmins with the operserv/massmode flag can set modes in all channels using /msg operserv mamode +(-)mode.
+Eg. /os mamode +i
+
+Version 1.1 supports Anope 1.9.0
+Version 1.2 supports Anope 1.9.2 to 1.9.2
+Version 1.3 supports Anope 1.9.5

@@ -1,0 +1,11 @@
+Name: os_swhois
+Author: Adam
+Category: OperServ
+Last updated: 2009-02-07T05:16:06+00:00
+
+This module allows services opers to add, remove and list custom swhois\'s for users.
+
+Version 2.1.0 supports Anope 1.8.3
+Version 3.0.0 supports Anope 1.9.0
+Version 3.1.0 supports Anope 1.9.1
+Version 2.3.0 supports Anope 1.8.4

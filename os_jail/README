@@ -1,0 +1,13 @@
+Name: os_jail
+Author: Crashdoom
+Category: OperServ
+Last updated: 2010-06-26T11:01:15+01:00
+
+Allows IRC Operators to \"jail\" users by forcing them to part all channels and join a defined Jail Channel.
+
+This activates the fantasy command: !jail <nickname> to allow IRC Operators to use the module.
+
+As of Version 1.1.0 it allows the use of the command: /os jail <nickname> as a suppliment for the fantasy command.
+
+Version 1.1.0 supports Anope 1.8.4
+Version 1.0.1 supports Anope 1.8.4

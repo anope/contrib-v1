@@ -1,0 +1,8 @@
+Name: ns_drop2
+Author: Adam
+Category: NickServ
+Last updated: 2009-01-31T02:11:16+00:00
+
+This module changes the syntax of /ns DROP to /ns DROP Nickname Password. This was written primarily to prevent accidental nickname drops. It has been tested on Anope1.7.21, and 1.8. Services Admins/Roots will not be affected by this module at all.
+
+Version 1.1 supports Anope 1.8.0

@@ -1,0 +1,14 @@
+Name: bs_fantasy_vhost
+Author: Viper
+Category: BotServ
+Last updated: 2012-01-14T14:36:32+00:00
+
+This module adds 2 fantasy commands to botserv to allow users to set new vhosts on themselves using !vhost or !groupvhost.
+
+This module is meant to replace  n00bie's old ircd_vhostserv which can cause desyncs and only works with UnrealIRCd. This rewrite is a significantly slimmed down version which utilises the botserv fantasy system instead of a dedicated client.
+Some extra option were added to allow admins to limit who has access.
+
+Note that I am not personally a fan of this type of functionality as it allows users to evade bans placed on them in channels!
+
+Version 1.1 supports Anope 1.8.7
+Version 1.0 supports Anope 1.8.7

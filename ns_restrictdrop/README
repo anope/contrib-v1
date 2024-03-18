@@ -1,0 +1,8 @@
+Name: ns_restrictdrop
+Author: LEthaLity
+Category: NickServ
+Last updated: 2010-01-10T08:31:47+00:00
+
+Simple Module that will disable NickServ DROP for users, restricting it to Services admin and above. A user trying to Drop their nickname will be notified of the restriction.
+
+Version 1.0 supports Anope 1.8.2

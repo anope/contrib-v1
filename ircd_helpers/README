@@ -1,0 +1,30 @@
+Name: ircd_helpers
+Author: ysfm
+Category: HelpServ
+Last updated: 2009-08-17T16:00:06+01:00
+
+
+  Module\'s base taken from ns_ajoin by Viper 
+
+  This module is a Helpers system and have a fantasy command that only uses in help channel. 
+  Have two option that\'s LOGIN system and ID(identify) 
+
+  If you select \"ALL\", when you select this, both using identify and login. Or
+  If you select \"ID\" or \"LOGIN\", you will use only one system.
+  ID system check user\'s level on help channel when he uses identify command.
+
+  You are add or remove new login to use username and password.
+  If Any Helper login the system, get some mode, vHost etc.
+
+  Two parameters is using in this module. First HelpOp(1) Second HelpSop(1). Numbers is flags and uses when adds helpers.
+  When you are add new login, module add level on helpchannel access list for username. Default levels are HelpOp = 5 HelpSop =10.
+  
+ 
+ Greet is fantasy command and only use helpchannel.
+
+ Greet given voice and sent greet msg to user.  !greet user. 
+ 
+ Pls, Edit default options.
+ 
+
+Version 0.1 supports Anope 1.8.2

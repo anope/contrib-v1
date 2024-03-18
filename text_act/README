@@ -1,0 +1,12 @@
+Name: text_act
+Author: Viper
+Category: Other
+Last updated: 2006-10-01T12:19:41+01:00
+
+This module will perform an action on a user when he says a certain text in a channel. Dont ask me what this could be usefull for... i wrote this one on request. 
+
+I don't recommend using this as spamfilter, there are better ways to deal with spam than this.
+
+Available Actions: GLOBOPS, KILL, AKILL
+
+Version 1.0 supports Anope 1.7.18

@@ -1,0 +1,12 @@
+Name: os_svsnick_sra
+Author: katsklaw
+Category: OperServ
+Last updated: 2007-11-03T22:25:47+00:00
+
+Limits SVSNICK to services root only.
+
+NOTE: This module bypasses the requirement of SuperAdmin! This means you do not have to be a SuperAdmin to use /os SVSNICK!
+
+NOTE: This module does NOT work on networks with os_raw loaded! If you don\'t like it, then too damned bad! I don\'t owe an explanation to anyone as to why. >:(
+
+Version 1.1 supports Anope 1.8.3

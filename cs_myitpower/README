@@ -1,0 +1,15 @@
+Name: cs_myitpower
+Author: cla.autiero
+Category: ChanServ
+Last updated: 2008-12-29T13:34:51+00:00
+
+It My Power, is an additional module to ChanServ translated into Italian - taken from the original to the [url=\"http://modules.anope.org/viewmod.php?id=116\"]Link[/url].
+This module allows administrators of a channel:
+- Owner \'+q\'
+- SuperOps/Protect \'+&\'
+- Normal Ops \'+@\'
+- Half Ops \'+%\'
+- Voice \'+v\'
+to know exactly what is allowed in the channel.
+
+Version 0.1 supports Anope 1.8.0-rc1

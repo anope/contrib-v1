@@ -1,0 +1,12 @@
+Name: os_mreload
+Author: Taros
+Category: OperServ
+Last updated: 2009-02-28T03:49:23+00:00
+
+[b]Module Version: 1.1[/b]
+[b]Developed For: Anope 1.9.0[/b]
+[b]Providing Command: /msg OperServ mreload module[/b]
+
+This module adds the mreload command to OperServ. It will unload and then reload a module of your choice. It has no configurable options and should work regardless of IRCd. This module will not work on any anope version except for 1.9.0.
+
+Version 1.1 supports Anope 1.9.0

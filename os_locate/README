@@ -1,0 +1,23 @@
+Name: os_locate
+Author: Phantomal
+Category: OperServ
+Last updated: 2009-10-10T19:18:51+01:00
+
+This Module adds the ability to lookup the geographic location of a nickname, a hostname or an IP Address to operserv. You can search for users from a specified location. You can send geographic limited globals and you can kill people based on from where they are connecting. Help is included.
+
+This Module uses some configuration directives:
+1. The location of your geoip Database
+2. Enable or disable the globops notification on lookup
+3. Enable or disable the welcometext for users from where they connect.
+4. There are 3 Values to tweak how services will locate users on connect.
+with these values you can define if services locate slow and run fast, or run slow after netjoin and locate faster. The default settings should fit networks up to 500 users. Larger nets may want slow down location to increase performance at start.
+
+IMPORTANT INFORMATION:
+1. You need libgeoip and the corresponding source files to get this module to compile.
+
+2. To use this Module you need a copy of the GeoLiteCity.dat file. I added a comment to the module where you can download it.
+
+Version 0.3.5 supports Anope 1.9.1
+Version 0.4.0 supports Anope 1.9.1
+Version 0.4.1 supports Anope 1.9.1
+Version 0.5.0 supports Anope 1.9.1

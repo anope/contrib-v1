@@ -1,0 +1,9 @@
+Name: cs_migrate
+Author: mark
+Category: ChanServ
+Last updated: 2008-11-04T00:01:54+00:00
+
+Allows a user to copy the settings from one channel that they have founder access to to another channel that they have founder access to, using the CS MIGRATE command.
+
+Version 1.0.1 supports Anope 1.8.0-rc1
+Version 1.0.2 supports Anope 1.7.9 to 1.8.6

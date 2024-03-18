@@ -1,0 +1,15 @@
+Name: ipadd_module
+Author: mmx
+Category: Other
+Last updated: 2006-11-27T14:49:03+00:00
+
+This module is designed for use primarily on Unreal networks that use a allow.conf block{} to allow/deny users based on IPs/Hosts.  It allows any Services Admin to issue the command !ipadd X.X.X.X to add a new IP to the allow block.  Allow blocks are useful for networks that may experience high botnet attacks or for Administrators to selectively choose which IPs to allow access.
+
+This module is very basic and very crude. It currently offers no checks for illegal characters in the IP as it was written in haste to be provided for our network.  In the future revisions will be applied and failsafes for typos will be included.
+
+Example commands:
+!ipadd 192.168.1.*
+!ipadd 127.0.0.1
+!ipadd 255.255.*
+
+Version 1.0 supports Anope 1.7.16

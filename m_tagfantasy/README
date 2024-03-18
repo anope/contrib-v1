@@ -1,0 +1,18 @@
+Name: m_tagfantasy
+Author: justasic
+Category: Other
+Last updated: 2012-02-20T21:03:33+00:00
+
+This module allows for you to tag a services bot instead of using a fantasy prefix in channels with fantasy commands enabled.
+An example syntax would be (lets say you have ChanServ assigned to your channel):
+
+[i]ChanServ, topic This is now the topic for the channel[/i]
+[i]Â»Â» ChanServ has changed the topic to: This is now the topic for the channel[/i]
+
+The module requires that you have Fantasy commands enabled or it won't work.
+
+As usual you can find beta versions of the module in my [url="http://git.flux-net.net/Justasic/tree/Modules/Anope"]Git repository[/url] and if you have any problems with the module or you find a bug of some kind, I am almost always in Anope IRC support or you can email me at [url="mailto:Justasic@gmail.com"]Justasic@gmail.com[/url].
+
+Version 1.0.0 supports Anope 1.9.5 to 1.9.7
+Version 1.0.1 supports Anope 1.9.8
+Version 1.0.2 supports Anope 1.9.8 to 1.9.8

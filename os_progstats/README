@@ -1,0 +1,10 @@
+Name: os_progstats
+Author: Twitch
+Category: OperServ
+Last updated: 2008-08-18T01:49:59+01:00
+
+This module is more of a development tool module, it allows Roots to view CPU usage statistics through a simple command to OperServ. 
+
+Also this module has no configurable options and does not currently support WINDOWS.
+
+Version 0.1.0 supports Anope 1.7.21

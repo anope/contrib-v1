@@ -1,0 +1,23 @@
+Name: ns_captcha
+Author: Rob
+Category: NickServ
+Last updated: 2009-06-09T22:54:54+01:00
+
+Simple module to allow users to replace email auth with a captcha from a website.
+
+When a user registers, the timestamp, nick, confirmation code and email address are appended to the specifed filename allowing a php website / captcha or any other method for proving the user is not a bot to be used before they are given the confirmation code.
+
+The following configuration items are required:
+
+CaptchaCodeFile \"tmp.txt\"
+CaptchaUserText \"Please visit http://localhost/irc/captcha.php?nick=$nick&email=$email to complete registration ;)\"
+
+optional configuration value: (only available when mysql is present)
+CaptchaMysqlDatabase \"captcha\" 
+
+
+In order to use mysql the MysqlHost, MysqlUser and MysqlPass configuration options must also be specified.
+
+Version 0.3 supports Anope 1.8.0
+Version 1.8.0 supports Anope 1.8.0
+Version 0.3~1 supports Anope 1.8.5

@@ -1,0 +1,27 @@
+Name: os_access_levels
+Author: Adam
+Category: OperServ
+Last updated: 2010-01-24T06:58:40+00:00
+
+The idea for this module was based off of katsklaw\'s os_access_levels.
+
+This module allows you to change the access required to use any OperServ command through the configuration. The syntax for the configuration is:
+
+OSAccessLevels \"CommandName Level OtherCommandName OtherLevel\"
+
+Available levels are:
+ 0 - No Privileges
+ 1 - IRC Operator
+ 2 - Services Operator
+ 3 - Services Administrator
+ 4 - Services Root
+
+An example of this is:
+
+OSAccessLevels \"GLOBAL 2 MODLOAD 3\"
+
+Which would make the GLOBAL command require Services Operator, and MODLOAD require Services Administrator.
+
+Note that the OSOpersOnly overrides level 0. It is recommended this is one of the last modules you load (ModuleDelayedAutoLoad, at the end of the list) as it can\'t limit commands that don\'t exist at the time it is loaded. Also note unloading this module doesn\'t undo any command permissions it has changed, you would have to restart services or reload the module with different configuration settings to change it back.
+
+Version 1.0 supports Anope 1.8.3

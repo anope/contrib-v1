@@ -1,0 +1,12 @@
+Name: os_qakill
+Author: Tom65789
+Category: OperServ
+Last updated: 2006-09-27T19:23:25+01:00
+
+Allows service admins to akill a nick. Updated to work best with 1.7.15
+                                
+Usage: /msg OperServ QAKILL [NICK]  
+                                          
+Original work by SGR                                                  
+
+Version 1.05 supports Anope 1.7.14

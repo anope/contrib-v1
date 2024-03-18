@@ -1,0 +1,15 @@
+Name: m_text
+Author: Adam
+Category: BotServ
+Last updated: 2013-12-11T01:20:23+00:00
+
+Allows configuring arbitrary commands with fixed replies.
+
+Configuration:
+
+text { name = "moo"; message = "cow"; }
+fantasy { name = "moo"; command = "text"; }
+
+Would reply with "cow" to the !moo fantasy command. You can also use command{} blocks with the command name "text" to place the command on a service. "message" may be multiple lines for multiple replies.
+
+Version 1 supports Anope 1.9.9

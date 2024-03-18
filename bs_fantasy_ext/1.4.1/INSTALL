@@ -1,0 +1,151 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###-------------------------------------- bs_fantasy_ext ---------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+####
+# Module Name   : bs_fantasy_ext
+# Author        : Viper <Viper@Anope.org>
+# Last Edited   : 04/09/2012
+###
+
+---------------------------------------------------------------------------------------------
+
+Linux Installation Instructions :
+-----------------------------------
+
+	- wget the latest version of bs_fantasy_ext (link on Anope forums) 
+	  to the anope-1.8.x/src/modules directory
+	- extract it with 'tar -zxvf bs_fantasy_ext-1.x.y.tar.gz'
+	- If required, change compile time settings in config.h
+	- cd to main anope source directory
+	- run 'make modules'
+	- run 'make install'
+	- copy/paste configuration directives below to services.conf (at the bottom
+	  there s a section for modules' configuration directives)
+	- For autoloading: add 'bs_fantasy_ext' to the ModuleDelayedAutoload directive.
+	- load module with /os modload bs_fantasy_ext
+
+
+---------------------------------------------------------------------------------------------
+
+Windows Installation Instructions :
+------------------------------------------
+
+Installing the module
+------------------------
+ - Using the pre-compiled version:
+As of bs_fantasy_ext 1.2.0 the module consists of more ten just a .dll file. It now has
+seperate language files which need to go in data/languages/bs_fantasy_ext. Without
+these the module will not load.
+The zip file contains a directory structure which needs to be extracted into your 
+anope installation directory. Extract or copy the data folder in the zip file to this directory
+which also contains the anope.exe. The lang files and the bs_fantasy_ext.dll file will then be
+merged into the correct directory.
+
+
+ - Using the sourcecode:
+If you want to compile the module yourself, for example if you want to use a different config.h,
+you will first need to compile anope itself for windows.
+All instructions on how to compile modules (and anope itself) for windows can be found on the
+anope wiki. (http://anope.info/wiki/Windows:Modules)
+However as this module is more then just a single file I will explain it in short.
+	* Compile anope for windows as explained in the wiki.
+	* Extract the sourcecode to a directory bs_fantasy_ext and copy this entire directory to
+	  anope-1.8.xx/src/modules so you have a bs_fantasy_ext folder in the modules directory.
+	* Open the 'makefile.inc.win32' file in the anope-1.8.xx/src/modules directory as you
+	  would normally do to install a module, but instead of adding the sourcecode file to
+	  SRCS, you add 'bs_fantasy_ext' to SUBS (you can replace the standard test folder which
+	  is already there). This will instruct the compiler to look in the bs_fantasy_ext
+	  folder and execute the makefiles it finds there.
+	* Return to the sourcecodes root directory anope-1.8.xx/ and run 
+	  'nmake -f Makefile.win32 modules' to compile the module.
+	  Alternatively, run 'nmake -f Makefile.win32' from within the anope-1.8.xx/src/modules 
+	  directory or even from within bs_fantasy_ext/.
+	* As the module consists of more then a .dll, it is recommended to use the automatic 
+	  install script to copy all files to their appropriate destinations: run
+	  'nmake -f Makefile.win32 install' from anopes root directory.
+	  For those wanting manually copying: the module needs the bs_fantasy_ext.dll to be copied
+	  to the data/modules directory and the (!!!)processed(!!!) language files to 
+	  data/languages/bs_fantasy_ext.
+
+
+Configuring the module
+------------------------
+In order to configure the module, copy the configuration directives from below to
+your services.conf and modify them to suit your needs.
+
+
+Loading the module
+------------------------
+Finally in order to load the module issue the '/os modload bs_fantasy_ext' command
+and the module should load provided you followed all steps correctly and do
+not have any blacklisted modules loaded. (cf README: Technical for more info.)
+
+If you want the module to autoload on startup, add 'bs_fantasy_ext' to the
+ModuleDelayedAutoload directive.
+
+
+---------------------------------------------------------------------------------------------
+
+
+Configuration directives that should be copy-pasted to services.conf
+---------------------------------------------------------------------
+
+# ListExempNick [OPTIONAL]
+# Module: bs_fantasy_ext
+#
+# Nicks that will never appear in the network staff listing (!staff, !ircops and !admins).
+# Wildcards are permitted.
+# You can specify more than one nick or wildcard string by separating each one by a space.
+# Note that clients on ulined servers will not be shown in the staff listings regardless
+# of whether they are in the list or not.
+#ListExempNick ""
+
+# IgnoreBots [OPTIONAL]
+# Module: bs_fantasy_ext
+#
+# When enabled, this option will make bs_fantasy_ext ignore fantasy commands coming from
+# users who have usermode +B set.
+# Only available on UnrealIRCd3.2 and PTlink.
+#IgnoreBots
+
+# OverrideCoreCmds [OPTIONAL]
+# Module: bs_fantasy_ext
+#
+# Override the fantasy commands implemented by the Anope Core to add extra functionalities
+# like multiuser commands support and the ability to accept masks.
+# This will also override the !k, !kb and !unban implemented by the core.
+# To enable the extra functionalities uncomment this line, to disable it, leave the line commented out.
+#OverrideCoreCmds
+
+# EnOperCmds <option> [OPTIONAL] [DISCOURAGED]
+# Module: bs_fantasy_ext
+#
+# This will enable IRC operator fantasy commands in all channels with botserv fantasy
+# commands enabled. IRCops will not need the fantasy access level to that channel,
+# but if NSStrictPrivileges is set they will need to be opered to be able to use it, 
+# provided their Services access level is high enough.
+# Note that if access to this command is granted to all Services Opers (3), access
+# may still be denied later on depending on the command issued.
+# Using this is discouraged because of the high risk of power abuse by opers.
+# By default this is disabled.
+# Possible Option Values:
+# 0 - Disabled
+# 1 - Enabled for Services Root Administrators
+# 2 - Enabled for Services Admins (and above)
+# 3 - Enabled for Services Opers (and above)
+#EnOperCmds 0
+
+# SAdminOverride [OPTIONAL] [DISCOURAGED]
+# Module: bs_fantasy_ext
+#
+# This will allow Services Root Administrator and Services Admins to use the fantasy
+# commands to override channel settings and modes the same way they can use regular
+# ChanServ commands.
+# Using this is discouraged because of the high risk of power abuse by opers.
+# To enable this, uncomment following line, to disable it, leave the line commented out.
+#SAdminOverride
+
+---------------------------------------------------------------------------------------------

@@ -1,0 +1,46 @@
+Written by Adam (Adam@Anope.org)
+
+This module lets you change the default channel levels of newly registered channels.
+There are 36 optional configuration settings this module adds:
+
+AUTODEOP		[Level]
+AUTOHALFOP		[Level]
+AUTOOP			[Level]
+AUTOPROTECT		[Level]
+AUTOVOICE		[Level]
+NOJOIN			[Level]
+SIGNKICK		[Level]
+ACCLIST			[Level]
+ACCCHANGE		[Level]
+AKICK			[Level]
+SET			[Level]
+BAN			[Level]
+BANME			[Level]
+CLEAR			[Level]
+GETKEY			[Level]
+HALFOP			[Level]
+HALFOPME		[Level]
+INFO			[Level]
+KICK			[Level]
+KICKME			[Level]
+INVITE			[Level]
+OPDEOP			[Level]
+OPDEOPME		[Level]
+PROTECT			[Level]
+PROTECTME		[Level]
+TOPIC			[Level]
+UNBAN			[Level]
+VOICE			[Level]
+VOICEME			[Level]
+MEMO			[Level]
+ASSIGN			[Level]
+BADWORDS		[Level]
+FANTASIA		[Level]
+GREET			[Level]
+NOKICK			[Level] 
+SAY			[Level]
+
+Not defining one of these in your configuration will have no effect, this module will leave
+it as the default Anope level.
+If you want something to be owner only (disabled), make the level 10000
+Note: A level can not be 0!

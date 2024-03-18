@@ -1,0 +1,44 @@
+Name: ns_sso
+Author: zabadab
+Category: NickServ
+Last updated: 2009-12-23T01:26:31+00:00
+
+(NO LONGER MAINTAINED)
+
+This module provides the following additions to Anope. It works with PostgreSQL. MySQL is not supported. It provides several settings to control its functionality and has highly detailed documentation that explains how all aspects of the module work.
+
+[b]1) Ticket-Based Authentication for Single Sign-On[/b]
+
+Two new commands are added:
+/msg NickServ TICKETIDENTIFY [Ticket]
+/msg NickServ TICKETGHOST [Nickname] [Ticket]
+
+NickServ checks whether the ticket string represents a valid ticket, the IP address the ticket is for, whether the nickname to identify for or to ghost matches the expected nickname, the time the ticket was created, and whether it has already been used. If all checks pass, NickServ accepts the ticket, identifies or ghosts the nickname, and marks it as used in the database.
+
+The original password was never used during the process, so if Mallory was listening to your network traffic, he would not be able to impersonate you, unless he:
+
+1) Manages to connect using and perform the command before you do
+2) Manages to somehow fool Anope into thinking he is using your nick and IP address
+3) Manages to perform 1) and 2) in under a short, user-definable interval
+
+A possible usage scenario is a web-based IRC applet, where you want to prevent outputting the user\'s password in the HTML, since it could be sniffed or extracted by malware.
+
+Tickets are stored in a database table.
+
+[b]2) Comprehensive Task-Based User Management[/b] (Optional)
+
+If you have your own account management and don\'t want people managing their information through NickServ, this is for you. By writing tasks to a database table, you can:
+
+1) Register nicknames
+2) Rename nicknames
+3) Drop nicknames
+4) Change nickname passwords
+5) Change the E-Mail address associated with a nickname
+6) Add A-Kills and suspend nicknames
+7) Remove A-Kills and unsuspend nicknames
+
+This part is optional and can be disabled if you only want ticket-based authentication. It is somewhat intrusive. People will no longer be able to register or drop nicknames, and attempts to change passwords or E-Mail addresses will be rejected with a message telling people to visit a user-defined website where to make these changes.
+
+Version 0.2 supports Anope 1.8.2
+Version 0.3 supports Anope 1.8.2
+Version 0.4 supports Anope 1.8.2

@@ -1,0 +1,28 @@
+Name: cs_multifounder
+Author: MaienM
+Category: ChanServ
+Last updated: 2008-12-20T15:12:38+00:00
+
+This modules allows you to have multiple founders per channel.
+Each founder will get access level 10000, automatic +qo when entering/identifying and will have access to ALL founder commands.
+
+WARNING!!!!! 
+EACH FOUNDER WILL BE ABLE TO DELETE OTHER FOUNDERS!!!! 
+ONLY GIVE FOUNDER STATUS TO PEOPLE YOU REALLY TRUST!!!
+WARNING!!!!!
+
+This module will cause the channel founder to shift to the founder that needs it at that moment, and thus it will make the channel info a bit unreliable.
+It still has some small bugs, like not correctly removing founders, but reducing their access level to 0.
+
+Any questions/ideas/bugs? Feel free to contact me.
+(Do NOT leave comments about this, comments are meant for feedback about the module, not for requests.)
+
+EDIT: a .dll version is coming soon, thanks to chaz.
+
+EOF
+
+Version 1.0 supports Anope 1.8.0-rc1
+Version 1.01 supports Anope 1.8.0-rc1
+Version 1.02 supports Anope 1.8.0-rc1
+Version 1.03 supports Anope 1.8.0-rc1
+Version 1.03a supports Anope 1.8.0-rc1

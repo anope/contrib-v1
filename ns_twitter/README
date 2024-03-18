@@ -1,0 +1,17 @@
+Name: ns_twitter
+Author: westor
+Category: NickServ
+Last updated: 2013-03-01T14:29:53+00:00
+
+This module can give the user the option to add into his/her NickServ info his/her twitter account, tested on anope 1.8.7 and working good
+i must say that the code has been copyied from ns_phone anope module many thanks to ns_phone author, also this is my SECOND created anope module, so please be patient, also if anyone wanna modified it he can do it free. 
+
+USAGE: /msg NickServ TWITTER add <page>
+-
+EXAMPLE: /msg NickServ TWITTER add westor7
+
+Note: The user twitter page can be displayed from anyone that uses NickServ info to his/her nickname.
+
+Support: If you wanna any help you can find me in ChatNet IRC Network (irc.chatnet.gr:6667 on #Scripting).
+
+Version 1..0 supports Anope 1.8.0 to 1.8.7

@@ -1,0 +1,141 @@
+Anope Installation Instructions
+-------------------------------
+
+1) Installing vhost
+2) Starting vhost
+3) Configuration Directives
+
+Note: You should also read the README file!
+
+1) Installing vhost
+
+	The very first thing you need to do is to get the Anope package (if not already done).
+	You can find it at:
+
+        http://www.anope.org/
+		
+	Make sure to get the latest stable release, atleast Anope-1.7.21. Note that Anope-1.9.0
+	and above is NOT supported. Follow install instructions.
+	
+	Next, put the following provided files in your Anope data directory (by default, ~/services):
+	
+		* hs_request.db
+		ATTENTION: If this file already exists, which it probably will, do NOT replace it!
+				Otherwise you will loose any existing vhost requests.
+		* hs_request.regex.db
+		* hs_request.exempt.db
+		
+	Now put the extracted vhost directy (/vhost) under your Anope package directory in the modules directory (=> /anope-1.8.x/src/modules/vhost).
+	
+	You can now type 'make modules' to compile vhost. If you see errors during this process, please
+	email me with the *complete* error output, and don't forget to mention your OS, compiler and
+	C library versions. Next type 'make install' to install vhost.
+	
+	Go back into the data directory. Open services.conf with your favorite text editor and copy the
+	configuration directives from 3) to services.conf. Read the instructions contained in those
+	directives carefully. If you changed the original HSRequestDBName make sure to change
+	vhsDBName to the same filename. Then search for the ModuleDelayedAutoload directive and replace
+	'hs_request' with 'vhost'.
+	
+	Once you are satisfied, reload the configuration file if anope is already running (/msg operserv reload).
+	
+2) Starting vhost
+
+	Besides adding vhost to services.conf you can also load and unload vhost on the fly by typing '/msg operserv modload vhost' and '/msg operserv modunload vhost', respectively.
+	
+3) Configuration Directives
+
+	vhost does not use old hs_request entries. Make sure to mirror changes made to default settings
+	when switching from hs_request to vhost.
+
+	Start paste below-------------------------------
+# vhServName [OPTIONAL]
+# Module: vhost
+#
+# Specify the nickname (first parameter) and "real" name (second
+# parameter) for the vhost pseudoclient. Unlike corresponding Anope
+# settings, disabling this does not disable the bot.
+#
+#vhServName "vhost" "vHost Server"
+
+# vhServChannel [OPTIONAL]
+# Module: vhost
+#
+# Specify the channel that will be used for access to the bot. The channel
+# must be registered.
+#
+#vhServChannel "#opers"
+
+# vhMemo... [OPTIONAL]
+# Module: vhost
+#
+# Specify if we should send memo's on certain actions with requested vHosts.
+# Enable vhMemoUser to send memo's to the user requesting a vHost
+# when it's being approved or rejected. Enable vhMemoOper or
+# vhMemoSetters if you want to send a memo to all services staff
+# or host setters when a new vHost is requested.
+#
+vhMemoUser
+#vhMemoOper
+#vhMemoSetters
+
+# vhDisplay... [OPTIONAL]
+# Module: vhost
+#
+# Specify various aspects of channel display.
+# Enable vhDisplayMode to extend activation and rejection notifications.
+# Enable vhDisplayColor to use color codes. Enable vhDisplayMax to
+# limit the number of new requested vHosts that will be shown in the
+# channel.
+#
+#vhDisplayMode
+#vhDisplayColor
+vhDisplayMax 3
+
+# vhTimer [OPTIONAL]
+# Module: vhost
+#
+# Interval in which the channel bot will remind of open vHost requests.
+#
+vhTimer 1h
+
+# vhRequestDelay [OPTIONAL]
+# Module: vhost
+#
+# Minimum delay between allowed vHost requests and request updates.
+#
+vhRequestDelay 1m
+
+# vhDBName [OPTIONAL]
+# Module: vhost
+#
+# Use the given filename as database for the vhost requests. If not given,
+# the default of "hs_request.db" will be used.
+#
+#vhDBName "hs_request.db"
+
+# vhRegexDBName [OPTIONAL]
+# Module: vhost
+#
+# Use the given filename as database for the regex database. If not given,
+# the default of "hs_request.regex.db" will be used.
+#
+#vhRegexDBName "hs_request.regex.db"
+
+# vhExceptionDBName [OPTIONAL]
+# Module: vhost
+#
+# Use the given filename as database for the exception database. If not given,
+# the default of "hs_request.exempt.db" will be used.
+#
+#vhRegexDBName "hs_request.exempt.db"
+
+# vhDenyIdentUpdate [OPTIONAL]
+# Module: vhost
+#
+# Forbidds requesting ident@host vhosts. Instead suggests
+# requesting the same host with no ident and then changing the
+# ident in the users clients settings.
+#
+#vhDenyIdentUpdate
+	End Paste-------------------------------

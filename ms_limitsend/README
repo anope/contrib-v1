@@ -1,0 +1,20 @@
+Name: ms_limitsend
+Author: n00bie
+Category: MemoServ
+Last updated: 2006-10-13T15:02:17+01:00
+
+This feature have been suggested on [url]http://forum.anope.org/viewthread.php?tid=780#pid4530[/url] by Casey.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Description:[/b]
+
+Using this module, only users who are on the channel access list (HalfOp and above) will be able to send memos to the channel.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Thanks to:
+Jobe1986 - for giving this module a name (ms_limitsend.c) ^^
+Viper - for always willing to help ;)
+Camti - for testing the module
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have no configurable option.
+
+Version 2.0.0 supports Anope 1.7.21
+Version v1.0.1 supports Anope 

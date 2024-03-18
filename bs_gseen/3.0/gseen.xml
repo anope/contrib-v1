@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+	Parameters:
+	- pameters consists of 3 chars
+		- "%"
+		- the number of parameter, passed to the sendlang function
+		- "s" or "i" or "u" - type identifier (like the %s, %u, %i for printf)
+	  you can have the same param more than once in the same string
+	  for example:
+              %0s  %1i  %0s    if you call it with NoticeLang(string, "test", 1),
+	                       you will get "test 1 test" as result
+
+	- bold		%B, [b], [/b]
+	- underlined	%U, [u], [/u]
+	- / or /msg     %R
+	- name of the service, sending this Message:	%S
+	- name of operserv	[operserv], [os]
+	- name of chanserv	[chanserv], [cs]
+	- name of nickserv	[nickserv], [ns]
+	- name of hostserv	[hostserv], [hs]
+	- name of memoserv	[memoserv], [ms]
+
+	from include/services.h:
+
+		LANG_EN_US			 0	/* United States English */
+		LANG_JA_JIS			 1	/* Japanese (JIS encoding) */
+		LANG_JA_EUC			 2	/* Japanese (EUC encoding) */
+		LANG_JA_SJIS			 3	/* Japanese (SJIS encoding) */
+		LANG_ES				 4	/* Spanish */
+		LANG_PT				 5	/* Portugese */
+		LANG_FR				 6	/* French */
+		LANG_TR				 7	/* Turkish */
+		LANG_IT				 8	/* Italian */
+		LANG_DE				 9	/* German */
+		LANG_CAT			10	/* Catalan */
+		LANG_GR				11	/* Greek */
+		LANG_NL				12	/* Dutch */
+		LANG_RU				13	/* Russian */
+		LANG_HUN			14	/* Hungarian */
+		LANG_PL				15	/* Polish */
+
+-->
+
+<langfile>
+<languages>
+	<lang num="0">english</lang>
+	<lang num="9">german</lang>
+	<lang num="8">italian</lang>
+</languages>
+<lang index="TEST_1">
+	<!-- this is a test -->
+	<english>Test (english): param1=[u]%1s[/u], param0=[b]%0s[/b]</english>
+	<german>Test (german): param1=[u]%1s[/u], param0=[b]%0s[/b] sonderzeichen: ä ö ü Ä Ö Ü</german>
+	<italian>Test (italian) no params (test)
+		 .    here we have
+		 .    something like a table
+	</italian>
+</lang>
+<lang index="NICKTOOLONG">
+	<english>Nick too long, maxlength is %0i chars</english>
+	<german>Der Nick ist zu lang. Die maximale Länge beträgt %0i Zeichen</german>
+	<italian>Nick too long, maxlength is %0i chars</italian>
+</lang>
+<lang index="GS_BOT">
+	<english>You found me, %0s</english>
+	<german>Du hast mich gefunden, %0s!</german>
+	<italian>%0s, mi hai trovato!</italian>
+</lang>
+<lang index="GS_YOU">
+	<english>You might see yourself in the mirror, %0s...</english>
+	<german>schau in den Spiegel, %0s...</german>
+	<italian>%0s, hai una doppia personalità?</italian>
+</lang>
+<lang index="GS_CONNECT">
+	<english>%0s (%1s) was last seen connecting %2s ago (%3s)%4s</english>
+	<german>%0s (%1s) ist vor %2s in den IRC gekommen (%3s)%4s</german>
+	<italian>Ho visto %0s (%1s) collegarsi %2s fa (%3s)%4s</italian>
+</lang>
+<lang index="GS_NICKCHANGE_TO">
+	<english>%0s (%1s) was last seen changing nick to %2s %3s ago%4s</english>
+	<german>%0s (%1s) wechselte seinen Nick zu %2s vor %3s%4s</german>
+	<italian>Ho visto %0s (%1s) cambiare il suo nick in %2s %3s fa%4s</italian>
+</lang>
+<lang index="GS_NICKCHANGE_FROM">
+	<english>%0s (%1s) was last seen changing nick from %2s to %3s %4s ago%5s</english>
+	<german>%0s (%1s) wechselte den Nick von %2s zu %3s vor %4s%5s</german>
+	<italian>Ho visto %0s (%1s) cambiare il suo nick da %2s a %3s %4s fa%5s</italian>
+</lang>
+<lang index="GS_JOIN">
+	<english>%0s (%1s) was last seen joining %2s %3s ago%4s</english>
+	<german>%0s (%1s) betrat den Raum %2s vor %3s%4s</german>
+	<italian>Ho visto %0s (%1s) entrare in %2s %3s fa%4s</italian>
+</lang>
+<lang index="GS_JOIN_SECRET">
+	<english>%0s (%1s) was last seen joining a secret chan %2s ago%3s</english>
+	<german>%0s (%1s) betrat vor %2s einen streng geheimen Raum%3s</german>
+	<italian>Ho visto %0s (%1s) entrare in un canale segreto %2s fa%3s</italian>
+</lang>
+<lang index="GS_PART">
+	<english>%0s (%1s) was last seen parting %2s ("%3s") %4s ago%5s</english>
+	<german>%0s (%1s) verlies den Raum %2s ("%3s") vor %4s%5s</german>
+	<italian>Ho visto %0s (%1s) uscire da %2s ("%3s") %4s fa%5s</italian>
+</lang>
+<lang index="GS_PART_SECRET">
+	<english>%0s (%1s) was last seen parting a secret chan %2s ago%3s</english>
+	<german>%0s (%1s) verlies vor %2s einen streng geheimen Raum%3s</german>
+	<italian>Ho visto %0s (%1s) uscire da un canale segreto %2s fa%3s</italian>
+</lang>
+<lang index="GS_KICK">
+	<english>%0s (%1s) was kicked from %2s ("%3s") %4s ago%5s</english>
+	<german>%0s (%1s) wurde vor %4s aus %2s ("%3s") gekickt%5s</german>
+	<italian>Ho visto %0s (%1s) venire espulso da %2s ("%3s") %4s fa%5s"</italian>
+</lang>
+<lang index="GS_KICK_SECRET">
+	<english>%0s (%1s) was kicked from a secret chan %2s ago%3s</english>
+	<german>%0s (%1s) wurde vor %2s aus einem streng geheimen Raum gekickt%3s</german>
+	<italian>Ho visto %0s (%1s) venire espulso da un canale segreto %2s fa%3s</italian>
+</lang>
+<lang index="GS_QUIT">
+	<english>%0s (%1s) was last seen quitting (%2s) %3s ago (%4s).</english>
+	<german>%0s (%1s) verlies den IRC (%2s) vor %3s (%4s).</german>
+	<italian>Ho visto %0s (%1s) scollegarsi (%2s) %3s fa (%4s).</italian>
+</lang>
+<lang index="GS_FAILED">
+	<english>Seen query failed.</english>
+	<german>Seen Anfrage fehlgeschlagen.</german>
+	<italian>Spiacente, non sono in grado di elaborare la richiesta.</italian>
+</lang>
+<lang index="GS_ONLINE">
+	<english> and is still online.</english>
+	<german> und ist immernoch online.</german>
+	<italian> ed è tutt'ora online.</italian>
+</lang>
+<lang index="GS_ONLINE_AS">
+	<english>. %0s is still online.</english>
+	<german> . %0s ist immernoch online.</german>
+	<italian>. %0s è tutt'ora online.</italian>
+</lang>
+<lang index="GS_OFFLINE">
+	<english> but %0s mysteriously dematerialized.</english>
+	<german> aber %0s ist auf mysteriöse Weise verschwunden.</german>
+	<italian> ma %0s si è misteriosamente dematerializzato.</italian>
+</lang>
+<lang index="GS_TIME_FULL">
+	<english>%0i days, %1i hours and %2i minutes</english>
+	<german>%0i Tagen, %1i Stunden und %2i Minuten</german>
+	<italian>%0i giorni, %1i ore e %2i minuti</italian>
+</lang>
+<lang index="GS_TIME_HOURS">
+	<english>%0i hours and %1i minutes</english>
+	<german>%0i Stunden und %1i Minuten</german>
+	<italian>%0i ore e %1i minuti</italian>
+</lang>
+<lang index="GS_TIME_MINUTES">
+	<english>%0i minutes</english>
+	<german>%0i Minuten</german>
+	<italian>%0i minuti</italian>
+</lang>
+<lang index="GS_TIME_SECONDS">
+	<english>%0i seconds</english>
+	<german>%0i Sekunden</german>
+	<italian>%0i secondi</italian>
+</lang>
+<lang index="GS_NOT_SEEN">
+	<english>Sorry, I have not seen %0s.</english>
+	<german>Ich habe %0s leider nicht gesehen.</german>
+	<italian>Spiacente, non ricordo di aver visto %0s.</italian>
+</lang>
+<lang index="GS_IN_CHAN">
+	<english>%0s is in the chan right now!</english>
+	<german>%0s ist doch im Raum!</german>
+	<italian>%0s si trova in canale in questo momento!</italian>
+</lang>
+</langfile>

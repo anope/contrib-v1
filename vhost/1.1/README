@@ -1,0 +1,125 @@
+vhost - a hs_request replacement for Anope
+-----------------------------------------------
+
+vhost is			2008-2010 Peter Binczek <hmtx@immortal-anime.net>.
+Based on hs_request	2003-2005 Anope Team <info@anope.org>.
+Based on the original module by Rob <rob@anope.org>.
+
+This program is free but copyrighted software; see the file COPYING for
+details.
+
+Information about Anope may be found at http://www.anope.org/
+
+Table of Contents
+-----------------
+1) Credits
+2) Presentation
+3) Features
+4) Installation
+5) Messages Translation
+6) Contact and Mailing List
+
+1) Credits
+
+	Original Author:
+	
+		* Rob <rob@anope.org>
+		
+	Anope Coder:
+	
+		* GeniusDex <geniusdex@anope.org>
+		
+	vhost credits:
+	
+		* Peter Binczek <hmtx@immortal-anime.net>
+			Main coding
+			German translation
+		* DaRkNeSs <xhells@xhells.com>
+			Spanish translation
+		* GattSp <GattSp@immortal-anime.net>
+			Spanish translation
+		* ********* (undisclosed)
+			Hungarian translation
+	
+	vhost uses modified functions from Anope-1.7.21. All copyrights reserved.
+	
+2) Presentation
+
+	Originally, hs_request adds request and activate functionality to HostServ that allows
+	users to request virtual hostnames and administrators to manage such requests. As great
+	a tool it is its feature set is limited and not as accessible as one would hope for.
+	vhost builds on and extends the original feature set provided by hs_request, provides a
+	rich set of more powerful and more directly accessible ways to display and manage virtual
+	hostnames to administrators and in effect completely replaces the original module.
+	
+	A new representation of the HostServ-Service is added to the networks userlist (providing
+	ip cloaking is supported):
+	
+		* vhost, a channel bot that helps managing virtual hostname requests. It displays useful
+		  information for every request and handles some often encountered situations such as, but
+		  not limited to, request and re-request spam automatically.
+		
+	vhost currently works with:
+	
+		* Hopefully every daemon supported by Anope. However it has only been tested on
+		  UnrealIRCd 3.2.6 and later
+		* Anope-1.7.21 and upwards, tested until Anope-1.8
+		
+3) Features
+
+	Besides inheriting all original commands and features from hs_request, vhost offers many
+	additional features:
+	
+		* Management and Announcement Bot 'vhost', keeps everyone updated on open requests and
+		  allows access to activation/rejection-related commands, type !vhost in channel for
+		  a list of available options.
+		  If enabled pre-compile, users can be matched using wildcards and regex strings.
+		* Enhanced Request Verifier, making sure only valid requests are accepted and relayed
+		  for approval. Validity-checks include checks against an on-the-fly modifiable list of
+		  regex strings. Default strings disallowing any valid .tlds (as of feb10) and valid IPs
+		  or IP look-alikes are provided.
+		  Often encountered situations such as a user
+		  
+			* repeating his request to 'speed up' the verification process
+			* wanting to change host capitalisation
+			* using vhost requests instead of /hs GROUP to synch the vhost for grouped nicks
+			* abusing vhost requests for ban-evading
+			* ...
+			
+		  are dealt with automatically and transparently. Although not all events are broadcasted
+		  openly, everything happening will be logged and displayed in a channel specified in
+		  Anopes' LogChannel (by default, '#services') if enabled.
+		  Besides opers, who are exempted from all checks, special exemption can also be granted
+		  on a per-user basis. This exemption propagates to all grouped nicknames. The level of
+		  exemption can't currently be specified, it's either all or nothing.
+		* Shortcuts, why type more if you can type less?
+		* Mass Activation/Rejection Capability
+		* Automatic Host Setting on Activation
+	
+	Likely not everything will be covered by this document, just try it out and see for yourself. :)
+	Detailed information on individual commands are provided, type '/msg hostserv help' for starters.
+		
+4) Installation
+
+	See the INSTALL file for instruction on installing vhost.
+	
+5) Messages Translations
+
+	vhost is currently provided with four languages: English, German, Hungarian and Spanish.
+	If you want to translate vhost into another language supported by Anope, feel free to
+	get in contact with me.
+	
+6) Contact
+
+	If you read the documentation carefully, and didn't find the answer to your question,
+	feel free to join me on irc (irc.immortal-anime.net #help). Note that this is an
+	official Support channel for the Immortal-Anime IRC network. Therefore when reporting a
+	bug or asking a question be as precise as possible and make clear you are talking about
+	vhost, because they have no extraordinary powers and certainly can't guess things if
+	they aren't provided. The more precise you are, the sooner you'll be likely to get an
+	answer.
+	
+	If you think you found a bug, report it on irc or send me an email. Also say wether the
+	bug happens always or under what circumstances, and anything that could be useful to
+	track your bug down. If you wrote a	patch, send it over.
+	

@@ -1,0 +1,16 @@
+Name: cs_maskunban
+Author: TheKing
+Category: ChanServ
+Last updated: 2009-03-31T14:29:16+01:00
+
+This module allows a user with access to UNBAN to unban a specific mask on a channel discreetly. It will unban the mask with the assigned BotServ bot, if there is no BotServ bot, ChanServ will unban the hostmask.
+
+Syntax: /cs maskunban #channel mask
+
+This module was tested on 1.8.0 and 1.8.0-rc1. If it works without problems on any other revision, please leave me a comment.
+
+Any problems, leave a comment.
+
+This module has no configurable option.
+
+Version 1.0.0 supports Anope 1.8.0

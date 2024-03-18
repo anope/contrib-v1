@@ -1,0 +1,30 @@
+Name: os_forceid
+Author: n00bie
+Category: OperServ
+Last updated: 2006-10-05T09:09:11+01:00
+
+[b]Description:[/b]
+
+The [b]FORCEID[/b] command is used to identify a user to services. This is helpful in the case of an automatic nick script in which services keeps changing the nick to Guest.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Providing Command:[/b]
+
+/msg OperServ HELP FORCEID
+/msg OperServ FORCEID [u]nick[/u]
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Changes from the old SGR module:[/b]
+
+1) Remove strtok();
+2) Changed Services Admin to Services Operator
+3) Check whether nick is part of the network services
+4) Check whether nick is registered or not
+5) Check whether nick is already identified to services
+6) Added modes on ID (if enabled on services.conf; NSModeOnID)
+7) Added NS nick tracking (if enabled on services.conf; NSNickTracking)
+8) Enable vHost for nick (if the user have vHost)
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have no configurable option.
+Bugs? Suggestion/comments ... feel free ^^
+
+Version 1.0.0 supports Anope 1.7.16
+Version 1.0.1 supports Anope 1.7.21

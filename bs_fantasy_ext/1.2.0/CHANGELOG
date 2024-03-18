@@ -1,0 +1,60 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###-------------------------------------- bs_fantasy_ext ---------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+####
+# Module Name   : bs_fantasy_ext
+# Author        : Viper <Viper@Anope.org>
+# Last Edited   : 25/01/2009
+###
+
+---------------------------------------------------------------------------------------------
+
+Current Version : 1.2.0
+
+---------------------------------------------------------------------------------------------
+
+A : Addition
+C : Change 
+U : Update
+F : Fix
+
+---------------------------------------------------------------------------------------------
+
+Changelog:
+------------
+
+1.2.0   A  Introduced new language system to replace the cores lang system for modules.
+        A  Added configuration directive which when set ignores users with +B. (Unreal & PTlink)
+        C  Clients on ulined servers no longer show up in !staff. This eliminates the need
+               to add an exemption for every network service.
+        C  Clients with usermode +B (bots) no longer show up in !staff. (Unreal & PTlink)
+        C  Using !unban on yourself is no longer hindered by EnUnbanIP protections.
+        U  Synchronized module code with Anope 1.8.0.
+        U  Updated flags.
+        U  Updated list of unsupported modules.
+        U  Updated !shun syntax to match that of os_shun.
+        U  Reworked syntax layout in language files.
+        U  Updated INSTALL instructions.
+        U  Updated windows makefiles. As of now windows support should be back.
+        F  Fixed crashbug in !set nobot.
+        F  Fixed several issues found in the core.
+        F  Fixed markup codes no longer being loaded properly.
+        F  Now unloads languages upon unload and reloads when the config is reloaded.
+        F  Fixed wrong syntax messages being send for some !bkick commands.
+        F  Fixed crashbug in !unban command when banlist is empty.
+        F  Fixed possible though rare exploit in !unban allowing attackers to guess a users' 
+               real IP if the host did not resolve and no vhost is set.
+               Thanks to Namegduf for reporting and providing template patch.
+        F  Fixed !unban not protecting masks.
+        F  Fixed invalid language string call in !admins. (Reported by Joey.)
+        F  Fixed several typos in english language file.
+        F  !down now removes modes users shouldn't have.
+        F  Botserv bot now replies to !sync instead of ChanServ.
+        F  Failing to load the langfiles is no longer fatal to anope.
+        F  Fixed crashbug in !shun.   (Reported by midnight_tiger.)
+
+
+---! For changes in the 1.0 and 1.1 branch, cf CHANGELOG.OLD !---

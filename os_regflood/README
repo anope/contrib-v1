@@ -1,0 +1,8 @@
+Name: os_regflood
+Author: phil
+Category: OperServ
+Last updated: 2010-05-06T11:43:11+01:00
+
+Module to combat bot nets that flood register nicknames and channels by disabling nickname/channel registrations after X in Y seconds. Provides support to manually enable/disable registrations. See /os help registration for info.
+
+Version 1.0 supports Anope 1.8.5

@@ -1,0 +1,12 @@
+Name: os_flood
+Author: mooncup
+Category: OperServ
+Last updated: 2010-06-26T20:53:06+01:00
+
+Allows opers to temporarily exempt users from fake lag. (They can flood).
+
+[i]Syntax: /os [b]FLOOD[/b] nick[/i]
+
+[b]UnrealIRCD ONLY.[/b]
+
+Version 1.0 supports Anope 1.8.0

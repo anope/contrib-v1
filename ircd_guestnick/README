@@ -1,0 +1,16 @@
+Name: ircd_guestnick
+Author: n00bie
+Category: IRCd Specific
+Last updated: 2006-11-30T17:40:31+00:00
+
+[b]Description:[/b]
+
+When a users nick changed to '[b]NSGuestNickPrefix[/b]' from services.conf this module will make them part all the channels they are in.
+-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Tested & Supported:[/b]
+
+UnrealIRCd3.2.5 + Anope-1.7.17, 1.7.18 ONLY
+-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have no configurable option.
+
+Version 1.1.0 supports Anope 1.7.18

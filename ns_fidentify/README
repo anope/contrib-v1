@@ -1,0 +1,13 @@
+Name: ns_fidentify
+Author: Justasic
+Category: NickServ
+Last updated: 2011-08-20T17:00:32+01:00
+
+This module allows for a user to be forced to identify to their nickname or a specified account, the module provides the command nickserv/fidentify
+Other commands similar to this one have been made but are usually not kept up to date with the ever growing anope 1.9.
+if you would like a beta version of my module you can find it in my [url="http://git.azuru.net/Justasic/tree/Modules/Anope/ns_fidentify.cpp"] git repository [/url]
+
+Version 2.3.1 supports Anope 1.9.5 to 1.9.6
+Version 2.3.2 supports Anope 1.9.7 to 1.9.7
+Version 2.3.3 supports Anope 1.9.7 to 1.9.7
+Version 2.3.4 supports Anope 1.9.8

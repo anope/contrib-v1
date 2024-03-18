@@ -1,0 +1,15 @@
+Name: m_dnsbl
+Author: Adam
+Category: Other
+Last updated: 2010-12-02T21:45:19+00:00
+
+Allows Anope to check connecting users against DNS blacklists and ban them if necessary. To install on Linux, extract the .tar.gz file and copy the folder to src/modules, then make && make install. To install on Windows, extract the .tar.gz file and copy m_dnsbl.dll to the Anope module folder.
+
+To configure, add the following two configuration items:
+DNSBlacklists, a space separated list DNS blacklists, eg:
+DNSBlacklists "dnsbl.dronebl.org rbl.efnetrbl.org"
+and DNSBanTime, the time to place bans for, which defaults to 4 hours.
+
+Version 1.0 supports Anope 1.8.5
+Version 1.1 supports Anope 1.8.5
+Version 1.2 supports Anope 1.8.6

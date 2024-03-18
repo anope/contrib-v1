@@ -1,0 +1,12 @@
+Name: bs_fantasy_fpart
+Author: Viper
+Category: BotServ
+Last updated: 2007-08-22T23:22:14+01:00
+
+This module creates the !fpart fantasy command.
+To access the command you need to be services administrator.
+
+Personally I would NEVER use this module since !kick is a much better alternative, but apparently some people do want something like this..
+
+Version 1.0 supports Anope 1.8.0
+Version 1.1 supports Anope 1.8.7

@@ -1,0 +1,106 @@
+Name: he_queue
+Author: oldAuthors
+Category: HelpServ
+Last updated: 2009-06-29T08:01:59+01:00
+
+Original Author: sheepeep
+                                             
+Readme for he_queue, HelpServ queue manager.
+
+### INTRODUCTION ###
+This module gives HelpServ functionality by allowing it to serve as a queue manager for a help channel. Users joining the channel will automatically be assigned a position in the queue, and helpers will be able to pick up these users and help them as they join.
+
+This version comes with two access levels: HelpServ operators, who may operate the HelpServ bot, and HelpServ managers, who have additional functionality such as the ability to reassign a ticket from one helper to another, and viewing the current HelpServ configuration.
+
+### VERSION NOTES ###
+This module has *not* been tested on all platformws, and may not work on untested environments. The module comes free of all known bugs, but makes no guarantee regarding the existence of them. The module author takes no responsiblity for issues that may arise as a result of using this module, but will attempt to fix reported bugs.
+
+### CONTACT ###
+If you have questions or bug reports, contact the module author on irc.arloria.net #anope, also available by e-mail via sheep@arloria.net, though IRC is preferred.
+
+The module author cannot, and will not, support users with os_raw enabled due to the nature of the module. Please do not ask.
+
+### GUIDE TO USAGE ###
+This short guide assumes that you have HelpServEventHooks enabled, as unexpected behaviour may occur when disabled. It also only describes one possible way of configuring he_queue - The default configuration, as shown below. he_queue has several methods of working, you may wish to find your own, but the commands themselves do not change.
+
+he_queue will automatically assume that all users with services operator level access are also HelpServ operators. However, if you wish to add other HelpServ operators, add them to the channel access list at the level defined by HelpServMinimumLevel. For example, if HelpServMinimumLevel is set to \"op\", add the user to HelpChannel (example: #help) as an AOP or the level defined by OpMNe
+
+Users will be added to the queue as they join the help channel, and may update their ticket by typing /msg helpserv helpme, followed by their message. HelpServ operators may use the \"take\" and \"next\" commands to pick up users from the queue. \"Next\" will pick up the next waiting user, whilst \"Take\" will pick up a specific user. You can also use this command to reassign a user to yourself.
+
+You may use the \"info\" command to see detailed information about the user, such as the messages a user may have entered, which may help you to identify the user\'s problem. This may be particularly useful on larger networks, where users may not be helped instantly and should message HelpServ with their problem and await someone who can help them.
+
+The \"view\" command gives a brief overview of the queue, including information such as when the ticket was opened and who the user is currently assigned to.
+
+HelpServ managers have access to two additional commands. \"config\" will list the current setup details, and the \"reassign\" command will allow the manager to reassign a user from one to another. The reassign command is potentially abusive, and is therefore limited to those of a manager level.
+
+HelpServ will assume that all services admins have manager access to HelpServ, but you may add others via the HelpServManagers configuration directive, see the example below for an example of how to add three people without services admin access to the level of manager.
+
+### SETUP ###
+he_queue uses your existing HelpChannel as the help channel, and comes with several configurable options. Configuring he_queue is necessary to allow it to start. An example configuration is as follows (Note: This configuration does not define HelpChannel, you will need to define it yourself if you haven\'t already, the example Anope configuration shows you how to do this)
+
+Add the following section anywhere in your services.conf file:
+
+###########################################################################
+#
+# HelpServ configuration
+#
+###########################################################################
+
+# HelpServManagers  [OPTIONAL]
+#    This option allows the specified non-oper users to manage HelpServ
+#    and manipulate the ticket queue.
+#
+#    The user must be identified to the nickname.
+
+#HelpServManagers \"examplenickname anothernickname morepeople\"
+
+# HelpExternal [OPTIONAL]
+#    If enabled, allows users to request help from outside of the
+#    help channel.
+
+#HelpExternal
+
+# HelpServJoinChannel [OPTIONAL]
+#    If this option is enabled, HelpServ will join the
+#    help channel when this module is loaded.
+#
+#   Note that this *may* cause unusual behaviour in
+#   Anope in some situations, but may also be necessary
+#   on some IRCds.
+
+HelpServJoinChannel
+
+# HelpServMinimumLevel [REQUIRED]
+#    If a user is in the HelpServ channel and is not of a
+#    normal HelpServ operator level, this is the minimum
+#    channel status they require.
+#
+#    admin - User requires channel admin status to manage HelpServ
+#    op - User requires op status to manage HelpServ
+#    halfop - User requires halfop status to manage HelpServ
+#
+#    Ensure that your IRCd supports the mode you set for
+#    This command.
+
+HelpServMinimumLevel \"op\"
+
+# HelpServEventHooks [RECOMMENDED]
+#    Enabled by default, allows HelpServ to hook to Anope events
+#    in order to automatically assign new tickets. Disabling this
+#    is not recommended and is provided only for troubleshooting.
+#
+#    This does not affect fantasy commands, which must be disabled
+#    separately.
+
+HelpServEventHooks
+
+# HelpServVoiceOnPickup [OPTIONAL]
+#   Enabled by default, users will be voiced as they join the
+#   help channel. Note that HelpServ will not enforce modes
+#   such as +m, you will need to use ChanServ\'s mlock feature
+#   to do this.
+
+HelpServVoiceOnPickup
+
+Version 1.0.1 supports Anope 1.7.21
+Version 1.0.1~1 supports Anope 1.8.4

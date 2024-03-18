@@ -1,0 +1,10 @@
+Name: bs_fantasy_tb
+Author: royteeuwen
+Category: BotServ
+Last updated: 2006-11-10T16:53:00+00:00
+
+This is a fantasy command that allows you to do !tb nick time [reason]
+
+Version 1.0 supports Anope 1.7.16
+Version 1.1 supports Anope 1.7.16
+Version 1.2 supports Anope 1.7.16

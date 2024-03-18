@@ -1,0 +1,44 @@
+Name: he_tos
+Author: TMFKSOFT
+Category: HelpServ
+Last updated: 2011-08-20T17:01:36+01:00
+
+This simple module will return the TOS address when the user uses the helpserv command TOS.
+
+VERSION 1.0.0 Instructions.
+
+Edit the module in a program suc has vim or notepad, change
+"<TOS Link>" in the top of the module, save and compile then load.
+
+VERSION 1.1.0 Instructions.
+
+Current version: v1.1.0
+Added:
+ + General cleaning up, corrected any grammar mistakes.
+ + The module now displays the command in HelpServs "HELP" command.
+ + The module now loads from services.conf - No need to edit the module.
+
+When using he_tos with Anope add the following to services.conf:
+
+
+# 	HelpServ TOS Module
+# TOS <tos_link>  [REQUIRED]
+#     The link defined wil be returned to a user upon /msg HelpServ TOS
+TOS "http://mynet.net/tos.php"
+
+Anywhere will do. The same applied for windows.
+
+VERSION 1.2.0 Instructions.
+
+Added:
+ + !tos fantasy command.
+
+TODO:
+ Make it an editable command.
+
+Info:
+ Nothing needs to be done except over writing v1.1.0 and reloading the module.
+
+Version 1.0.0 supports Anope 1.8.2 to 1.8.2
+Version 1.1.0 supports Anope 1.8.6 to 1.8.6
+Version 1.2.0 supports Anope 1.8.6 to 1.8.6

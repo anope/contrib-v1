@@ -1,0 +1,14 @@
+Name: ns_clearaccessonreg
+Author: Switch
+Category: NickServ
+Last updated: 2007-01-19T20:52:52+00:00
+
+Description:
+This module will clear the access list when someone register
+his nick, to prevent nick steal because someone have same host.
+It has no configurable options.
+
+Limitations:
+None known
+
+Version 1.0.2 supports Anope 1.6.4

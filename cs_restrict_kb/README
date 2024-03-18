@@ -1,0 +1,14 @@
+Name: cs_restrict_kb
+Author: n00bie
+Category: ChanServ
+Last updated: 2007-01-14T14:27:47+00:00
+
+This module have been suggested by zach on [url=\"http://forum.anope.org/viewthread.php?tid=1196\"]Anope\'s Forum[/url]
+-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+[b]Description:[/b]
+
+This module will restrict the use of ChanServ KICK/BAN command by normal users against identified Services Operator and above.
+-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

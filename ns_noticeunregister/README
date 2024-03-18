@@ -1,0 +1,29 @@
+Name: ns_noticeunregister
+Author: n00bie
+Category: NickServ
+Last updated: 2008-03-26T08:30:11+00:00
+
+Original Module by SGR
+
+Update/Compiled for Anope 1.7.21 on request of network adding services configuration directives
+-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+This module have 2 configurable option.
+Copy/paste below on services.conf
+
+# NoticeUnreg [OPTIONAL]
+# Module: ns_noticeunregister
+# Define this if you want NickServ to NOTICE 
+# unregistered users when they connect. If you
+# enable this setting, NoticeUnregMsg is required.
+#
+NoticeUnreg
+
+# NoticeUnregMsg  [REQUIRED]
+# Define the message which will be
+# noticed to unregistered users.
+#
+NoticeUnregMsg \"Your nickname does not appear to be registered on this network. For more information on how to register and the benefits of registration, use the commands: /NickServ HELP and /NickServ HELP REGISTER\"
+
+# End of module: ns_noticeunregister
+
+Version 1.0.1 supports Anope 1.7.21

@@ -1,0 +1,8 @@
+Name: ns_identified
+Author: royteeuwen
+Category: NickServ
+Last updated: 2006-09-27T15:30:30+01:00
+
+It is a very simple module that lets you see if the person is identified or not. This can be very handy for people with alot of mirc bots on it, because raw isn't always correct when using it to look if a person is identified
+
+Version 1.0.1 supports Anope 1.7.16

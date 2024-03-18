@@ -1,0 +1,13 @@
+Name: cs_statusupdate
+Author: Viper
+Category: ChanServ
+Last updated: 2007-09-28T22:23:49+01:00
+
+ This module will update a users\' status on the channel when his entry on the access list is changed.
+
+ Currently this only affects the users main display nick.
+
+ Feature requested by Sausage in bs_fantasy_ext. 
+ Decided to put it in a seperate module, but has been tested to work with bs_fantasy_ext.
+
+Version 2.0 supports Anope 1.8.0

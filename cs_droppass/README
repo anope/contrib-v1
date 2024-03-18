@@ -1,0 +1,15 @@
+Name: cs_droppass
+Author: n00bie
+Category: ChanServ
+Last updated: 2007-08-13T20:15:12+01:00
+
+Using this module, user must supply a channel password in order to drop a channel. However, Services Admins can still drop channel without a password. This module use [b]BadPassLimit[/b] directive from services.conf which means that if a user failed to input the channel pasword several (BadPassLimit count) times they will be killed by services.
+====================================================================
+Providing command:
+
+/msg ChanServ DROP #channel [u]channelpass[/u]
+
+====================================================================
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

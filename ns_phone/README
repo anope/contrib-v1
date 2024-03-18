@@ -1,0 +1,19 @@
+Name: ns_phone
+Author: katsklaw
+Category: NickServ
+Last updated: 2011-07-10T21:23:36+01:00
+
+Per request from D3M0N on the forum: http://forum.anope.org/index.php?topic=3537.0
+
+This module adds Phone number and optionally provider to /ns info output
+
+-NickServ- katsklaw is katsklaw
+-NickServ- katsklaw is a services root administrator.
+-NickServ-    Is online from: katsklaw@litter.box
+-NickServ-   Time registered: Jul 40 67:29:13 1911 CDT
+-NickServ-    E-mail address: me@home.com
+-NickServ-           Options: Security, Private, Auto-op
+-NickServ- Expires on: Feb 31 26:17:30 2091 CDT
+-NickServ-       Phone: 111-111-1111 LameTel <--------------------------
+
+Version 1.0.0 supports Anope 1.8.6

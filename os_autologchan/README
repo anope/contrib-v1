@@ -1,0 +1,11 @@
+Name: os_autologchan
+Author: Syloq
+Category: OperServ
+Last updated: 2009-10-27T20:25:50+00:00
+
+This is just an adaptation of of MrStonedOnes version, but put into C++ and pretty much copied from the source.
+
+At this point I\'m sure that it works with 1.9.0_p1 and 1.9.1_p1 but no other versions have been tested. If it does work for you in other versions let me know.
+
+Version 2.1.0 supports Anope 1.9.0
+Version 2.2.0 supports Anope 1.9.1

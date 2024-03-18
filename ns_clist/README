@@ -1,0 +1,18 @@
+Name: ns_clist
+Author: n00bie
+Category: NickServ
+Last updated: 2007-07-23T05:57:34+01:00
+
+[b]Description:[/b] This module will list all the channels that are registered by you.
+
+[b]Providing commands:[/b]
+/msg NickServ HELP CLIST
+/msg NickServ CLIST
+
+[b]For Services Admin:[/b]
+/msg NickServ CLIST [u]nickname[/u]
+
+This module have no configurable option.
+Module suggested by [dx]
+
+Version 2.0.0 supports Anope 1.7.21

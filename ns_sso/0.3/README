@@ -1,0 +1,446 @@
+                  Documentation for the "ns_sso" Anope Module
+
+
+Table of Contents
+================================================================================
+
+Author & License...........................................................[1.0]
+
+What is this?..............................................................[2.0]
+ Ticket-Based Authentication for Single Sign-On............................[2.1]
+ Comprehensive Task-Based User Management..................................[2.2]
+
+Prerequisites..............................................................[3.0]
+
+Compiling and Installing...................................................[4.0]
+
+Database Configuration.....................................................[5.0]
+
+Using the Module...........................................................[6.0]
+ Creating Tickets..........................................................[6.1]
+ Task-Based User Management................................................[6.2]
+  REGISTER...............................................................[6.2.1]
+  RENAME.................................................................[6.2.2]
+  CHGPASSWD..............................................................[6.2.3]
+  CHGEMAIL...............................................................[6.2.4]
+  DROP...................................................................[6.2.5]
+  AKILLADD...............................................................[6.2.6]
+  AKILLDEL...............................................................[6.2.7]
+  Responses..............................................................[6.2.8]
+
+Configuration..............................................................[7.0]
+ SSOTicketTTL..............................................................[7.1]
+ SSOTicketOnly.............................................................[7.2]
+ SSOCallbackTimeout........................................................[7.3]
+ SSOConnectionString.......................................................[7.4]
+ SSOSiteName...............................................................[7.5]
+ SSOBaseUrl................................................................[7.6]
+
+Care for a story?..........................................................[8.0]
+
+
+[1.0] Author & License
+================================================================================
+
+Zabadab
+http://zabadab.eu/
+zabadab@zabadab.eu
+
+Portions adapted from code written by the Anope Team.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
+[2.0] What is this?
+================================================================================
+
+[2.1] Ticket-Based Authentication for Single Sign-On
+----------------------------------------------------
+
+This module originally started out because I wanted to add a new command to
+Anope: /msg NickServ TICKETIDENTIFY [Ticket]. So let's describe that first.
+
+The idea is that when having to automatically identify a user using some
+automatic command performing mechanism, instead of supplying their password,
+you supply a 128 character long ticket that is unique to this session, and is
+bound to their IP address.
+
+Imagine a Java IRC chat applet. Instead of supplying an applet parameter like
+
+,-
+| <param name="perform_command_1" value="/ns identify 2aThabut" />
+`-
+
+you use the following command instead (obviously without the line-breaks):
+
+,-
+| <param name="perform_command_1" value="/ns ticketidentify 347aNe9rephUfru
+|  fetax9hAw8a5u7rEChaFRAC2huv9ChAhuvEYuc6tRu3rep8adjuth38ewraq745z8vUS5ufU
+|  SWAtAC33HuKaPRu2hAbruYUmu5eprUJefRAthu7h4" />
+`-
+
+NickServ should then check whether the string represents a valid ticket, the IP
+address it is for, whether the nickname to identify for matches the expected
+nickname, the time the ticket was created, and whether it has already been used.
+
+If the ticket is found, the IP address matches, the nickname is correct, and
+less than 60 seconds have passed since the ticket was created, and it is unused,
+NickServ accepts the ticket, identifies the nickname, and marks it as used in
+the database.
+
+The original password was never used anywhere, and if Mallory was listening to
+your network traffic, he would not be able to impersonate you, unless he:
+
+1) Manages to connect and perform the command before you do or somehow prevents
+   you from performing the command by cutting off your network connection
+2) Manages to somehow fool Anope into thinking he is using your IP address
+3) Manages to perform 1) and 2) in under a short, user-definable interval
+
+I am not a security expert, and neither do I claim to be one, but I think that
+it is not very likely that Mallory would succeed unless he is highly determined
+to gain access, in which case you should have much larger worries about the
+security of your system.
+
+[2.2] Comprehensive Task-Based User Management
+----------------------------------------------
+
+If you want to provide an IRC server so users of your community can chat on it,
+you probably hate the fact that when someone signs up at your website, they
+still have to register a nickname with NickServ.
+
+If your community is anything like mine, IRC will probably already be
+challenging enough for your users. Someone once asked me why they had to talk
+to "a guy calling himself Nick Serf" (sic) and what my relation to him was...
+
+The solution, at the expense of annoying technical people who know how to use
+IRC even when blindfolded, is to automate the most common tasks so your website
+can instruct Anope to do them at strategic times.
+
+This module allows you to:
+
+1) Register nicknames
+2) Rename nicknames
+3) Drop nicknames
+4) Change nickname passwords
+5) Change the E-Mail address associated with a nickname
+6) Add A-Kills and suspend nicknames
+7) Remove A-Kills and unsuspend nicknames
+
+This is done through "tasks" which are read from an "irctasks" table in a
+database.
+
+Registering and dropping nicknames is synonymous to user signing up and closing
+accounts. Renaming nicknames useful in those situations where someone wants to
+change their account name as part of keeping their right to vanish(*).
+
+* See http://shii.org/knows/Usernames and http://shii.org/knows/Right_to_vanish
+
+Changing nickname passwords and the E-Mail address is synonymous to users
+modifying their profile on your website. You could probably add more tasks
+that change other things (e.g. ICQ, or Webpage), but those two should be
+enough for most cases.
+
+Adding and removing A-Kills probably sounds strange at first, but think for a
+moment; it's synonymous to you banning and unbanning users from your website.
+Hopefully, you have some sort of IP address tracking at your disposal. When you
+ban someone on your website, you can have Anope suspend their nickname and add
+an A-Kill for their IP address. When you unban them, you also remove the A-Kill
+for the IP address you banned, which will also unsuspend the nickname.
+
+While an A-Kill can obviously be circumvented by a determined nuisance, so could
+the ban on your website. In that sense, it probably provides the best protection
+you can get. If you know of anything better, let me know.
+
+
+[3.0] Prerequisites
+================================================================================
+
+* Anope 1.8.2    Not tested with any other version. Probably does not work with
+                 1.9.x because of changes to the timer APIs.
+
+* UnrealIRCd    Probably works with any decent IRCd. I only use Unreal though.
+
+* PostgreSQL    More specifically, it needs libpq. My website uses PostgreSQL,
+                so this module does too. If you use something else, have fun
+                making changes yourself. You might want to consider switching
+                to PostgreSQL if you use that sub-par MySQL bullshit. :)
+
+
+[4.0] Compiling and Installing
+================================================================================
+
+This is taken straight from the Anope documentation:
+
+    1. If modules are supported by your system, they will be configured
+       automatically when you run ./Config. The modules will be installed
+       to the modules directory in your data path (by default this will
+       be ~/services/modules).
+
+       Note: you might need to run "make distclean" prior to running ./Config
+
+    2. Compile Anope as usual. The (g)make process will now compile module
+       support into Anope, and compile the default sample modules, and/or
+       any other module located on the modules folder ("src/modules/").
+
+    3. Install Anope as usual. The install process will place the compiled
+       modules in their runtime location, making them available for loading.
+
+    4. Start or restart services to make use of the new Anope executable.
+       Note that you do not need to restart to load new or changed modules,
+       only to make use of a new Anope executable.
+
+If you are using Windows, these instructions don't apply to you. See the
+"README.win32" file instead.
+
+[5.0] Database Configuration
+================================================================================
+
+Import "schema.sql" into a PostgreSQL database. What else did you expect? :)
+
+
+[6.0] Using the Module
+================================================================================
+
+[6.1] Creating Tickets
+----------------------
+
+To use tickets, simply generate a unique 128 character token consisting of valid
+ASCII characters. For best results, use [A-Za-z0-9] and don't use spaces. Then
+insert it into the "tickets" table.
+
+An example INSERT command could look like this:
+
+,-
+| INSERT INTO tickets("UID", "Nickname", "Ticket", "HostIP") VALUES
+| (123, 'someone', '<your 128 character token here>', '127.0.0.1');
+`-
+
+Obviously, you'll want to replace the values as appropriate. "UID" is the unique
+ID of the user on your website, "Nickname" is the nickname for which the
+generated ticket may be used (otherwise a ticket could be used to identify for
+*any* nickname), "Ticket" is your unique 128 character token, and "HostIP" is
+the IP address of the user that will use the ticket to identify with NickServ.
+
+That's all you have to do. As soon as it's in the database, the user can use
+/msg NickServ TICKETIDENTIFY <your 128 character token here> to identify for
+a nickname.
+
+[6.2] Task-Based User Management
+--------------------------------
+
+New tasks are inserted into the "irctasks" table, from which the module will
+pick them up and process them. You can insert rows with the following kinds
+of tasks. They each expect different columns to have values. It should be
+pretty obvious how to use this system.
+
+[6.2.1] REGISTER
+----------------
+
+    Set                        To
+    ---                        --
+    Task                       "REGISTER"
+    Nick                       <Nickname to register with NickServ>
+    EMail                      <E-Mail address>
+    NewPassword                <Password to assign to nickname>
+    
+[6.2.2] RENAME
+--------------
+
+    Set                        To
+    ---                        --
+    Task                       "RENAME"
+    Nick                       <Old nickname>
+    NewNick                    <New nickname>
+    
+[6.2.3] CHGPASSWD
+-----------------
+
+    Set                            To
+    ---                            --
+    Task                        "CHGPASSWD"
+    Nick                        <Nickname to change password for>
+    NewPassword                    <The new password to use>
+    
+[6.2.4] CHGEMAIL
+----------------
+
+    Set                        To
+    ---                        --
+    Task                       "CHGEMAIL"
+    Nick                       <Nickname to change password for>
+    EMail                      <The new E-Mail address to use>
+
+[6.2.5] DROP
+------------
+
+    Set                        To
+    ---                        --
+    Task                       "DROP"
+    Nick                       <Nickname to drop>
+    
+
+[6.2.6] AKILLADD
+----------------
+
+    Set                        To
+    ---                        --
+    Task                       "AKILLADD"
+    Nick                       <Nickname that is being banned>
+    BanMask                    <A mask in the form user@host>
+    Reason                     <Reason for the ban>
+    
+
+[6.2.7] AKILLDEL
+----------------
+
+    Set                        To
+    ---                        --
+    Task                       "AKILLDEL"
+    Nick                       <Nickname that is being unbanned>
+    BanMask                    <The mask that was used to ban them>
+
+
+[6.2.8] Responses
+-----------------
+
+"Completed" will be set to TRUE after the module attempted to perform a task,
+regardless of whether it actually succeeded or not. "ErrorCode" will hold the
+error code returnd by the task. If everything went okay, it will be 0. The
+actual values can be found, together with comments about what they mean, in
+the "ns_sso.h" file.
+
+
+[7.0] Configuration
+================================================================================
+
+If you are in a hurry or don't like to read (congratulations on making it this
+far), these options should be pretty failsafe and will get you started.
+
+,-
+| SSOTicketTTL 60
+| SSOTicketOnly
+| SSOCallbackTimeout 60
+| SSOConnectionString "host=127.0.0.1 dbname=db user=user password=pass"
+| SSOSiteName "Example Website"
+| SSOBaseUrl "http://www.example.com/"
+`-
+
+Here are detailed explanations for every option you can set:
+
+[7.1] SSOTicketTTL
+------------------
+
+This defines the TTL (time to live) of a ticket. Tickets are no longer
+considered valid after they are older than this number of seconds. Minimum
+value is 5 seconds; I recommend anything from 30 to 60 seconds depending on
+how paranoid you are.
+
+If you set this to anything larger than 60 seconds, you're probably not doing
+yourself a favor though. Consider becoming more paranoid in this case. :)
+
+[7.2] SSOTicketOnly
+-------------------
+
+Set if you only want the TICKETIDENTIFY command, otherwise leave it out.
+
+This module also provides comprehensive user management functionality, but
+this causes it to become quite intrusive and change how NickServ works. If
+your website does not provide the correct infrastructure, you will get
+problems.
+
+If you run an IRC network and users expect services to work like everywhere
+else, you probably want to set this to 1.
+
+[7.3] SSOCallbackTimeout
+------------------------
+
+How often to poll the database for tasks to perform. Has no effect if
+SSOTicketOnly is 1. Minimum value is 10 seconds; I recommend 60.
+
+[7.4] SSOConnectionString
+-------------------------
+
+It needs to have this format. Obviously, you should substitute values as
+appropreate.
+
+,-
+| "host=127.0.0.1 dbname=database user=username password=password"
+`-
+
+[7.5] SSOSiteName
+-----------------
+
+The name of your website or IRC network.
+
+[7.6] SSOBaseUrl
+----------------
+
+The URL to your website. Unused if SSOTicketOnly is 1.
+
+
+[8.0] Care for a story?
+================================================================================
+
+To understand my motivation behind creating this module (especially the
+TICKETIDENTIFY command) please enjoy reading the following story.
+
+I run a website. Many moons ago, I wanted to provide a decent chat service to
+my users. I know that I could have just called it a day by slapping a Java
+IRC Chat applet on my website and registering a channel on some large IRC
+Network, but I did not want to do this.
+
+Using someone else's services means that you're subjected to their rules, and
+you have to do things their way. In particular, I did not want my users to be
+subjected to random oper-abuse as is common on Rizon -- the IRC network I was
+on at the time. Besides that though, there was a much simpler reason why I did
+not want to use any existing IRC networks: people being unable to use their
+usernames as nicknames because someone else has already taken them. I really
+wanted some sort of unified user management, where signing up to my community
+meant your NickServ registration was done in the background and ready for use
+as soon as you wanted to chat.
+
+So I decided the best thing to do was to set up my own IRC server using Unreal
+and Anope. I had never administered an IRC server before so I was obviously cut
+out for the job of being an IRCop. :) My own IRC server ran for a couple of
+months. I read all the documentation I could find, and studied the source code
+of both Unreal and Anope to learn how they worked internally. I eventually
+created a setup that was close to perfect for me and my community.
+
+Nickname registration, dropping, E-Mail and password changes, etc. were all
+handled through a bot that called commands I hacked into Anope's source code. I
+did not know how to program C back then (I knew C#, but that's a different world
+altogether), so in the beginning, there were memory leaks, and segmentation
+faults, and other bugs. I eventually sat down to learn C and then fixed up the
+code. Life was good.
+
+Usage was not too high (50-60 people at peak times), but it worked. Until one
+day someone's account started to get compromised. Then another, and another, and
+so on. What happened was that several people were visiting my website in
+Internet Cafés, and since they used the web-based chat (which had a
+"/msg NickServ IDENTIFY [password]" command in the HTML source so the applet
+would auto-identify people), someone was able to intercept their passwords and
+then abuse their accounts.
+
+I turned off the IRC applet shortly after I found out what was going on, and
+no major harm was done (only stupid children's pranks like a bit of spam). But
+sadly, without an IRC applet, many people found it difficult to chat on my
+server. My community is not full of technophiles, so setting up an IRC client
+is challenging for them. The server's user count soon diminished to five or ten
+people, and eventually people just reverted to using other means to chat.
+
+I hope it's now understandable what this module is for. It's not for everyone,
+but for a certain niche, it will have its uses.
+
+- Zabadab

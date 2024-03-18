@@ -1,0 +1,29 @@
+Name: ns_vhost
+Author: aragon
+Category: NickServ
+Last updated: 2009-08-26T21:25:35+01:00
+
+This is a very simplified version of HostServ implemented mostly in NickServ.  It allows users to simply set whatever vhost they like by running:
+
+/msg NickServ SET VHOST myvhost.com
+
+There is no approval process nor oper intervention (on purpose), however, opers are able to saset user vhosts and this module adds an fvhost (forbidden vhost) command to operserv for keeping a list of unwanted or offensive vhosts (* and ? wildcards supported).
+
+This module does not set the ident part at all like HostServ does.  That is left up to the user to configure in their IRC client.  To further prevent/dissuade abuse this module throttles how often a user may change his/her vhost.
+
+The reason I wrote this was I didn\'t like the oper intervention needed with HostServ, and didn\'t think it was necessary to have another pseudo-client just for setting vhosts.  I\'d like vhost selection to be as easy and open as choosing a nick, while hopefully not creating chaos.
+
+Module is written for Anope 1.8 and tested on 1.8.2 and Unreal 3.2.8.  It should work on any ircd that has CHGHOST or similar support, namely:
+* Unreal 3.x
+* Inspircd 1.1
+* Viagra
+* Ultimate 2
+* Solidircd
+* Shadowircd
+* Rageircd
+
+I learnt a lot to make this module by reading Jan\'s ns_ajoin code.  Thanks Jan!
+
+This module should be placed in ModuleDelayedAutoload.
+
+Version 0.2 supports Anope 1.8.2

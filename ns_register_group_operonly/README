@@ -1,0 +1,12 @@
+Name: ns_register_group_operonly
+Author: ScoopFinder
+Category: NickServ
+Last updated: 2008-05-10T09:45:43+01:00
+
+This module will restrict the NICKSERV REGISTER and GROUP commands to IRCops.
+It\'s really useful if you want to allow the register command only from a website with a sock.
+
+[ENGLISH and FRENCH version]
+
+Version 1.0.0 supports Anope 1.7.21
+Version 1.1 supports Anope 1.7.21

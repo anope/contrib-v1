@@ -1,0 +1,240 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###-------------------------------------- bs_fantasy_ext ---------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+---------------------------------------------------------------------------------------------
+
+Module Name   : bs_fantasy_ext
+Author        : Viper <Viper@Absurd-IRC.net>
+Date          : 16/04/2006 (Last update: 01/07/2007)
+Last edited   : 17/06/2007
+
+URL           : http://modules.anope.org/viewmod.php?id=61 
+Forums        : http://forum.anope.org/viewthread.php?tid=312
+
+This Version  : 1.1.12
+Up-to-Date with Anope 1.7 Revision 1251
+
+---------------------------------------------------------------------------------------------
+
+Requires      : Anope 1.7.18
+Recommended   : Anope 1.7.19 or higher
+Tested        : Anope 1.7.19 + UnrealIRCd 3.2.6 (Should work on any IRCd)
+
+---------------------------------------------------------------------------------------------
+
+Description:
+-------------
+This module can add commands to the botserv fantasy engine, as well as override some of the
+allready present commands to extend their functionality.
+This module combines some functions of the old bs_fan, bs_fantasy and bs_moremodesperline,
+while adding some new features as well. The more modes per line functionality allows up to
+6 users on one line (for example: !op user1 user2 user3 user4 user5 user6).
+A new feature added in Version 1.1.11 is a more complex implementation of kickban.
+For example: !kb *@*.be will add a ban on *!*@*.be and kick all users matching the ban.
+If a user is present who matches the gives host and is protected, the process will be aborted.
+Another new feature, added in Version 1.1.12 is an implementation of !tb(an) and !tkb. Both
+of these work similar to the new implementation of !kb. Therefor use of thus module in 
+combination of bs_fantasy_tb should be discouraged, except when this modules' !tb is disabled
+in the config.h before compiling the module. (On windows you would have to compile the 
+module manually.)
+
+Unlike previous versions of these modules, this module has been written for 
+Anope1.7.x and higher and will NOT work on any version pre 1.7.16. There will not be 
+made a version made for the older 1.6 branche since this branch will become to outdated 
+when 1.7 becomes stable. Also, this module has been created to replace the old module that
+allready existed for the 1.6 branch, this one though has slightly different options and cmds.
+Except for the latest development version of Anope, this module comes 'as is', meaning i do
+not officially support this modules with any other version of Anope then the latest 1.7 release.
+I will not offer any support either if you have RAW enabled on your network (so don't even 
+bother asking).
+
+This module no longer uses a lot of code from SGR's original bs_fantasy module, nor from
+ProjectDEAD's original bs_fan module code, though many of the ideas are based on theirs.
+Therefor the credit for coming up with many of the ideas goes to them.
+There are on the other hand entire code blocks that were copied with minimal changes 
+from the Anope core so a lot of the credit goes the Anope Development crew.
+I also want to thank Rob (actually the entire Dev Crew) for helping me through some hard
+parts during development and especially Trystan, who did a wonderful job helping me out with 
+some of my memory leak problems and crashbugs.
+
+
+---------------------------------------------------------------------------------------------
+
+Installation:
+--------------
+
+Please see INSTALL.
+
+---------------------------------------------------------------------------------------------
+
+Translation:
+-------------
+
+If you are willing to translate this module into a language that is not yet available, 
+please get in touch with me on IRC (irc.anope.org #anope) and will tell you what exactly you
+have to do. It is not hard, you don't need coding skills of any kind, just a bit of patience.
+
+If you have allready made a translation and are willing to share it, mail the <language>.c file
+to me at Viper@Absurd-IRC.net and it will be added in the next release.
+
+---------------------------------------------------------------------------------------------
+
+Contact:
+---------
+
+I (Viper) can be contacted through mail at Viper@Absurd-IRC.net or through IRC on YOURnet 
+(irc.anope.org #anope). I prefer people contacting me on YOURnet and please ask me before 
+PM'ing me for a simple question, other people in the channel might be able to answer as well.
+I also watch the Anope forums ( http://forum.anope.org ), so if there is any problem and you
+can't reach me on IRC, please try using the forums before mailing me.
+
+If you think you found a bug in my module, either post it on the forums, in the thread
+related to this module in the section Modules or mail me the details. Pleas do NOT bother
+the Anope Development crew with bugs in this module as they are NOT resposible for something
+they did not write and prefer modules to be maintained by their authors.
+
+---------------------------------------------------------------------------------------------
+
+Supported Commands:
+--------------------
+
+	Regular Commands
+	
+		!cmdlist
+		!help
+		!help [cmd [param]]
+
+		!modinfo
+		!sversion
+
+		!clear MODES
+		!clear BANS
+		!clear EXCEPTS
+		!clear INVITES
+		!clear OPS
+		!clear HOPS
+		!clear VOICES
+		!clear USERS
+
+		!sop add [nick]
+		!sop del [nick|entry-num|list]
+		!sop list [mask|list]
+		!sop clear
+		!aop add [nick]
+		!aop del [nick|entry-num|list]
+		!aop list [mask|list]
+		!aop clear
+		!hop add [nick]
+		!hop del [nick|entry-num|list]
+		!hop list [mask|list]
+		!hop clear
+		!vop add [nick]
+		!vop del [nick|entry-num|list]
+		!vop list [mask|list]
+		!vop clear
+
+		!access add [nick] [level]
+		!access del [nick|entry-num|list]
+		!access list [mask|list]
+		!access clear
+
+		!levels set [type] [level]
+		!levels {dis|disable} [type]
+		!levels list
+		!levels reset
+
+		!akick add [mask] [reason]
+		!akick {stick|unstick} [mask]
+		!akick del [mask]
+		!akick {list|view} [mask]
+		!akick enforce
+		!akick clear
+
+		!badwords add [word] {single|start|end|any}
+		!badwords del [word|entry-num|list]
+		!badwords list [mask|list]
+		!badwords clear
+
+		!set founder [nick]
+		!set successor [nick]
+		!set desc [description]
+		!set email [email]
+		!set url [url]
+		!set entrymsg [message]
+		!set bantype [0|1|2|3]
+		!set mlock [modes]
+		!set keeptopic [on|off]
+		!set topiclock [on|off]
+		!set opnotice [on|off]
+		!set peace [on|off]
+		!set private [on|off]
+		!set restricted [on|off]
+		!set secure [on|off]
+		!set secureops [on|off]
+		!set securefounder [on|off]
+		!set signkick [on|off]
+		!set xop [on|off]
+		!set noexpire [on|off]
+		
+		!set dontkickops [on|off]
+		!set dontkickvoices [on|off]
+		!set greet [on|off]
+		!set fantasy [on|off]
+		!set symbiosis [on|off]
+		!set nobot [on|off]
+		
+		!bkick bolds [on|off] [ttb]
+		!bkick badwords [on|off] [ttb]
+		!bkick caps [on|off] [ttb [min [percent]]]
+		!bkick colors [on|off] [ttb]
+		!bkick flood [on|off] [ttb [ln [secs]]]
+		!bkick repeat [on|off] [ttb [num]]
+		!bkick reverses [on|off] [ttb]
+		!bkick underlines [on|off] [ttb]
+
+		!topic [topic]
+
+		!appendtopic [topic text]
+		!tappend [topic text]
+
+		!invite [nick]
+
+		!ircops | !staff
+		!admins
+
+		!up [nick]
+		!down [nick]
+
+		!minfo
+		!sversion
+
+		!ban [nick|mask]
+		!tban [nick|mask] [time]
+		!mute
+		!unmute
+		!kb [nick|mask] [reason]
+		!tkb [nick|mask] [time] [reason]
+
+		!info
+
+
+	Services Opers/Admins Commands:
+
+		!kill [nick] [reason]
+		!mode [mode(s)]
+
+		!akill add [+expiry] mask reason
+		!akill del {mask | entry-num | list}
+		!akill view [mask | list]
+		!akill clear
+
+		!ignore add [time] [nick]
+		!ignore del [nick]
+		!ignore list
+		!ignore clear
+
+
+---------------------------------------------------------------------------------------------

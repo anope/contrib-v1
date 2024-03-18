@@ -1,0 +1,25 @@
+Name: cs_inhabit_registered
+Author: Viper
+Category: ChanServ
+Last updated: 2008-04-02T21:35:22+01:00
+
+This module will make ChanServ join all registered channels and optionally unassign all botserv bots if only one services client is allowed per channel.
+Unlike the other alternatives that join services clients to channels, this module will honor the BSMinUsers configuration directive. This means that when the botserv bots leave the channel (when no real users are left or the usercount drops below  BSMinUsers) ChanServ will also leave. This should eliminate the main disadvantage of modules like ircd_init and cs_join which cause desyncs which in turn can break commands like chanserv invite.
+In addition it will also honor the NOBOT setting.
+
+[u]THIS MODULE CAN NOT BE USED IN COMBINATION WITH OTHER SIMILAR MODULES.[/u]
+More precisely: any module that also joins ChanServ into a channel.
+Examples are ircd_init and cs_join (there may be more..)
+This module will work with, but will be unsupported in combination with bs_logchanmon, ircd_gameserv and any other modules that put services clients in channels without honoring BSMinUsers restrictions.
+If used in combination with serv_inhabit, the chanserv inhabit command of serv_inhabit will be disabled.
+Also note that it shares the OneClientPerChan configuration directive.
+
+The module will also not load if RAW is enabled or loaded.
+If the module refuses to load because any of above modules is also loaded, cs_inhabit_registered needs to be recompiled in unsupported mode.
+Undefine or comment out the \"SUPPORTED\" setting in the configuration section of the source to do this.
+
+Note that I DO NOT RECOMMEND USING THIS MODULE since it is my opinion that the only services clients that ever need to be in a channel are botserv bots, any others are purely out of vanity.
+
+Version 1.0 supports Anope 1.7.21
+Version 1.1 supports Anope 1.8.2
+Version 1.2 supports Anope 1.8.5

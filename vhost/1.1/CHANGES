@@ -1,0 +1,71 @@
+Short handles explained:
+	A = Added
+	C = Changed
+	F = Fixed
+	R = Removed
+
+vhost Version 1.1
+--------------------
+03/05/10	C	Updated INSTALL and README, prepare for public release.
+03/05/10	C	Prepared flag related functions for future exception_t_ enhancements.
+03/05/10	C	CONFIG SHOW to CONFIG LIST.
+03/05/10	C	Internal storage of config flags.
+03/01/10	A	Proper credits for spanish translation
+02/28/10	A	New config directives to CONFIG SHOW.
+02/28/10	F	Crash on startup.
+02/28/10	A	Check for still loaded hs_request module.
+02/28/10	A	Nick, realname and channel directive to config parser.
+02/28/10	A	Botserv client checks for vhost settings.
+02/28/10	C	Renamed vHostServ to vhost, module exists for Anope-1.9.x now by another author.
+02/28/10	A	Check for ip cloaking support om init.
+02/28/10	C	Use Anope default host and umodes settings.
+02/23/10	A	NS INFO shows exemption now.
+02/23/10	F	Database backup not working.
+02/23/10	F	Dangling pointer.
+04/05/09	A	hs_request.exempt.db
+04/05/09	F	Unfree'd memory.
+04/04/09	F	Delayed segmentation fault caused by incorrect handling of stored module data.
+03/20/09	A	Exception notice to request entry listing.
+03/14/09	C	Updated gTLD list.
+03/08/09	F	Crash in exempt_db.c deleteException().
+03/08/09	F	Nick drop didn't clear exception list.
+03/08/09	A	Syntax output to regex and exception.
+03/07/09	A	Exception list.
+03/07/09	F	Show vhost removal due to drop/forbid/expire events in channel .
+03/01/09	R	Dependency on own regex.c flavor.
+03/01/09	A	Unreliable auto-reject of the last rejected host.
+02/28/09	A	Vhost activation triggers requestdelay.
+02/28/09	A	Activation notices and denyidentupdate info.
+07/30/08	C	Duration format for '!vhost waiting'.
+07/30/08	F	Multilanguage support.
+07/30/08	A	Spanish/Hungarian/German translations.
+07/30/08	A	Auto-activate requests that reset idents; example: some@vhost.there -> *@vhost.there
+07/30/08	A	Config option to deny requests that only change the ident value.
+07/30/08	A	Auto-activate request if a grouped nick already has it.
+07/30/08	F	Remove current request if new request matches currently set vhost.
+07/30/08	C	Do not memo user if he's online, notice him instead. 
+07/20/08	F	Userlanguage affecting channel announce language.
+07/17/08	A	Reason can be given when activating a request.
+07/17/08	A	Check request against grouped nicks; activate if a match is found.
+04/08/08	C	Merge from branches\wildcard.
+04/03/08	F	Displaymax did not work after the first request wasn't shown.
+04/02/08	F	Memory leak in regex routines.
+02/12/08	C	ACTALL/REJALL: '*' no longer works for less than 2 open requests.
+01/04/08	C	Allow '*@host' requests.
+01/04/08	A	New gTLDs.
+12/20/07	F	Compiler warnings.
+11/19/07	A	IRCD handler for KICK event.
+
+vhostserv Version 1.0
+--------------------
+Incomplete initial change log (compared to original hs_request)
+	A	commands to /hs and !vhost: actall, rejall [reason], shortcuts w, a and r for waiting, activate and reject.
+	A	command to /hs: config, read /hs help config for instructions.
+	A	internal regex list for stopping forbidden vhost requests.
+	A	vhost bot, reporting everything happening around vhosts
+	A	timer showing open vhost requests in the channel, delay defaults to 3600s = 1 hour
+	F	virtual hostname can actually be 63 chars long now instead of 62.
+	F	missing check for services admins. Dropping another users nick would
+		1) not remove that nicks request from db
+		2) instead remove the SA's request if there was one.
+	C	auto set vhost to user on activation, no more memo with '/hs on' instructions

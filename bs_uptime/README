@@ -1,0 +1,10 @@
+Name: bs_uptime
+Author: n00bie
+Category: BotServ
+Last updated: 2007-06-14T11:50:51+01:00
+
+[b]Description:[/b] BotServ fantasy command [b]!uptime[/b] providing/displaying services uptime on a channel.
+
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

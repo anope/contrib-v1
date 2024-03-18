@@ -1,0 +1,15 @@
+Name: ns_fingerprint
+Author: DukePyrolator
+Category: NickServ
+Last updated: 2009-07-04T06:35:30+01:00
+
+this module uses your ssl fingerprint to autoidentify a nick with nickserv by using nickserv\'s access list.
+
+[b]Reqirements:[/b]
+ - inspircd 1.2 or inspircd 2.0
+
+for more informations look at the [url=\"http://forum.anope.org/index.php?topic=2689.msg15385\"]forum[/url]
+
+Version 0.6 supports Anope 1.9.1
+Version 0.8 supports Anope 1.9.2
+Version 0.9 supports Anope 1.9.2

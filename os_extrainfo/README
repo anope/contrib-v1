@@ -1,0 +1,19 @@
+Name: os_extrainfo
+Author: n00bie
+Category: OperServ
+Last updated: 2007-08-17T17:47:50+01:00
+
+This module will display extra info for nicknames and channels. The info command if given with a [b]nickserv[/b] param will display [u]total[/u] registered, forbidden, noexpired, private, suspended and unconfirmed nicknames. Likewise, if given with a [b]chanserv[/b] param will display [u]total[/u] registered, forbidden, noexpired, private and suspended channels.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Providing command:[/b]
+
+/msg OperServ INFO {nickserv|chanserv}
+/msg OperServ HELP INFO
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Module requested by a friend.
+Lots of thanks to Viper ^^
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.18
+Version 2.0.0 supports Anope 1.7.21

@@ -1,0 +1,31 @@
+Name: bs_911
+Author: andrewgeek
+Category: BotServ
+Last updated: 2009-02-26T16:37:33+00:00
+
+Adds !911 to botserv bots.
+
+If a user needs an oper badly they could type !911 to notify the opers. When a user types !911 it will tell them help is coming, and alert the opers in the oper channel. 
+
+
+Before you compile this module, make sure you set
+#define operchan \"#opers\"
+to the channel you would like to be notified in.
+
+
+----- In user\'s channel -
+
+AndrewMBP- !911
+HelpServ- andrewMBP, all online opers have been alerted. Help should arrive soon.
+
+----- In #opers -
+*HelpServ* ATTENTION! Help is needed in #andrew! User: andrewMBP
+
+
+NOTE: 1.1 got messed up. DO NOT USE IT!
+
+
+In the beginning of bs_911.c, you can change the channel it announces in. 
+
+Version 1.0 supports Anope 1.8.0
+Version 1.2 supports Anope 

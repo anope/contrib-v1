@@ -1,0 +1,53 @@
+Name: bs_fantasy_ext
+Author: Viper
+Category: BotServ
+Last updated: 2006-10-23T22:39:30+01:00
+
+This module adds commands to the botserv fantasy engine, as well as override some of the already present commands to extend their functionality.
+
+This module combines some functions of the old bs_fan, bs_fantasy and bs_moremodesperline, while adding several new features as well. The more modes per line functionality allows multiple users on one line (for example: !op user1 user2 user3 user4 user5 user6). Additionally, instead of users it will also accept masks (eg: !voice user1 *@mask1 *@mask2).
+
+Among new features in this module are:
+- A more complex implementation of kickban.
+For example: !kb *@*.be will add a ban on *!*@*.be and kick all users matching the ban. If a user is present who matches the gives host and is protected, the process will be aborted.
+
+- Support for !tb(an) and !tkb. Both of these work similar to the new implementation of !kb.
+
+- !down command accepting a target level.
+
+- and many more. See the command list in the modules README.
+
+Unlike previous versions of these modules, this module has been written for Anope1.8.x and will not be adapted for older or for newer versions. Anope-1.9 will have build-in support for fantasy commands for all regular chanserv commands eliminating the need for this module.
+
+Among Available Commands are:
+  - complete and extended !help and !cmdlist
+  - !clear
+  - !xop (sop/aop/hop/vop)
+  - !access & !levels
+  - !akick
+  - !badwords
+  - !set  (Combines both ChanServ and BotServ settings)
+  - !bkick  (Modified BotServ kick settings)
+  - !topic, !appendtopic & !rappend
+  - !staff & !admins
+  - !up / !down
+  - !ban, !mute/!unmute
+  - !kb (With extended capabilities)
+  - !tb and !tkb
+
+And for Opers Only:
+  - !kill
+  - !akill
+  - !ignore
+
+And many more...
+
+Version 1.1.11 supports Anope 1.7.18
+Version 1.1.12 supports Anope 1.7.18
+Version 1.1.13 supports Anope 1.7.21
+Version 1.1.14 supports Anope 1.7.21
+Version 1.1.15 supports Anope 1.7.21
+Version 1.1.16 supports Anope 1.7.21
+Version 1.2.0 supports Anope 1.8.2
+Version 1.4.0 supports Anope 1.8.7
+Version 1.4.1 supports Anope 1.8.8

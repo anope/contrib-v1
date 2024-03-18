@@ -1,0 +1,11 @@
+Name: os_modreload
+Author: mokkori
+Category: OperServ
+Last updated: 2008-08-07T14:07:18+01:00
+
+Reloads a loaded module.
+
+For an Anope-1.9.0 version search for os_mreload by Taros.
+
+Version 1.0 supports Anope 1.7.21
+Version 1.1 supports Anope 1.8.0

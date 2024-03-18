@@ -1,0 +1,14 @@
+Name: cs_peek
+Author: Katlyn
+Category: ChanServ
+Last updated: 2009-05-13T20:26:17+01:00
+
+Adds the PEEK command to ChanServ.
+
+Enables channel operators and network staff to view information about a channel without being in it. Staff overrides (peeking channels they do not have access in) are logged.
+
+Services opers+ are considered staff, along with users with auto op access in the defined \'OVERRIDE_CHAN\'.
+
+This command is based on the PEEK command found in srvx.
+
+Version 1.0 supports Anope 1.7.17

@@ -1,0 +1,63 @@
+Name: os_say_act
+Author: gurumadmat
+Category: OperServ
+Last updated: 2011-10-06T07:21:12+01:00
+
+/* 
+ *  ---------------------------------------------------------------
+ *  Name:           os_say_act
+ *  Description:    Allows users with CA_SAY rights to act or say via
+ *                  the service of choice on specified channel.
+ *  Author:         GuruMadMat <gurumadmat@gmail.com>
+ *  Date:           04/Oct/2011
+ *  Version:        1.0
+ *  Commands Added: /msg OperServ Say [Service] [#Channel] [Message]
+ *  Commands Added: /msg OperServ Act [Service] [#Channel] [Message]
+ *  ---------------------------------------------------------------
+ *  ---------------------------------------------------------------
+ *  Releases:
+ *  1.0   -  First public release to Anope Modules Site.
+ * 
+ */
+#RestrictServicesSay [OPTIONAL]
+# Module: Os_say_act
+#
+# This Directive makes it possible to restrict some services from being used in OperServ Say Command.
+# List Services that you like to restrict from being used with this command.
+# Comment this line to allow all!
+#
+
+RestrictServicesSay ""
+
+#RestrictServicesAct [OPTIONAL]
+# Module: Os_say_act
+#
+# This Directive makes it possible to restrict some services from being used in OperServ Act Command.
+# List Services that you like to restrict from being used with this command.
+# Comment this line to allow all!
+#
+
+RestrictServicesAct ""
+
+#RestrictAllSay [OPTIONAL]
+# Module: Os_say_act
+#
+# This Directive makes it possible to restrict the use of ALL in OperServ Say Command.
+# 
+# Comment this line to allow all!
+#
+
+RestrictAllSay
+
+#RestrictAllAct [OPTIONAL]
+# Module: Os_say_act
+#
+# This Directive makes it possible to restrict the use of ALL in OperServ Act Command.
+# 
+# Comment this line to allow all!
+#
+
+RestrictAllAct
+
+
+Version 1.0 supports Anope 1.8.6 to 1.8.6

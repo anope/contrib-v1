@@ -1,0 +1,10 @@
+Name: ircd_confinfo
+Author: katsklaw
+Category: Other
+Last updated: 2008-02-19T23:27:57+00:00
+
+This module allows users to view certain, non-critical information about Services configuration as well as IRCops and admins to view information about services configuration.
+
+Version 2.4 supports Anope 1.8.3
+Version 2.5 supports Anope 1.7.21 to 1.8.5
+Version 2.6 supports Anope 1.7.23 to 1.8.7

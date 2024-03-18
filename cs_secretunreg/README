@@ -1,0 +1,12 @@
+Name: cs_secretunreg
+Author: katsklaw
+Category: ChanServ
+Last updated: 2011-04-12T21:54:05+01:00
+
+This module was requested by DragonRyder.
+http://forum.anope.org/index.php?topic=3429
+
+This module sets all unregistered channels +s when a user joins.
+
+Version 1.0.0 supports Anope 1.8.0 to 1.8.5
+Version 1.0.1 supports Anope 1.7.21 to 1.8.5

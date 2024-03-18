@@ -1,0 +1,18 @@
+Name: cs_uinvite
+Author: TheKing
+Category: ChanServ
+Last updated: 2009-04-11T15:16:26+01:00
+
+This module allows a user to invite themselves or other users to a channel, unlike /cs invite, where you can only invite yourself.
+
+You MUST have INVITE access on the channel you are inviting you/others into.
+
+Syntax: /cs uinvite user #channel.
+
+This module has been tested with Anope 1.8.0 and Anope 1.8.0-rc1. Please leave me a comment if it works on any other revisions.
+
+Any problems with the module, leave me a comment.
+
+This module has no configurable option.
+
+Version 1.0.0 supports Anope 1.8.0

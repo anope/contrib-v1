@@ -1,0 +1,14 @@
+Name: enc_switchover
+Author: Viper
+Category: Other
+Last updated: 2007-08-25T13:42:11+01:00
+
+This module allows users to migrate their databases from one encryption method to another (or none). For example to migrate from the broken md5 implementation to the newer correct implementation. 
+The module supports switching between all available encryption type and when switching from no encryption to any encryption, the migration is instantaneous. In all other circumstances, the process is done gradually.
+
+[b]!!! READ THE DOCUMENTATION IN THE MODULE (*NIX) OR IN THE README (WIN32) BEFORE LOADING !!![/b]
+
+[b]Feedback on this module is needed.. (positive/negative..)[/b]
+
+Version 1.0 supports Anope 1.7.21
+Version 1.2 supports Anope 1.8.4 to 1.8.5

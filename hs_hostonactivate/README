@@ -1,0 +1,8 @@
+Name: hs_hostonactivate
+Author: royteeuwen
+Category: HostServ
+Last updated: 2006-11-10T16:54:30+00:00
+
+This modules makes it so that when someone does /hs activate, that it auto does /hs on for the nick in question
+
+Version 1.0 supports Anope 1.7.16

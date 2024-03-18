@@ -1,0 +1,19 @@
+Name: ns_sidentify
+Author: n00bie
+Category: NickServ
+Last updated: 2007-08-25T11:49:52+01:00
+
+Kill another user who has taken your nick and regain custody of your nick. This module allows you to recover your nickname if someone else has taken it. When you give this command, services will disconnect the other user and will automatically change your nick to the [b]sidentified[/b] nick. After giving the command, identifying to NickServ is not necessary.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Providing Command:
+
+/msg NickServ HELP SIDENTIFY
+/msg NickServ SIDENTIFY nickname [password]
+/msg NickServ SID nickname [password]
+
+Tested: 1.7.19, Unreal3.2.7
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Module suggested by Steven_elvisda
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.21

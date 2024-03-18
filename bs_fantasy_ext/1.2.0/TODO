@@ -1,0 +1,25 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###-------------------------------------- bs_fantasy_ext ---------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+####
+# Module Name   : bs_fantasy_ext
+# Author        : Viper <Viper@Anope.org>
+# Last Edited   : 24/01/2009
+###
+
+---------------------------------------------------------------------------------------------
+
+TODO:
+------
+ - add dutch translation... translations are always welcome
+	(someone was going to do this for me (boring), but haven't heard from him...)
+ - Update help system to no longer show commands if users do not have access to them. (???)
+	--> not sure whether this is worth the trouble.. it would cause the help to be 
+		different, depending on which channel the command is given. Might cause too much confusion.
+		Any input on this is appreciated, though atm, i tend more to not implementing it.
+ - fix possible bugs as they pop up
+
+---------------------------------------------------------------------------------------------

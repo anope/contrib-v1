@@ -1,0 +1,10 @@
+Name: cs_migrate_german
+Author: DNS
+Category: ChanServ
+Last updated: 2009-10-05T05:28:45+01:00
+
+Little update for: http://modules.anope.org/viewmod.php?id=175
+
+Added entry to the ChanServ help list and a german translation.
+
+Version 1.0.11 supports Anope 1.8.0

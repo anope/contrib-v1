@@ -1,0 +1,23 @@
+Name: os_restrictmode
+Author: n00bie
+Category: OperServ
+Last updated: 2008-03-26T08:35:10+00:00
+
+Limit the use of OperServ MODE command on channels.
+
+-=-=-=-==-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Installation/Usage:
+Copy/Paste below on services.conf
+
+# RestrictOSMode  [REQUIRED]
+# Module: os_restrictmode
+#
+#	Use this to define channels where
+#	the use of OperServ MODE command
+#	will be restricted.
+#
+RestrictOSMode \"#chan1 #chan2 #chan3 #etc.\"
+
+# End of module: os_restrictmode
+
+Version 2.0.0 supports Anope 1.7.21

@@ -1,0 +1,16 @@
+Name: ns_noexpire
+Author: n00bie
+Category: NickServ
+Last updated: 2007-01-23T14:22:42+00:00
+
+This module provides NickServ [b]NOEXPIRE[/b] settings for normal registered users. Ideas and requested by don_will
+====================================================================
+[b]Providing Commands:[/b]
+
+/msg NickServ SET NOEXPIRE {ON | OFF}
+/msg NickServ HELP SET NOEXPIRE
+====================================================================
+This module have no configurable option.
+
+Version 1.0.1 supports Anope 1.7.21
+Version 2.0.0 supports Anope 1.7.21

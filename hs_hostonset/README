@@ -1,0 +1,8 @@
+Name: hs_hostonset
+Author: royteeuwen
+Category: HostServ
+Last updated: 2006-11-15T12:31:55+00:00
+
+This module makes it possible that when you set a vhost for someone that it auto puts it on for the nick,so that the nick itself does not have to type /hs on
+
+Version 1.0 supports Anope 1.7.16

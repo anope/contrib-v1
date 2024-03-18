@@ -1,0 +1,17 @@
+Name: ms_chanowner
+Author: n00bie
+Category: MemoServ
+Last updated: 2007-08-10T08:36:15+01:00
+
+This module is a re-coded module previously known as [b]ms_coowner[/b] module by Keeper. Using this module Services Admins can send a memo-text to all the channel founders on the network.
+====================================================================
+Providing commands for Services Admin:
+
+/msg MemoServ CHANOWNER [u]memo-text[/u]
+/msg MemoServ HELP CHANOWNER
+====================================================================
+Original Ideas by Keeper (ms_coowner.c)
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.18
+Version 1.0.1 supports Anope 1.7.21

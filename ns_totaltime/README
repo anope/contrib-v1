@@ -1,0 +1,23 @@
+Name: ns_totaltime
+Author: ysfm
+Category: NickServ
+Last updated: 2009-12-01T17:31:22+00:00
+
+ ns_totaltime
+
+ This module record user total online time 
+
+ And show user\'s total time on ns info:
+ eg.
+
+-NickServ- ysfm is currently online.
+-NickServ- For more verbose information, type /msg NickServ INFO ysfm ALL.
+-NickServ-       	 Total Online Time: 1 days 1 hours 0 secs ve 52 mins.
+
+ Some code taken from ns_ajoin by Viper 
+
+ Pls edit checkreg.
+
+ Forum link http://forum.anope.org/index.php?topic=2918
+
+Version 1.0 supports Anope 1.8.0

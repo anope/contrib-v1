@@ -1,0 +1,8 @@
+Name: cs_register_operonly
+Author: Viper
+Category: ChanServ
+Last updated: 2006-10-21T12:16:33+01:00
+
+This module will restrict the CHANSERV REGISTER command to IRCops.
+
+Version 2.0 supports Anope 1.8.0

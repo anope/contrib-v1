@@ -1,0 +1,15 @@
+Name: os_nofakelag
+Author: Cronus
+Category: OperServ
+Last updated: 2012-09-29T05:34:35+01:00
+
+Enable nofakelag on a user on unrealircd
+
+
+Config options
+
+module { name = "os_nofakelag" }
+command { service = "OperServ"; name = "NOFAKELAG"; command = "operserv/nofakelag"; permission = "operserv/nofakelag"; }
+
+Version 1.0 supports Anope 1.9.7 to 1.9.7
+Version 1.1 supports Anope 1.9.7

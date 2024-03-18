@@ -1,0 +1,25 @@
+Name: os_psuedo_cont
+Author: THX1138
+Category: OperServ
+Last updated: 2009-05-20T16:32:52+01:00
+
+Name: os_psuedo_cont \"operserv psuedoclient controller\"
+ReCoder: THX1138 
+Date: 05/20/2009
+
+Base of this module is derived from two seperate modules. 
+os_client.c by: mastergamer - editable psuedoclients
+os_clientjoin.c by: SGR - mass services join/part
+
+Allows IRCops to create/join/part/delete psuedoclients
+Syntax: CLIENT (JOIN|PART) #chan // note: also works for services/botserv bots 
+Syntax: CLIENT ADD nick ident host realname    
+Syntax: CLIENT DEL nick - deletes a psuedoclient  // core services are protected
+Syntax: CLIENT (SJOIN|SPART) #chan - mass-join/part services psuedoclients
+Syntax: CLIENT (BSJOIN|BSPART) #chan - mass-join/part botserv psuedoclients
+Services clients have been protected from this module and cannot be deleted.
+  
+TESTED ON: Anope 1.8.0 - Unreal3.2.8.1  
+No other versions known to be supported.
+
+Version 0.2.0 supports Anope 1.8.0

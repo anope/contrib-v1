@@ -1,0 +1,22 @@
+Name: cs_denyregchan
+Author: n00bie
+Category: ChanServ
+Last updated: 2006-09-28T23:51:58+01:00
+
+Tested: Anope-1.7.13, 1.7.14, 1.7.15, 1.7.17, 1.7.18
+=================================================================
+[b]Description:[/b]
+
+This module will restrict channel registration for a particular channel.
+=================================================================
+This module have been requested by netstat on [url="http://forum.anope.org/viewthread.php?tid=781#pid4300"]Anope's forum[/url].
+=================================================================
+[b]Usage / Configuration:[/b]
+
+This module have 1 configurable option. Open this file 'cs_denyregchan' and define the channel you wanted to restrict for registration.
+
+#define DenyRegChan "#Channel"
+=================================================================
+
+Version 1.0.0 supports Anope 1.7.14
+Version 1.0.1 supports Anope 1.7.17

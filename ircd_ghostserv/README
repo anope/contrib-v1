@@ -1,0 +1,69 @@
+Name: ircd_ghostserv
+Author: n00bie
+Category: IRCd Specific
+Last updated: 2006-10-23T05:36:47+01:00
+
+[b]Description:[/b]
+
+This module create a new services client/bot. The bot will take care of all NickServ GHOST\'s command and users will be killed by the bot instead of the default GHOST killed.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Providing commands:[/b]
+
+/msg BotNick HELP
+/msg BotNick GHOST [nick] [password]
+/msg BotNick JOIN #Channel
+/msg BotNick PART #Channel
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]Note:[/b]
+
+All NickServ GHOST command are handled and KILLED by the Bot, so if you do not like that simply unload or unuse this module.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[b]INSTALLATION:[/b]
+
+Before you load this module, you need to put these lines into your services.conf
+
+# Module: ircd_ghostserv
+#
+# GSNick [REQUIRED]
+# The nickname of the bot.
+
+GSNick \"GhostBuster\"
+
+# GSIdent [REQUIRED]
+# The identd of the bot.
+
+GSIdent \"GS\"
+
+# GSHost [OPTIONAL]
+# The vhost or hostmask of the bot.
+
+GSHost \"MyNet.Ghost.Buster.Bot\"
+
+# GSReal [REQUIRED]
+# The realname of the Bot.
+
+GSReal \"/msg GhostBuster HELP\"
+
+# GSModes [OPTIONAL]
+# Modes the bot will have.
+
+GSModes \"+SqB\"
+
+# GSQuitMsg [OPTIONAL]
+# The bot quit msg when the module gets unloaded.
+
+GSQuitMsg \"Chasing Ghosts!\"
+
+# GSAutoJoin [OPTIONAL]
+# Define this if you want the bot to automatically
+# join your services log channel.
+
+GSAutoJoin
+
+# End of module: ircd_ghostserv
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Bugs? Suggestions/Comments ... feel free ^^
+
+Version 1.0.0 supports Anope 1.7.16
+Version 2.0.0 supports Anope 1.7.21
+Version 2.0.1 supports Anope 1.7.21

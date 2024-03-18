@@ -1,0 +1,19 @@
+Name: cs_count
+Author: n00bie
+Category: ChanServ
+Last updated: 2007-08-30T07:36:37+01:00
+
+This command will display the total number of VOPs, HOPs, AOPs, SOPs, AKICKs, badwords list and current users in a channel. Based on dalservices (DALnet).
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[b]Providing Command:[/b]
+
+/msg ChanServ HELP COUNT
+/msg ChanServ COUNT [u]#channel[/u]
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Note: Output might be different depending on channel xOP system.
+This module have no configurable option.
+
+Version 1.0.0 supports Anope 1.7.18
+Version 2.0.0 supports Anope 1.7.21
+Version 2.0.1 supports Anope 1.7.21

@@ -1,0 +1,14 @@
+Name: bs_gseen
+Author: DukePyrolator
+Category: BotServ
+Last updated: 2009-10-07T11:50:51+01:00
+
+This module adds a new, advanced !seen command to botserv.
+
+Requires: Anope 1.9.1 and Mysql 
+Required Libraries: libmysql++-dev, libmysqlient15-dev, libxml2-dev
+
+Tested with Inspircd 1.2 and Anope 1.9.1
+
+
+Version 3.0 supports Anope 1.9.1

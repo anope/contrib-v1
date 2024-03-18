@@ -1,0 +1,10 @@
+Name: ircd_motdonconnect
+Author: katsklaw
+Category: Other
+Last updated: 2008-05-13T01:01:21+01:00
+
+This module \"pushes\" services\' motd file to new users upon connecting to the network.
+
+NOTE: This module does NOT work on networks with os_raw loaded! If you don\'t like it, then too damned bad! I don\'t owe an explanation to anyone as to why. >:(
+
+Version 1.0.1 supports Anope 1.8.3

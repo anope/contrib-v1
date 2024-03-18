@@ -1,0 +1,46 @@
+Name: ircd_init
+Author: n00bie
+Category: IRCd Specific
+Last updated: 2006-09-25T08:51:50+01:00
+
+[b]NO LONGER SUPPORTED! SEE: http://forum.anope.org/index.php?topic=2387.0[/b]
+
+[b]Supported IRCd\'s:[/b]
+
+All IRCd\'s listed on services.conf are supported by this module.
+=================================================================
+[b]Installation / Usage:[/b]
+
+Add this file \'ircd_init\' on the \'[b]ModuleDelayedAutoload[/b]\' section in your services.conf making sure that you enable ModuleDelayedAutoload
+=================================================================
+[b]Description / Features:[/b]
+
+1) This module will automatically turned ON or ENABLE log channel when services get restarted or as soon as this module is loaded.
+
+2) ChanServ will join all registered channels as soon as this module is loaded or whenever services get restarted. It will join a channel as soon as it gets registered by someone (except for suspended or forbidden channels). 
+
+3) All services clients (ChanServ, NickServ, BotServ, OperServ etc.) will join services log channel (e.g. #Services) as soon as this module is loaded or whenever services get restarted.
+
+4) All BotServ bots (if available) will join services log channel as soon as this module is loaded or whenever services get restarted.
+
+5) If some stupid oper KICK ChanServ from a Channel, ChanServ will rejoin the channel and kick/banned the user.
+==================================================================
+This module have 1 configurable option.
+Copy/paste below on services.conf
+
+# IRCDINITChanServ [OPTIONAL]
+# Module: ircd_init
+#
+#	If this option is enabled, ChanServ will join
+#	all registered channels on startup (except for 
+#	suspended or forbidden channels). 
+#	Comment this to disable it.
+#
+IRCDINITChanServ
+
+# End of module: ircd_init
+
+Version 1.0.1 supports Anope 1.7.18
+Version 2.0.0 supports Anope 1.7.21
+Version 2.0.1 supports Anope 1.7.21
+Version 3.0.0 supports Anope 1.7.21

@@ -1,0 +1,48 @@
+-- Generate the command buffer table
+DROP TABLE IF EXISTS anope_sqlcmd;
+CREATE TABLE anope_sqlcmd (
+	id int(10) NOT NULL auto_increment,
+	cmd varchar(30) NOT NULL,
+	params varchar(255) NULL,
+	pass tinyblob NULL,
+	tstamp int(20) NOT NULL,
+	chksum varchar(32) NOT NULL,
+	status int(11) NOT NULL default '0',
+	PRIMARY KEY (id),
+	INDEX status (status, tstamp)
+) AUTO_INCREMENT = 1;
+
+
+-- MySQL function to facilitate adding new commands
+-- to the command buffer.
+DELIMITER //
+DROP FUNCTION IF EXISTS sql_cmd_add; //
+CREATE FUNCTION sql_cmd_add (cmd VARCHAR(30), params VARCHAR(255), pass TINYBLOB, salt VARCHAR(50), tstamp INT(20))
+	RETURNS INT(11)
+COMMENT 'Inserts a command to update the anope DB into the command queue.'
+BEGIN
+	DECLARE chksum, t_pass VARCHAR(32);
+	DECLARE t_params VARCHAR(255);
+
+	IF params IS NULL THEN SET t_params = ''; ELSE SET t_params = params; END IF;
+	IF pass IS NULL THEN SET t_pass = ''; ELSE SET t_pass = pass; END IF;
+	IF tstamp IS NULL || tstamp = 0 THEN SET tstamp = UNIX_TIMESTAMP(); END IF;
+	SET chksum = MD5(CONCAT(cmd,':',t_params,':',t_pass,':',tstamp,':',salt));
+
+	INSERT INTO anope_sqlcmd (cmd, params, pass, tstamp, chksum) VALUES (cmd, params, pass, tstamp, chksum);
+	return LAST_INSERT_ID();
+END //
+DROP PROCEDURE IF EXISTS sp_cmd_add; //
+CREATE PROCEDURE sp_cmd_add (cmd VARCHAR(30), params VARCHAR(255), pass TINYBLOB, salt VARCHAR(50), tstamp INT(20))
+COMMENT 'Procedural wrapper for the "sql_cmd_add" function.'
+BEGIN
+	SELECT sql_cmd_add(cmd, params, pass, salt, tstamp) AS id;
+END //
+DROP PROCEDURE IF EXISTS spo_cmd_add; //
+CREATE PROCEDURE spo_cmd_add (cmd VARCHAR(30), params VARCHAR(255), pass TINYBLOB, salt VARCHAR(50), tstamp INT(20), OUT id INT(11))
+COMMENT 'Wrapper for the "sql_cmd_add" with OUT param.'
+BEGIN
+	SET id = sql_cmd_add(cmd, params, pass, salt, tstamp);
+	SELECT id AS id;
+END //
+DELIMITER ;

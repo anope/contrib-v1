@@ -1,0 +1,20 @@
+Name: ns_saregister
+Author: Midori
+Category: NickServ
+Last updated: 2010-12-28T01:56:28+00:00
+
+Original Module Author: Adam
+Updated for 1.9.4: Laura
+Data of Original: 14/02/10
+Date of This Version: 26/12/10
+**********************************************
+Module used in: Nickserv
+Syntax: /ns saregister \'nick\' \'pass\' \'email\'
+**********************************************
+Changes: Updated to work with 1.9.4
+
+Based off of the original module made by Adam for 1.8.x series of Anope.
+Allows users with the nickserv/saregister flag to register a valid nickname and have it auto-confirmed remotely (as in they aren\'t on that nick) for the purpose of registering nicks for people having problems with email registration normally. Abides by the same rules as the ns_register.cpp module for valid registrable nicks and usable passwords/emails.
+
+Version 2.0 supports Anope 1.9.2 to 1.9.2
+Version 1.9 supports Anope 1.9.2 to 1.9.2

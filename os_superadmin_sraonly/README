@@ -1,0 +1,11 @@
+Name: os_superadmin_sraonly
+Author: Viper
+Category: OperServ
+Last updated: 2006-10-01T14:33:39+01:00
+
+This module will restrict the SET SUPERADMIN command to Services Root Administrators while leaving other SET commands accessible for regular SA\'s.
+
+[b]As of Anope-1.7.20 the OperServ SET command has been restricted to Services Root, thus limiting access to SET SUPERADMIN as well.
+As a result this module is no longer required when running an up-to-date version of Anope.[/b]
+
+Version 1.1 supports Anope 1.7.18

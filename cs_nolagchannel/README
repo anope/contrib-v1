@@ -1,0 +1,16 @@
+Name: cs_nolagchannel
+Author: MrStonedOne
+Category: ChanServ
+Last updated: 2010-11-28T22:58:48+00:00
+
+ Removes unreal\'s fake lag for any user in the selected channel with CS access above 3
+(this is beta, doesn\'t work with xop, doesn\'t check that the user is identified, and doesn\'t remove nolag when user parts channel or is kicked)
+
+EXPERIMENTAL MODULE, USE AT OWN RISK 
+I only ported this module because of a few requests, at some point im gonna make a /msg nickserv saset nolag version of this module
+
+default channel is #nolag, channel should be set as restricted access.
+
+channel can be changed by editing the .c file
+
+Version 0.1 supports Anope 1.8.1 to 1.8.5

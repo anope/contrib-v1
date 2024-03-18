@@ -1,0 +1,32 @@
+Name: misc_sqlcmd
+Author: Viper
+Category: Other
+Last updated: 2007-08-20T22:38:36+01:00
+
+This module allows you to send commands or database manipulation instructions to Anope via a table in its MySQL database. This allows for indirect two-way communication and manipulation of Anope whilst it\'s running and connected to a network.
+ 
+The module works by polling every X seconds (default 3) the command table for new instructions.
+These instructions are then processed in order they were received, and executed to manipulate Anopes internal - in memory - database. Anope will than save this changes to the MySQL database during its next scheduled database save, though many changes may become apparent in the MySQL database just after they are commited by this module.
+
+This module is based on misc_sqmcmd v.2.0.0 by Heinz.
+While the principle of operation and communication remains the same, much of the code for interacting with the Anope core was rewritten and restructures. The syntax of the commands received through the MySQL database has also changed significantly so it \'s fair to say  that this version of the module is not compatible with code writing commands to SQL for v.2.0.0.
+
+This module is meant to give external program an interface to interact with the 1.8 branch.
+I am the first to admin that sending commands through SQL isn\'t the ideal way, this module was the easiest and quickest way to accomplish this with the existing framework and code. In ideal circumstances reading would be done through MySQL and write operations communicated to anope over XML-RPC.
+The 1.9 branch will feature Live-SQL support. This is not meant to rival that implementation, however since 1.9 is likely still a few years away from being stable, this module could help bridge that gap.
+
+[color=\"red\"][b]Note:[/b][/color] This module can be considered a Release Candidate and should be considered relatively stable with no known issues remaining and in active use on several production networks.
+If more supported commands are desired, please provide the feedback. I will not be extending this modules scope unless asked for specifically, if only to be certain I am not wasting my time.
+
+I am currently working on a PHP API to facilitate access to anopes MySQL database and provide wrappers for all commands supported by the module. The base implementation is complete for all commands and though no examples exist yet the code should be sufficiently documented to enable you to try it out.
+I encourage people try it and report any bugs they may find..
+
+There has been no release yet of the PHP API code so until I can write some examples and pack a release you can grab it from the [url=\"http://vips.hopto.org/gitweb/?p=anope-php;a=summary\"]GIT repository[/url].
+
+Feedback can be posted to the forums: [url=\"http://forum.anope.org/index.php?topic=3318.0\"]here[/url].
+There is also a GIT repository available containing the latest development sources: [url=\"http://vips.hopto.org/gitweb/?p=anope-modules/misc_sqlcmd;a=summary\"]here[/url].
+
+Version 0.1.29 supports Anope 1.7.18
+Version 0.1.33 supports Anope 1.7.18
+Version 3.0.0 supports Anope 1.8.5
+Version 3.1.0 supports Anope 1.8.5

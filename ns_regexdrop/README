@@ -1,0 +1,22 @@
+Name: ns_regexdrop
+Author: DrStein
+Category: NickServ
+Last updated: 2007-08-26T08:40:36+01:00
+
+This module allow Services Admins to massive drop nicknames matching a given Regular Expression.
+
+Extended (POSIX) regular expressions are supported.
+
+[b]Example:[/b]
+
+(DrStein) LIST *
+-NickServ(services@anope.org)- List of entries matching *:
+-NickServ(services@anope.org)-     bot_10544             gacevedo@CA-EEEDA81F
+-NickServ(services@anope.org)-     bot_14589             gacevedo@CA-EEEDA81F
+-NickServ(services@anope.org)-     bot_666               gacevedo@CA-EEEDA81F
+-NickServ(services@anope.org)-     DrStein               gacevedo@CA-EEEDA81F
+-NickServ(services@anope.org)- End of list - 4/4 matches shown.
+[b](DrStein) REGEXDROP bot_[0-9]+[/b]
+-NickServ(services@anope.org)- A total of 3 nicknames have been dropped.
+
+Version 1.0.0 supports Anope 1.7.18

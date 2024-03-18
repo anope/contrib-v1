@@ -1,0 +1,27 @@
+Name: cs_act
+Author: gurumadmat
+Category: ChanServ
+Last updated: 2011-10-04T20:22:51+01:00
+
+/* 
+ *  ---------------------------------------------------------------
+ *  Name:           cs_act
+ *  Description:    Allows users with CA_SAY rights to act via
+ *                  the ChanServ service on current channel.
+ *  Author:         gurumadmat <gurumadmat@gmail.com>
+ *  Date:           04/Oct/2011
+ *  Version:        1.0
+ *  Commands Added: /msg ChanServ Act [#Channel] [Message]
+ *  ---------------------------------------------------------------
+ *  NOTE: This is intended for use on networks without BotServ,
+ *  but will work alongside BotServ bot's with no known issues.
+ *  ---------------------------------------------------------------
+ *  Releases:
+ *  1.0   -  First public release to Anope Modules Site.
+ * 
+ *  Credits :
+ *  Swampy for cs_speak.
+ *
+ */
+
+Version 1.1 supports Anope 1.8.6 to 1.8.6

@@ -1,0 +1,19 @@
+Name: cs_mute
+Author: Swampy
+Category: ChanServ
+Last updated: 2011-01-03T01:07:34+00:00
+
+NOTE: IF YOU ARE USING 1.1A OR LOWER, ITS ADVISED YOU UPGRADE IF YOU INTEND TO USE BS_FANTASY_EXT AS 1.1A AND LOWER WILL CAUSE ISSUES !!
+
+Adds MuteBans in the same way as your channel's "Ban Type" is specified (/msg ChanServ Help Set BanType)
+
+This module is only for use under UnrealIRCd and InspIRCd, If you attempt to load it under another IRCd it will generate an appropriate error and unload.
+
+Examples:
+/chanserv mute nick
+/chanserv demute nick
+
+Under InspIRCd:   ChanServ sets mode [+/-b m:*!*ident@host]  -v nick
+Under UnrealIRCd: ChanServ sets mode [+/-b ~q:*!*ident@host]
+
+Version 1.2 supports Anope 1.8.7 to 1.8.7

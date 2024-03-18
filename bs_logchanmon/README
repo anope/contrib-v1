@@ -1,0 +1,8 @@
+Name: bs_logchanmon
+Author: mastergamer
+Category: BotServ
+Last updated: 2007-08-07T10:23:38+01:00
+
+This module will create a psuedoclient that joins the LogChannel and sets mode +ao on itself. This is useful on smaller networks where there is not always someone in the logchan to keep it mlock\'d.
+
+Version 1.0.0 supports Anope 1.7.18

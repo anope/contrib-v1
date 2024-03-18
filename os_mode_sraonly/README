@@ -1,0 +1,8 @@
+Name: os_mode_sraonly
+Author: Viper
+Category: OperServ
+Last updated: 2006-10-01T12:11:33+01:00
+
+This module will restrict the MODE command to Services Roots.
+
+Version 1.0 supports Anope 1.7.21

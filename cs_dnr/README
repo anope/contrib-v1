@@ -1,0 +1,32 @@
+Name: cs_dnr
+Author: katlyn
+Category: ChanServ
+Last updated: 2010-09-07T16:43:54+01:00
+
+Adds support for wildcarded channels that can\'t be registered, through the use of a \'do-not-register\' list.
+
+This module is based on the do-not-register commands in [url=\"http://www.srvx.net\"]srvx[/url], and as such some code is taken from the project @ [url=\"http://www.srvx.net\"]http://www.srvx.net[/url].
+
+Hash table headers used are available from [url=\"http://uthash.sourceforge.net\"]http://uthash.sourceforge.net[/url], but have also been bundled with the module. They should be placed in anope-dir/include.
+
+If a user attempts to register a channel that matches one or more patterns in the do-not-register list, their channel registration will be blocked. 
+
+A staff member attempting to register a DNRed channel will also be blocked, but will be shown the list of matching DNRs responsible.
+
+For now you\'ll need to remove any DNRs matching a registration if you wish to allow the user (or yourself) to register a DNRed channel (and then add them back). A later version may include an override option.
+
+SYNTAX: [b]NOREGISTER [#pattern [reason]][/b]
+
+With no arguments, lists the current do-not-register list.
+
+With only one argument, lists any current do-not-register patterns matching that channel.
+
+With all arguments, adds a do-not-register channel with the specified reason. In this case, the channel name may include * or ? wildcards.
+
+SYNTAX: [b]ALLOWREGISTER <#pattern>[/b]
+
+Searches for, and removes if present, the the specified pattern from the DNR list, enabling the channel to be registered.
+
+Tested on 1.7.17 and 1.8.4
+
+Version 1.00 supports Anope 1.7.17 to 1.8.4

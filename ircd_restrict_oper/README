@@ -1,0 +1,24 @@
+Name: ircd_restrict_oper
+Author: Viper
+Category: IRCd Specific
+Last updated: 2008-06-21T16:59:17+01:00
+
+ This module will restrict oper modes (incl +q) to a certain services level. 
+ In addition it requires users to be using a registered nick to /oper.
+ For example if a server admin with services oper access would decide to promote himself to netadmin, the +Na modes would be removed by services.
+
+ If an oper is found to be invalid, services will remove the umodes granted by oper.
+ Note that if anope uses SVSMODE instead of SVS2MODE the user will not be informed.
+
+ The module imposes following restrictions:
+_____ IRC Operator Level _____|_____ Required Services Access ____|___ Identified
+_____ Network Administrator (N) ______ Services Administrator  _____________  x
+_____ Services Administrator (a) ______ Services Administrator _____________ x
+______ Server (Co)Admin (A/C) _________ Services Operator ______________ x
+______ Global IRC Operator (o) ______________ None ___________________ x
+______ Local IRC Operator (O) ______________ None
+________ User Mode q _____________ Services Root Administrator _________ x
+
+ This module can be usefull for networks using a relatively flexible open link policy, allowing them to restrict new opers\' access through services.
+
+Version 1.0 supports Anope 1.7.21

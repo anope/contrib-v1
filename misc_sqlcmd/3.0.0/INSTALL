@@ -1,0 +1,74 @@
+#############################################################################################
+###---------------------------------------------------------------------------------------###
+###--------------------------------------  misc_sqlcmd  ----------------------------------###
+###---------------------------------------------------------------------------------------###
+#############################################################################################
+
+####
+# Module Name   : misc_sqlcmd
+# Author        : Viper <Viper@Anope.org>
+# Last Edited   : 13/01/2011
+###
+
+---------------------------------------------------------------------------------------------
+
+Preparing Anope :
+-------------------
+
+This modules MySQL support to be enabled and active in Anope.
+For detailed instructions on how to configure and enable MySQL in anope, refer to the 
+documentation that ships with anope, the wiki, support forums or IRC support channel.
+
+
+Preparing MySQL DB:
+---------------------
+
+This module receives update instructions through a dedicated commands tabl in anopes
+MySQL database. This table must be generated manually before attempting to load the module.
+
+Run the MySQL code found in SQL in the anope database to generate the required tabes.
+
+Module Installation Instructions - Linux:
+-------------------------------------------
+
+	- wget the latest version of misc_sqlcmd (link on Anope forums or modules site) 
+	  to the anope-1.8.x/src/modules directory. (Or get a dev release from Git Repo.)
+	- extract it with 'tar -zxvf misc_sqlcmd-3.x.y.tar.gz'
+	- cd to main anope source directory
+	- run 'make modules'
+	- run 'make install'
+	- copy/paste configuration directives below to services.conf (at the bottom
+	  there s a section for modules' configuration directives)
+	- For autoloading: add 'misc_sqlcmd' to the ModuleDelayedAutoload directive.
+	- load module with /os modload misc_sqlcmd
+
+
+Module Installation Instructions - Windows:
+---------------------------------------------
+
+      <<< NOT CURRENTLY SUPPORTED >>>
+
+
+---------------------------------------------------------------------------------------------
+
+
+Configuration directives that should be copy-pasted to services.conf
+----------------------------------------------------------------------
+
+# SQLCmdUpdateTimeout [OPTIONAL]
+# Module: misc_sqlcmd
+#
+# Sets the interval at which the database will be polled for new commands.
+# A Lower number will cause more queries, but less delay. The lower this delay, 
+# the more time anope will spend handling connections to the database server.
+#SQLCmdUpdateTimeout 3
+
+# SQLCmdChecksumSalt [OPTIONAL - REQUIRED by cs_inhabit_registered]
+# Module: misc_sqlcmd
+#
+# Set the checksum salt used to compute the checksum of all incoming commands.
+# The checksum value of a command must be correct for the command to be processed.
+#SQLCmdChecksumSalt "qd9sd1DS23hW$Q)01B@Q"
+
+
+---------------------------------------------------------------------------------------------

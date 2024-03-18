@@ -1,0 +1,10 @@
+Name: ircd_clan_info
+Author: katsklaw
+Category: Other
+Last updated: 2008-07-18T17:14:08+01:00
+
+This module adds clan info to the output of /nickserv info or /chanserv info.
+
+Visible to everyone, editable only by IRCops.
+
+Version 1.0.1 supports Anope 1.8.3
